@@ -1,11 +1,11 @@
 name = "Dream"
 license = "MIT"
 licenselink = "https://github.com/g1eny0ung/hugo-theme-dream/blob/master/LICENSE"
-description = "🌱 A Hugo theme named Dream"
+description = "AiEDU | Blog"
 
-homepage = "https://g1en.site/hugo-theme-dream"
+homepage = "https://github.com/88899"
 
-demoSite = "https://g1en.site"
+demoSite = "https://googhub.nyc.mn/"
 
 tags = ["blog", "responsive", "light", "dark", "personal", "creative"]
 features = [
@@ -23,5 +23,5 @@ features = [
 ]
 
 [author]
-name = "Yue Yang"
-homepage = "https://github.com/g1eny0ung"
+name = "AiEDU"
+homepage = "https://github.com/88899/hugo-blog"
