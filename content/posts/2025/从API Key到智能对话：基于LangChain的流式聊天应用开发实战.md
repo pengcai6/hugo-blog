@@ -1,7 +1,8 @@
 ---
 title: "从API Key到智能对话：基于LangChain的流式聊天应用开发实战"
 date: 2024-11-20T09:03:20-08:00
-cover: https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250722110325891.png
+cover:
+  image: https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250722110325891.png
 categories:
   - AI
   - 技术
