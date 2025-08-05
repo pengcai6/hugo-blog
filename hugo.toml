@@ -89,7 +89,7 @@ jsDate = true
 jsDateFormat = "yyyy年MM月dd日"
 # jsDateFormat = "yyyy年MM月dd日，cccc"
 
-
-[params.Author]
-name = "AiEDU"
-avatar = "img/personal/avatar.png"
+# for peht theme
+#[params.Author]
+#name = "AiEDU"
+#avatar = "img/personal/avatar.png"
