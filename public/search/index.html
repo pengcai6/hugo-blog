@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  x-data
+  :class="$store.darkMode.class()"
+  :data-theme="$store.darkMode.theme()">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search | AiEDU | Blog</title>
+
+    
+  
+    <link href="/img/personal/avatar.png" rel="icon" type="image/x-icon" />
+  
+
+
+<link rel="canonical" href="http://localhost:1313/search/" />
+
+
+
+<meta name="author" content="AiEDU" />
+<meta name="description" content="Just do it!" />
+
+
+
+<meta name="generator" content="Hugo 0.148.2">
+
+
+<meta property="og:url" content="http://localhost:1313/search/">
+  <meta property="og:site_name" content="AiEDU | Blog">
+  <meta property="og:title" content="AiEDU | Blog">
+  <meta property="og:description" content="Just do it!">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="http://localhost:1313/img/global-background.jpg">
+
+
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/img/global-background.jpg">
+  <meta name="twitter:title" content="AiEDU | Blog">
+  <meta name="twitter:description" content="Just do it!">
+      <meta name="twitter:site" content="@g1eny0ung">
+
+
+
+
+<link rel="stylesheet" href="/css/output.css" />
+
+
+
+
+     
+
+    
+    <link rel="stylesheet" href="/css/custom.css" />
+    
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" integrity="sha256-PtHu0lJIiSHfZeNj1nFd6wTX+Squ255SGZ/fc8seCtM=" crossorigin="anonymous"></script>
+  </head>
+
+  <body x-data="{
+    flip: false,
+  }">
+    
+    <div id="dream-global-bg"></div>
+
+    
+<nav x-data="{ isSticky: false }"
+  x-init="window.addEventListener('scroll', () => { isSticky = window.scrollY > 30 })"
+  class="sticky top-0 z-30 mt-4 lg:mt-8 py-4"
+  :class="{ 'bg-base-100 shadow-lg dark:border-b dark:border-base-content/30': isSticky }">
+
+  
+  <div class="container flex justify-between px-4">
+  
+    <section class="flex items-center gap-4">
+      <div class="avatar cursor-pointer hover:avatar-online" @click="flip = !flip" title="Flip it!">
+        <div class="h-10 rounded-full">
+          <img src="/img/personal/avatar.png" alt="AiEDU | BLOG" />
+        </div>
+      </div>
+
+      
+      <div>
+        
+        <a href="http://localhost:1313/" class="text-lg font-semibold cursor-pointer">
+          AiEDU | BLOG
+        </a>
+        
+        
+        <div class="text-base-content/60 text-sm">知识改变命运，AI改变知识。</div>
+        
+      </div>
+      
+    </section>
+
+    
+    
+      
+    
+
+    <div class="dropdown dropdown-end sm:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
+        <ion-icon name="menu" class="text-2xl"></ion-icon>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-1 shadow-md">
+        
+
+
+
+
+
+
+
+<li>
+  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="About">
+    <ion-icon name="information-circle"></ion-icon>About</div>
+</li>
+
+
+
+
+
+
+
+<li>
+  <a class="group inline-flex items-center p-2 cursor-pointer" href="/search" title="Search">
+    <ion-icon name="search"></ion-icon>
+    Search
+  </a>
+</li>
+
+
+
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="https://github.com/88899" target="_blank" title="GitHub">
+    
+    <ion-icon name="logo-github"></ion-icon>
+    
+    GitHub
+  </a>
+</li>
+
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/posts" title="Archives">
+    <ion-icon name="archive"></ion-icon>
+    Archives
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/categories" title="All Categories">
+    <ion-icon name="grid"></ion-icon>
+    All Categories
+  </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/index.xml" title="RSS">
+    <ion-icon name="logo-rss"></ion-icon>
+    RSS
+  </a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </ul>
+    </div>
+    <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
+      
+
+      
+      
+      
+      
+
+
+
+
+<div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="About">About</div>
+
+
+
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/search" title="Search">
+  <ion-icon class="group-hover:text-primary-content" name="search"></ion-icon>
+</a>
+
+
+      
+      
+
+
+
+  
+  <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="https://github.com/88899" target="_blank" title="GitHub">
+    <ion-icon class="group-hover:text-primary-content" name="logo-github"></ion-icon>
+  </a>
+  
+
+
+
+      
+
+      <div class="dropdown dropdown-end dropdown-hover">
+        <div tabindex="0" role="button" class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" aria-label="Select an option">
+          <ion-icon class="group-hover:text-primary-content text-xl" name="menu"></ion-icon>
+        </div>
+        <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-1 shadow-xl">
+          
+          
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/posts" title="Archives">
+    <ion-icon name="archive"></ion-icon>
+    Archives
+  </a>
+</li>
+
+
+          
+          
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/categories" title="All Categories">
+    <ion-icon name="grid"></ion-icon>
+    All Categories
+  </a>
+</li>
+
+
+          
+          
+
+
+
+
+
+          
+          
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/index.xml" title="RSS">
+    <ion-icon name="logo-rss"></ion-icon>
+    RSS
+  </a>
+</li>
+
+
+          
+
+          
+          
+
+
+
+
+
+
+
+
+
+
+          
+        </ul>
+      </div>
+      
+    </section>
+  </div>
+</nav>
+
+
+    <div class="flip-container" :class="{ 'flip-it': flip }">
+      <div class="flipper">
+        <div class="front">
+          <div class="container">
+            
+
+
+<div class="mt-8 lg:mt-12 px-4"
+
+x-data="{
+  search: '',
+  get posts() { return this.search !== '' ? window.fuse.search(this.search) : [] },
+}">
+  <label for="search" class="input w-full">
+    <input id="search" name="search" type="text" class="grow" placeholder="Search" x-model.debounce="search" />
+    <ion-icon name="search"></ion-icon>
+  </label>
+
+  <div class="mt-8 space-y-4">
+  <template x-for="post in posts">
+    <a class="card bg-base-100 hover:bg-base-content/10 cursor-pointer border border-base-content/30" :href="post.item.url">
+      <div class="card-body">
+        <h2 class="card-title" x-text="post.item.title"></h2>
+
+        <div x-html="post.item.description"></div>
+
+        <div class="card-actions justify-between items-center mt-4">
+          <div class="flex items-center">
+            <template x-if="post.item.avatar">
+            <div class="avatar mr-1">
+              <div class="w-8 rounded-full">
+                <img class="my-0" :src="post.item.avatar" :alt="post.item.author" />
+              </div>
+            </div>
+            </template>
+            <template x-if="!post.item.avatar">
+            <span>@</span>
+            </template>
+
+            <template x-if="post.item.author">
+            <span x-text="post.item.author"></span>
+            </template>
+            <template x-if="!post.item.author">
+            <span>AiEDU</span>
+            </template>
+            </span>
+          </div>
+
+          <div class="inline-flex items-center">
+            <ion-icon name="time" class="mr-1"></ion-icon>
+            <span><span x-text="post.item.readingTime"></span> minute read</span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </template>
+  </div>
+</div>
+
+
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2025 AiEDU | Blog
+  </p>
+  
+
+  
+
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'sunny', status: 'n' },
+    { name: 'moon', status: 'y' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center gap-2 h-[32px] px-2 bg-base-100 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+        <div class="back">
+          <div class="container">
+            
+            <div class="dream-grid dream-grid-about">
+  
+  
+  
+  <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 dream-column">
+    <article
+      class="card bg-base-100 hover:bg-base-content/10 shadow-xl dark:border dark:border-base-content/30"
+    >
+      <div class="card-body">
+        <div class="card-title">关于我</div>
+
+        <div class="prose dark:prose-invert">
+          <p>Hi，这里是 <strong>AiEDU</strong> 的博客。<strong>AiEDU</strong> 是我在互联网上经常使用的名字。</p>
+<p>我是一个热衷于开源的软件工程师，在这里我会记录一些关于技术等知识。欢迎你通过评论或者邮件与我交流。</p>
+
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 dream-column">
+    <article
+      class="card bg-base-100 hover:bg-base-content/10 shadow-xl dark:border dark:border-base-content/30"
+    >
+      <div class="card-body">
+        <div class="card-title">知识共享（Creative Commons）</div>
+
+        <div class="prose dark:prose-invert">
+          <p>此网站的所有内容都遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.25rem; text-decoration: underline;">CC BY-NC-SA 4.0<img style="height:22px; margin-top: 0; margin-bottom: 0;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px; margin-top: 0; margin-bottom: 0;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px; margin-top: 0; margin-bottom: 0;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px; margin-top: 0; margin-bottom: 0;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a>。</p>
+<p>All contents of this website are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.25rem; text-decoration: underline;">CC BY-NC-SA 4.0<img style="height:22px; margin-top: 0; margin-bottom: 0;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px; margin-top: 0; margin-bottom: 0;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px; margin-top: 0; margin-bottom: 0;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px; margin-top: 0; margin-bottom: 0;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a>.</p>
+
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  
+
+  
+  <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 dream-column">
+    <article
+      class="card bg-base-100 hover:bg-base-content/10 shadow-xl dark:border dark:border-base-content/30"
+    >
+      <div class="card-body">
+        <div class="card-title">Social Links</div>
+
+        <ul class="menu menu-horizontal flex-wrap w-full px-0 [&_ion-icon]:text-lg">
+  
+  <li>
+    <a href="mailto:aiedu985@gmail.com" title="Email">
+      <ion-icon name="mail"></ion-icon>
+    </a>
+  </li>
+  
+
+  
+  <li>
+    <a href="https://github.com/g1eny0ung" target="_blank" title="GitHub">
+      <ion-icon name="logo-github"></ion-icon>
+    </a>
+  </li>
+  
+  <li>
+    <a href="https://x.com/g1eny0ung" target="_blank" title="X">
+      <ion-icon name="logo-x"></ion-icon>
+    </a>
+  </li>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/g1eny0ung" target="_blank" title="Linkedin">
+      <ion-icon name="logo-linkedin"></ion-icon>
+    </a>
+  </li>
+  
+  <li>
+    <a href="https://stackoverflow.com/users/5676489/g1eny0ung" target="_blank" title="stack overflow">
+      <ion-icon name="logo-stackoverflow"></ion-icon>
+    </a>
+  </li>
+  
+</ul>
+
+      </div>
+    </article>
+  </div>
+  
+
+  
+</div>
+
+            
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2025 AiEDU | Blog
+  </p>
+  
+
+  
+
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'sunny', status: 'n' },
+    { name: 'moon', status: 'y' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center gap-2 h-[32px] px-2 bg-base-100 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+  window.lightTheme = "emerald"
+  window.darkTheme = "forest"
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+
+  
+  
+  <script src="/js/grid.js"></script>
+
+
+
+
+<script src="/js/main.js"></script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js" integrity="sha256-42IbU8t3tOwwbexB7ZVRHm3YDRf65aBPPjRtIUufj5I=" crossorigin="anonymous"></script>
+<script>
+  var fuseData = [{"author":null,"avatar":null,"categories":["AI","技术"],"description":"\u003ch2 id=\"一agent是自主决策的ai应用\"\u003e一、Agent是自主决策的AI应用\u003c/h2\u003e\n\u003cp\u003eAgent是一种AI应用，能感知环境，能规划任务并调用外部工具完成任务。\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e具备自主决策\u003c/li\u003e\n\u003cli\u003e能够完成复杂任务\u003c/li\u003e\n\u003cli\u003e可以调用外部工具\u003c/li\u003e\n\u003cli\u003e可以调用MCP、Function Call等\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"二mcp相当于大模型的http协议\"\u003e二、MCP相当于大模型的”HTTP协议“\u003c/h2\u003e\n\u003cp\u003e由于各家AGENT的集成、API调用千差万别，这就产生了MCP\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e全称：Model Context ProtoProtocol\u003c/li\u003e\n\u003cli\u003e能够使大模型与外部服务的交互标准化\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"三function-call是模型的原生能力扩展\"\u003e三、Function Call是模型的原生能力扩展\u003c/h2\u003e\n\u003cp\u003eFunction Call即函数调用，是大模型调用外部函数和API以获取信息、执行计算或与系统交互\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e是大模型调用外部函数或API的机制\u003c/li\u003e\n\u003cli\u003e增强大模型能力的直接方式\u003c/li\u003e\n\u003cli\u003e通常与大模型绑定，作为模型的一部分\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"四三者的对比\"\u003e四、三者的对比\u003c/h2\u003e\n\u003ch3 id=\"mcp-server-被动的工具\"\u003eMCP Server: 被动的工具\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e被动的服务，仅响应调用请求\u003c/li\u003e\n\u003cli\u003e为大模型提供外部数据和能力支持\u003c/li\u003e\n\u003cli\u003e不参与决策和推理过程\u003c/li\u003e\n\u003cli\u003e像工具箱一样等待别人调用\u003c/li\u003e\n\u003cli\u003e专注数据提供\u003c/li\u003e\n\u003cli\u003e模块化设计，便于独立开发\u003c/li\u003e\n\u003cli\u003e只能被动响应，无法主动解决问题\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"function-call像瑞士军刀\"\u003eFunction Call：像瑞士军刀\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e直接扩展大模型能力\u003c/li\u003e\n\u003cli\u003e允许生成请求参数并整合结果\u003c/li\u003e\n\u003cli\u003e与模型绑定部署，紧密集成\u003c/li\u003e\n\u003cli\u003e像瑞士军队小巧多功能，随身携带\u003c/li\u003e\n\u003cli\u003e轻量级任务处理，模型内触发\u003c/li\u003e\n\u003cli\u003e高效便捷，无需 额外通信开销\u003c/li\u003e\n\u003cli\u003e受模型运行时资源限制，无法执行耗时任务\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"agent智能工人\"\u003eAgent：智能工人\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e具备自主决策的AI实体\u003c/li\u003e\n\u003cli\u003e能感知环境和规划任务\u003c/li\u003e\n\u003cli\u003e可调用各种工具（包括MCP/Function Call)\u003c/li\u003e\n\u003cli\u003e像熟练工人，选择合适工具完成复杂任务\u003c/li\u003e\n\u003cli\u003e高度自主，支持复杂流程\u003c/li\u003e\n\u003cli\u003e开发复杂度高，需要集成推理模型和状态管理\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"五适用场景\"\u003e五、适用场景\u003c/h2\u003e\n\u003ch3 id=\"function-call\"\u003eFunction Call\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e适合简单、同步任务\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"mcp-server\"\u003eMCP Server：\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e适合复杂任务、异步任务\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"agent\"\u003eAgent：\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003e适合端到端的复杂任务\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"六如何选型\"\u003e六、如何选型\u003c/h2\u003e\n\u003cp\u003e从以下几个方面进行选型：\u003c/p\u003e\n\u003ctable\u003e\n  \u003cthead\u003e\n      \u003ctr\u003e\n          \u003cth\u003e考量点\u003c/th\u003e\n          \u003cth\u003eFunction Call\u003c/th\u003e\n          \u003cth\u003eMCP Server\u003c/th\u003e\n          \u003cth\u003eAgent\u003c/th\u003e\n      \u003c/tr\u003e\n  \u003c/thead\u003e\n  \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd\u003e任务复杂度\u003c/td\u003e\n          \u003ctd\u003e简单，低延迟的任务\u003c/td\u003e\n          \u003ctd\u003e复杂的数据整合任务\u003c/td\u003e\n          \u003ctd\u003e自主决策、多任务\u003c/td\u003e\n      \u003c/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003e协议标准化\u003c/td\u003e\n          \u003ctd\u003e无强制协议，实现方式因平台而异\u003c/td\u003e\n          \u003ctd\u003e严格遵守标准，跨团队跨平台\u003c/td\u003e\n          \u003ctd\u003e依赖底层工具的协议规范\u003c/td\u003e\n      \u003c/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003e部署灵活性\u003c/td\u003e\n          \u003ctd\u003e与模型服务绑定，适合小型项目\u003c/td\u003e\n          \u003ctd\u003e可独立扩张，适合企业级项目\u003c/td\u003e\n          \u003ctd\u003e需要集成多模块，适合大型复杂系统\u003c/td\u003e\n      \u003c/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003e安全隔离\u003c/td\u003e\n          \u003ctd\u003e安全边界较低，与模型共享环境\u003c/td\u003e\n          \u003ctd\u003e严格的隔离边界，可实时访问控制\u003c/td\u003e\n          \u003ctd\u003e需要综合安全策略\u003c/td\u003e\n      \u003c/tr\u003e\n  \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch2 id=\"总结\"\u003e总结\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003eAgent 是一种AI应用，能感知环境，能规划任务，能通过调用外部工具、服务，包括MCP Server/Function Call等来完成任务。\u003c/li\u003e\n\u003cli\u003eFunction Call是大模型本身的一种能力，可以通过调用外部函数和API以增强大模型自身的能力\u003c/li\u003e\n\u003cli\u003eMCP则是给AI应用提供了一套标准化协议，方便AI应用更好的访问外部工具，以提升大模型的响应能力\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre tabindex=\"0\"\u003e\u003ccode\u003e也有人这么形容MCP，认为MCP是大模型的SOA或SAAS\n\u003c/code\u003e\u003c/pre\u003e\u003cp\u003e![[used-footer.png]]\u003c/p\u003e","readingTime":1,"tags":null,"title":"Agent、MCP、FunctionCall的区别","url":"/posts/2025/agentmcpfunctioncall%E7%9A%84%E5%8C%BA%E5%88%AB/"},{"author":null,"avatar":null,"categories":["AI","技术"],"description":"\u003ch2 id=\"说明\"\u003e说明\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003e我尽量简化，所以尽量用图说话：红色线代表需要要操作的, 所以你可以按着红色标识操作\u003c/li\u003e\n\u003cli\u003e如果你已经有账号，可以直接跳转到第二节\u003c/li\u003e\n\u003cli\u003e目前作者增加了github账号验证，所以你得有一个注册时间大于6个月的github账号\u003c/li\u003e\n\u003cli\u003e所用到的代码（https://github.com/eooce/Sing-box/tree/main）\u003c/li\u003e\n\u003cli\u003e我是小白，所以写作水平有限，请大家多多包涵\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"一注册账号\"\u003e一、注册账号\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003e打开：https://www.lade.io/，开始注册\u003c/li\u003e\n\u003c/ul\u003e\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250519105710549.png\" alt=\"\"\u003e\u003cul\u003e\n\u003cli\u003e\n\u003cp\u003e填写必须的信息\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250519105959930.png\" alt=\"\"\u003e\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e验证账号：去你的邮箱查收，并完成账号验证\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250519110202153.png\" alt=\"\"\u003e\u003cul\u003e\n\u003cli\u003e\n\u003cp\u003e重新登录，看到下面这个图代表登录成功了\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e接下来进行github账号验证，按图中红色标识的三个操作（1. 创建gist, 2. 得到gist连接发给live chat, 3. 再次输入邮箱，约1分钟会给你审核结果）, 具体看下面的截图\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250519110448902.png\" alt=\"\"\u003e\u003cp\u003e(如下图在github创建gist)\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250519114736704.png\" alt=\"\"\u003e\u003c/p\u003e\n\u003cp\u003e(创建成功后，复制地址栏中的连接)\u003c/p\u003e\n\u003cp\u003e(回到Lade.io，点击live chat，将刚复制的连接发个chat)\u003c/p\u003e\n\u003cp\u003e(chat会让你再次输入mail地址)\u003c/p\u003e\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250519111118127.png\" alt=\"\"\u003e\u003cp\u003e(提交后等待约1分钟，如果你的github账号不足6个月，会是这个提示（不成功）\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250519111158847.png\" alt=\"\"\u003e\u003c/p\u003e\n\u003cp\u003e(验证成功会返回这个消息)\u003c/p\u003e\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250519111239211.png\" alt=\"\"\u003e\u003ch2 id=\"二部署应用\"\u003e二、部署应用\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003e\n\u003cp\u003e打开https://github.com/eooce/Sing-box/tree/main/nodejs， 下载图中三个文件\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250519112118611.png\" alt=\"\"\u003e\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e修改start.sh文件（重点，也是唯一需要修改的文件)\n说明：需要修改的配置如下图红色标识（如果不需要扎针，关于nezha的可以留空）。隧道token和自定义域名，请自行搜索教程解决。\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250519112501403.png\" alt=\"\"\u003e\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e重点来了，下面的操作需要在你电脑上进行（我这里以mac电脑为例子，如果你是windows或者linux,请在lade官网看对应系统的操作指南https://www.lade.io/docs/platform/cli）， 另外lade也支持在远程服务器上操作。\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre tabindex=\"0\"\u003e\u003ccode\u003e# 安装lade环境\nbrew install lade-io/tap/lade\n# 进入前面保存好的文件所在的目录\ncd /xx/xx/刚下载好的文件所在目录\n\n# 登入lade\nlade login\n# 创建lade 应用，abcde是应用名称，自定义即可\nlade apps create abcde\n# 部署lade 应用, 名字和上面保持一致\nlade deploy --app abcde\n\n# 等一会儿，查看日志，节点信息在日志中\nlade logs -a abcde\n# 可以查看应用运行状态\nlade apps show abcde\n\u003c/code\u003e\u003c/pre\u003e\u003cp\u003e从日志中复制节点信息，导入你的骑墙软件即可玩耍了。\u003c/p\u003e","readingTime":1,"tags":null,"title":"Lade.io注册到搭建应用, 小白完全指南","url":"/posts/2025/lade.io%E6%B3%A8%E5%86%8C%E5%88%B0%E6%90%AD%E5%BB%BA%E5%BA%94%E7%94%A8-%E5%B0%8F%E7%99%BD%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/"},{"author":null,"avatar":null,"categories":["AI","技术"],"description":"\u003ch2 id=\"一引言解锁gpt能力的钥匙\"\u003e一、引言：解锁GPT能力的钥匙\u003c/h2\u003e\n\u003cp\u003e当开发者获得OpenAI API Key时，就像拿到了一把打开智能对话宇宙的钥匙。本文将结合\u003ccode\u003elangchain\u003c/code\u003e框架，通过一个完整的流式聊天Demo，演示如何将API Key转化为具有上下文记忆、多会话管理和流式输出能力的智能对话系统。\u003c/p\u003e\n\u003ch2 id=\"二环境搭建与初始化\"\u003e二、环境搭建与初始化\u003c/h2\u003e\n\u003ch3 id=\"1-安全配置api-key\"\u003e1. 安全配置API Key\u003c/h3\u003e\n\u003cp\u003e推荐使用独立的配置文件（config.py）管理敏感信息：\u003c/p\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" class=\"chroma\"\u003e\u003ccode class=\"language-python\" data-lang=\"python\"\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"c1\"\u003e# config.py\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"k\"\u003eclass\u003c/span\u003e \u003cspan class=\"nc\"\u003eConfig\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"k\"\u003edef\u003c/span\u003e \u003cspan class=\"fm\"\u003e__init__\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"bp\"\u003eself\u003c/span\u003e\u003cspan class=\"p\"\u003e):\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e        \u003cspan class=\"bp\"\u003eself\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003eOPENAI_API_KEY\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"s2\"\u003e\u0026#34;sk-xxx\u0026#34;\u003c/span\u003e  \u003cspan class=\"c1\"\u003e# 替换为真实Key\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e        \u003cspan class=\"bp\"\u003eself\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003eOPENAI_MODEL\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"s2\"\u003e\u0026#34;gpt-3.5-turbo\u0026#34;\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003ch3 id=\"2-核心依赖安装\"\u003e2. 核心依赖安装\u003c/h3\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" class=\"chroma\"\u003e\u003ccode class=\"language-bash\" data-lang=\"bash\"\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003epip install langchain-openai langchain-core langchain-community\n\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003ch2 id=\"三流式聊天系统架构解析\"\u003e三、流式聊天系统架构解析\u003c/h2\u003e\n\u003ch3 id=\"1-初始化聊天模型\"\u003e1. 初始化聊天模型\u003c/h3\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" class=\"chroma\"\u003e\u003ccode class=\"language-python\" data-lang=\"python\"\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"kn\"\u003efrom\u003c/span\u003e \u003cspan class=\"nn\"\u003elangchain_openai\u003c/span\u003e \u003cspan class=\"kn\"\u003eimport\u003c/span\u003e \u003cspan class=\"n\"\u003eChatOpenAI\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"n\"\u003emodel_chat\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"n\"\u003eChatOpenAI\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003emodel\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"n\"\u003ecf\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003eOPENAI_MODEL\u003c/span\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e  \u003cspan class=\"c1\"\u003e# 创建模型实例\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003ch3 id=\"2-构建智能对话链\"\u003e2. 构建智能对话链\u003c/h3\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" class=\"chroma\"\u003e\u003ccode class=\"language-python\" data-lang=\"python\"\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"n\"\u003eprompt_template\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"n\"\u003eChatPromptTemplate\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003efrom_messages\u003c/span\u003e\u003cspan class=\"p\"\u003e([\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;system\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e \u003cspan class=\"s1\"\u003e\u0026#39;你是一个专业助手，请用\u003c/span\u003e\u003cspan class=\"si\"\u003e{language}\u003c/span\u003e\u003cspan class=\"s1\"\u003e尽所能回答所有问题。\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e),\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"n\"\u003eMessagesPlaceholder\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003evariable_name\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;my_msg\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e  \u003cspan class=\"c1\"\u003e# 动态消息占位符\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"p\"\u003e])\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"n\"\u003echain\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"n\"\u003eprompt_template\u003c/span\u003e \u003cspan class=\"o\"\u003e|\u003c/span\u003e \u003cspan class=\"n\"\u003emodel_chat\u003c/span\u003e  \u003cspan class=\"c1\"\u003e# 管道式组合\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003ch3 id=\"3-会话历史管理\"\u003e3. 会话历史管理\u003c/h3\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" class=\"chroma\"\u003e\u003ccode class=\"language-python\" data-lang=\"python\"\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"n\"\u003ehistory_msgs\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"p\"\u003e{}\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"k\"\u003edef\u003c/span\u003e \u003cspan class=\"nf\"\u003eget_history_msg\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003esession_id\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"nb\"\u003estr\u003c/span\u003e\u003cspan class=\"p\"\u003e):\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"k\"\u003eif\u003c/span\u003e \u003cspan class=\"n\"\u003esession_id\u003c/span\u003e \u003cspan class=\"ow\"\u003enot\u003c/span\u003e \u003cspan class=\"ow\"\u003ein\u003c/span\u003e \u003cspan class=\"n\"\u003ehistory_msgs\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e        \u003cspan class=\"n\"\u003ehistory_msgs\u003c/span\u003e\u003cspan class=\"p\"\u003e[\u003c/span\u003e\u003cspan class=\"n\"\u003esession_id\u003c/span\u003e\u003cspan class=\"p\"\u003e]\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"n\"\u003eChatMessageHistory\u003c/span\u003e\u003cspan class=\"p\"\u003e()\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"k\"\u003ereturn\u003c/span\u003e \u003cspan class=\"n\"\u003ehistory_msgs\u003c/span\u003e\u003cspan class=\"p\"\u003e[\u003c/span\u003e\u003cspan class=\"n\"\u003esession_id\u003c/span\u003e\u003cspan class=\"p\"\u003e]\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003ch3 id=\"4-流式响应处理器\"\u003e4. 流式响应处理器\u003c/h3\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" class=\"chroma\"\u003e\u003ccode class=\"language-python\" data-lang=\"python\"\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"n\"\u003edo_msg\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"n\"\u003eRunnableWithMessageHistory\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"n\"\u003echain\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"n\"\u003eget_history_msg\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"n\"\u003einput_messages_key\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;my_msg\u0026#39;\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003ch2 id=\"四核心功能演示\"\u003e四、核心功能演示\u003c/h2\u003e\n\u003ch3 id=\"1-基础对话测试\"\u003e1. 基础对话测试\u003c/h3\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" class=\"chroma\"\u003e\u003ccode class=\"language-python\" data-lang=\"python\"\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"c1\"\u003e# 第一轮对话\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"n\"\u003eresp1\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"n\"\u003edo_msg\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003einvoke\u003c/span\u003e\u003cspan class=\"p\"\u003e({\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"s1\"\u003e\u0026#39;language\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"s1\"\u003e\u0026#39;中文\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"s1\"\u003e\u0026#39;my_msg\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"p\"\u003e[\u003c/span\u003e\u003cspan class=\"n\"\u003eHumanMessage\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003econtent\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;你好，我是dp\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e)]\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"p\"\u003e},\u003c/span\u003e \u003cspan class=\"n\"\u003econfig\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"p\"\u003e{\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;configurable\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"p\"\u003e{\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;session_id\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"s1\"\u003e\u0026#39;dp123\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e}})\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"nb\"\u003eprint\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003eresp1\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003econtent\u003c/span\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"c1\"\u003e# 输出：您好，dp！很高兴为您服务。请问今天有什么可以帮您的？\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003ch3 id=\"2-上下文记忆测试\"\u003e2. 上下文记忆测试\u003c/h3\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" class=\"chroma\"\u003e\u003ccode class=\"language-python\" data-lang=\"python\"\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"c1\"\u003e# 第二轮对话（相同session_id）\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"n\"\u003eresp2\u003c/span\u003e \u003cspan class=\"o\"\u003e=\u003c/span\u003e \u003cspan class=\"n\"\u003edo_msg\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003einvoke\u003c/span\u003e\u003cspan class=\"p\"\u003e({\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"s1\"\u003e\u0026#39;language\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"s1\"\u003e\u0026#39;中文\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"s1\"\u003e\u0026#39;my_msg\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"p\"\u003e[\u003c/span\u003e\u003cspan class=\"n\"\u003eHumanMessage\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003econtent\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;请问，我的名字叫什么?\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e)]\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"p\"\u003e},\u003c/span\u003e \u003cspan class=\"n\"\u003econfig\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"p\"\u003e{\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;configurable\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"p\"\u003e{\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;session_id\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"s1\"\u003e\u0026#39;dp123\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e}})\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"nb\"\u003eprint\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003eresp2\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003econtent\u003c/span\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e \n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"c1\"\u003e# 输出：您的名字是dp，对吗？如果我的记忆有误，请随时纠正。\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003ch3 id=\"3-流式输出演示\"\u003e3. 流式输出演示\u003c/h3\u003e\n\u003cdiv class=\"highlight\"\u003e\u003cpre tabindex=\"0\" class=\"chroma\"\u003e\u003ccode class=\"language-python\" data-lang=\"python\"\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"c1\"\u003e# 第三轮对话（新session_id）\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"k\"\u003efor\u003c/span\u003e \u003cspan class=\"n\"\u003eresp\u003c/span\u003e \u003cspan class=\"ow\"\u003ein\u003c/span\u003e \u003cspan class=\"n\"\u003edo_msg\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003estream\u003c/span\u003e\u003cspan class=\"p\"\u003e({\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"s1\"\u003e\u0026#39;language\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"s1\"\u003e\u0026#39;英文\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"s1\"\u003e\u0026#39;my_msg\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"p\"\u003e[\u003c/span\u003e\u003cspan class=\"n\"\u003eHumanMessage\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003econtent\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;你有什么功能?\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e)]\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"p\"\u003e},\u003c/span\u003e \u003cspan class=\"n\"\u003econfig\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"p\"\u003e{\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;configurable\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"p\"\u003e{\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39;session_id\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e:\u003c/span\u003e \u003cspan class=\"s1\"\u003e\u0026#39;dp1234\u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e}}):\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e    \u003cspan class=\"nb\"\u003eprint\u003c/span\u003e\u003cspan class=\"p\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003eresp\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"n\"\u003econtent\u003c/span\u003e\u003cspan class=\"p\"\u003e,\u003c/span\u003e \u003cspan class=\"n\"\u003eend\u003c/span\u003e\u003cspan class=\"o\"\u003e=\u003c/span\u003e\u003cspan class=\"s1\"\u003e\u0026#39; - \u0026#39;\u003c/span\u003e\u003cspan class=\"p\"\u003e)\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"c1\"\u003e# 流式输出示例：\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003cspan class=\"line\"\u003e\u003cspan class=\"cl\"\u003e\u003cspan class=\"c1\"\u003e# I -  can -  assist -  with -  various -  tasks...\u003c/span\u003e\n\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\u003ch2 id=\"五高级应用场景\"\u003e五、高级应用场景\u003c/h2\u003e\n\u003ch3 id=\"1-多会话管理系统\"\u003e1. 多会话管理系统\u003c/h3\u003e\n\u003cp\u003e通过\u003ccode\u003esession_id\u003c/code\u003e实现：\u003c/p\u003e","readingTime":2,"tags":null,"title":"从API Key到智能对话：基于LangChain的流式聊天应用开发实战","url":"/posts/2025/%E4%BB%8Eapi-key%E5%88%B0%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%E5%9F%BA%E4%BA%8Elangchain%E7%9A%84%E6%B5%81%E5%BC%8F%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/"},{"author":null,"avatar":null,"categories":["AI","技术"],"description":"\u003ch3 id=\"mcp官方资源\"\u003eMCP官方资源：\u003c/h3\u003e\n\u003cp\u003e\u003ca href=\"https://github.com/modelcontextprotocol/servers\" target=\"_blank\"\u003ehttps://github.com/modelcontextprotocol/servers\u003c/a\u003e\n\u003c/p\u003e\n\u003ch3 id=\"awesome\"\u003eAwesome:\u003c/h3\u003e\n\u003cp\u003e\u003ca href=\"https://github.com/punkpeye/awesome-mcp-servers\" target=\"_blank\"\u003ehttps://github.com/punkpeye/awesome-mcp-servers\u003c/a\u003e\n\u003c/p\u003e\n\u003ch3 id=\"glama\"\u003eGlama:\u003c/h3\u003e\n\u003cp\u003e\u003ca href=\"https://glama.ai/mcp/servers\" target=\"_blank\"\u003ehttps://glama.ai/mcp/servers\u003c/a\u003e\n\u003c/p\u003e\n\u003ch3 id=\"smithery\"\u003eSmithery:\u003c/h3\u003e\n\u003cp\u003e\u003ca href=\"https://smithery.ai\" target=\"_blank\"\u003ehttps://smithery.ai\u003c/a\u003e\n\u003c/p\u003e\n\u003ch3 id=\"cursor\"\u003ecursor:\u003c/h3\u003e\n\u003cp\u003e\u003ca href=\"https://cursor.directory\" target=\"_blank\"\u003ehttps://cursor.directory\u003c/a\u003e\n\u003c/p\u003e\n\u003ch3 id=\"mcpso\"\u003eMCP.so:\u003c/h3\u003e\n\u003cp\u003e\u003ca href=\"https://mcp.so/zh\" target=\"_blank\"\u003ehttps://mcp.so/zh\u003c/a\u003e\n\u003c/p\u003e\n\u003ch3 id=\"阿里云百炼\"\u003e阿里云百炼：\u003c/h3\u003e\n\u003cp\u003e\u003ca href=\"https://bailian.console.aliyun.com/\" target=\"_blank\"\u003ehttps://bailian.console.aliyun.com/\u003c/a\u003e\n？tab=mcp#t/mcp-market\u003c/p\u003e","readingTime":1,"tags":null,"title":"分享几个热度较高的MCP服务聚合平台","url":"/posts/2025/%E5%88%86%E4%BA%AB%E5%87%A0%E4%B8%AA%E7%83%AD%E5%BA%A6%E8%BE%83%E9%AB%98%E7%9A%84mcp%E6%9C%8D%E5%8A%A1%E8%81%9A%E5%90%88%E5%B9%B3%E5%8F%B0/"},{"author":null,"avatar":null,"categories":["AI","技术"],"description":"\u003ch3 id=\"初衷\"\u003e初衷\u003c/h3\u003e\n\u003cp\u003e我非常喜欢Nl论坛，喜欢它的界面局和功能，符合我的体验和习惯。于是我想有没有办法自建一个学习学习，于是有了这篇文章。\u003c/p\u003e\n\u003ch3 id=\"开始\"\u003e开始\u003c/h3\u003e\n\u003cp\u003e最近Serv00的\u0026quot;猎杀行动\u0026quot;让很mjj们瑟瑟发抖，手里的几个\u0026quot;幸存账号\u0026quot;成了稀缺资源。如何在刀尖上优雅起舞，把免费羊毛薅出高定质感？今天就教你在Serv00搭建与NL完全一致的论坛系统，让每个账号都化身生产力核弹！\u003c/p\u003e\n\u003cp\u003e🔥 准备工作\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e幸存者账号：拿出你的Serv00账号\u003c/li\u003e\n\u003cli\u003e在Websites面板创建站点，可以使用默认的，也可以用自己的域名创建\u003c/li\u003e\n\u003cli\u003e数据库：MySQL数据库创建，在Mysql面板，根据提示创建即可。\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e⚡ 部署论坛\u003c/p\u003e\n\u003cp\u003e【第一步】下载论坛源码（https://docs.flarum.org/install/）请特别注意：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ePHP版本：选择和Serv00当前PHP Version一致的包（我的是8.1）\u003c/li\u003e\n\u003cli\u003e傻瓜安装模式：选择带有no-public版本压缩包！\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250418175558969.png\" alt=\"\"\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e【第二步】上传压缩包，并解压到之前创建好的website/public_html目录下\u003c/p\u003e\n\u003cp\u003e【第三步】在浏览器打开前面创建的website，开始安装：\n填写站点名，数据库信息，站点管理账号信息等\u003c/p\u003e\n\u003cp\u003e【第四步】进入论坛后台管理，设置你的论坛（例如：https://xxx.com/admin#）\u003c/p\u003e\n\u003ch3 id=\"完成\"\u003e完成\u003c/h3\u003e\n\u003cp\u003e案例展示：https://nanagehub.serv00.net/\u003c/p\u003e\n\u003ch3 id=\"后续\"\u003e后续\u003c/h3\u003e\n\u003cp\u003e默认是只有英文，可以自行安装语言扩展（https://discuss.flarum.org.cn/d/1211）\u003c/p\u003e\n\u003cp\u003e最后祝mjj们完🐔开心！！！\u003c/p\u003e","readingTime":1,"tags":null,"title":"复刻NL同款论坛：在Serv00打造高性能免费社区，Serv00价值最大化","url":"/posts/2025/-%E5%A4%8D%E5%88%BBnl%E5%90%8C%E6%AC%BE%E8%AE%BA%E5%9D%9B%E5%9C%A8serv00%E6%89%93%E9%80%A0%E9%AB%98%E6%80%A7%E8%83%BD%E5%85%8D%E8%B4%B9%E7%A4%BE%E5%8C%BAserv00%E4%BB%B7%E5%80%BC%E6%9C%80%E5%A4%A7%E5%8C%96/"},{"author":null,"avatar":null,"categories":["AI","技术"],"description":"\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250428163609964.png\" alt=\"\"\u003e\u003ch2 id=\"初试\"\u003e初试\u003c/h2\u003e\n\u003cp\u003e近日看到很多佬友在分享扣子空间的邀请码，于是抱着试试的心态进行了试用，并记录了第一次使用的感受，分享给大家。试用过后，令人赞叹，我觉得至少是我目前所用过的Agent中，最接近人类工作模式的Agent。\u003c/p\u003e\n\u003cp\u003e我所尝试的需求是：预测沪深股市明日交易策略\n我选择的是：规划模式\n总共执行时间：约15分钟\u003c/p\u003e\n\u003cp\u003e(感兴趣的佬友，可以通过邀请加入内测大军)\u003c/p\u003e\n\u003ctable\u003e\n  \u003cthead\u003e\n      \u003ctr\u003e\n          \u003cth\u003e邀请码\u003c/th\u003e\n          \u003cth\u003e邀请链接\u003c/th\u003e\n      \u003c/tr\u003e\n  \u003c/thead\u003e\n  \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd\u003eCD9S5ZCM\u003c/td\u003e\n          \u003ctd\u003e\u003ca href=\"https://www.coze.cn/space-preview?invite_code=CD9S5ZCM\" target=\"_blank\"\u003ehttps://www.coze.cn/space-preview?invite_code=CD9S5ZCM\u003c/a\u003e\n\u003c/td\u003e\n      \u003c/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003e54SX5X8Q\u003c/td\u003e\n          \u003ctd\u003e\u003ca href=\"https://www.coze.cn/space-preview?invite_code=54SX5X8Q\" target=\"_blank\"\u003ehttps://www.coze.cn/space-preview?invite_code=54SX5X8Q\u003c/a\u003e\n\u003c/td\u003e\n      \u003c/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003eIY952GXG\u003c/td\u003e\n          \u003ctd\u003e\u003ca href=\"https://www.coze.cn/space-preview?invite_code=IY952GXG\" target=\"_blank\"\u003ehttps://www.coze.cn/space-preview?invite_code=IY952GXG\u003c/a\u003e\n\u003c/td\u003e\n      \u003c/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003e8B0Q6F38\u003c/td\u003e\n          \u003ctd\u003e\u003ca href=\"https://www.coze.cn/space-preview?invite_code=8B0Q6F38\" target=\"_blank\"\u003ehttps://www.coze.cn/space-preview?invite_code=8B0Q6F38\u003c/a\u003e\n\u003c/td\u003e\n      \u003c/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003eLMRA19MR\u003c/td\u003e\n          \u003ctd\u003e\u003ca href=\"https://www.coze.cn/space-preview?invite_code=LMRA19MR\" target=\"_blank\"\u003ehttps://www.coze.cn/space-preview?invite_code=LMRA19MR\u003c/a\u003e\n\u003c/td\u003e\n      \u003c/tr\u003e\n  \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch2 id=\"执行的过程和结果\"\u003e执行的过程和结果\u003c/h2\u003e\n\u003cp\u003e图1，扣子会将人类的需求分解成可执行的计划任务\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250428164257535.png\" alt=\"\"\u003e\u003c/p\u003e\n\u003cp\u003e图2：基于计划任务，开始收集数据,这个过程耗时较久\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250428164427691.png\" alt=\"\"\u003e\u003c/p\u003e\n\u003cp\u003e图3：基于数据和分析结果生成文件，也会自动生成页面\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250428164647207.png\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003cp\u003e图4：展示结果（当然结果的展示并非最后一次输出，而是变工作边输出的）\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250428164737934.png\" alt=\"\"\u003e\n\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250428164826964.png\" alt=\"\"\u003e\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250428164918627.png\" alt=\"image.png\"\u003e\n（该结果仅用来学习，不构成投资建议）\u003c/p\u003e\n\u003ch2 id=\"试用总结\"\u003e试用总结\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003e以上所有任务，我只提了一个需求剩下的就是磕着瓜子等待。所以总体体验是良好的。\u003c/li\u003e\n\u003cli\u003e提问的方式更接近人类思维模式\u003c/li\u003e\n\u003cli\u003e所分解的任务和计划像模像样，甚至比人类考虑的更加周全\u003c/li\u003e\n\u003cli\u003e生成的结果形式多样，有markdwon文件，表格文件，网页等\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e感谢大家支持！\u003c/p\u003e","readingTime":1,"tags":null,"title":"我让扣子空间，帮我预测沪深300的明日购买策略","url":"/posts/2025/%E6%88%91%E8%AE%A9%E6%89%A3%E5%AD%90%E7%A9%BA%E9%97%B4%E5%B8%AE%E6%88%91%E9%A2%84%E6%B5%8B%E6%B2%AA%E6%B7%B1300%E7%9A%84%E6%98%8E%E6%97%A5%E8%B4%AD%E4%B9%B0%E7%AD%96%E7%95%A5/"},{"author":null,"avatar":null,"categories":["AI","技术"],"description":"\u003ch2 id=\"概要\"\u003e概要\u003c/h2\u003e\n\u003cp\u003e最近Hax EU区域的Vps更换硬盘，导致坚持一年多的EU终究是下线了，需要重新蹲抢，不过很辛运，作为老用户，很快就拿到一台。于是又开始重复多次的开机\u0026ndash;\u0026gt; 装系统\u0026ndash;\u0026gt;配置环境\u0026ndash;\u0026gt;搭建点；经历多了自然有一些自己的小心得，顺便记录下来作为以后的操作指南。\u003c/p\u003e\n\u003ch2 id=\"一操作系统选择\"\u003e一、操作系统选择\u003c/h2\u003e\n\u003cp\u003e首选：Ddebian 12\n次选：Ubuntu22\u003c/p\u003e\n\u003cp\u003e我看到很多mjj推荐Ubuntu20, 实操发现在部署最新版本的3xui时，会报错（具体信息忘记截图了，大致意思是系统版本过低, Debian11下也会有这个错误)，换Ubuntu22后，问题解决。\u003c/p\u003e\n\u003cp\u003e可能有人会问，为啥不直接选择Ubuntu24呢？我也专门进行了实测，发现改用Ubuntu24后，安装和部署没出现什么错误，但是ssh连接后，输入命令和响应异常的缓慢，经常有卡顿（就像卡桢的感觉）。\u003c/p\u003e\n\u003cp\u003e综上：经过多次实验，最终个人感觉Debian12最佳，无论是安装最新版本的3xui等的兼容性，还是ssh连接操作流畅性，我选择了Debian12.\u003c/p\u003e\n\u003ch2 id=\"二基本设置\"\u003e二、基本设置\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003e开机后不管三七二十二，先修改Dns:\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre tabindex=\"0\"\u003e\u003ccode\u003e# 修改resolv.conf文件，将以下nameserver加入\nvi /etc/resolv.conf\nnameserver 2606:4700:4700::1111\nnameserver 2606:4700:4700::1001\nnameserver 2001:4860:4860::8888\nnameserver 2001:4860:4860::8844\nnameserver 1.1.1.1\nnameserver 8.8.8.8\nnameserver 8.8.4.4\n\n# 重启网络\nservice networking restart\n\u003c/code\u003e\u003c/pre\u003e\u003cul\u003e\n\u003cli\u003e更新系统\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre tabindex=\"0\"\u003e\u003ccode\u003eapt update\napt upgrade -y\n\u003c/code\u003e\u003c/pre\u003e\u003ch2 id=\"三warp\"\u003e三、Warp\u003c/h2\u003e\n\u003cp\u003e我使用的是老王一键脚本(细节教程太多，请自行搜，也可以评论区留言）\u003c/p\u003e\n\u003cpre tabindex=\"0\"\u003e\u003ccode\u003e执行脚本 ./ssh_tool.sh\n选择菜单7\n按提示安装warp\n再次进入warp开启加速，选择16\n\u003c/code\u003e\u003c/pre\u003e\u003ch2 id=\"四部署docker\"\u003e四、部署docker\u003c/h2\u003e\n\u003cp\u003e如果对版本没有要求，建议直接使用apt无脑安装(这个默认安装版本是20.0的)\u003c/p\u003e\n\u003cpre tabindex=\"0\"\u003e\u003ccode\u003eapt install docker.io\n\napt install docker-compose\n\u003c/code\u003e\u003c/pre\u003e\u003cp\u003e如果想安装最新版本，使用以下命令(每次复制一行，在vps执行一次，不要一次全部执行)\u003c/p\u003e\n\u003cpre tabindex=\"0\"\u003e\u003ccode\u003eapt install curl vim wget gnupg dpkg apt-transport-https lsb-release ca-certificates\n\ncurl -sSL https://download.docker.com/linux/debian/gpg | gpg --dearmor \u0026gt; /usr/share/keyrings/docker-ce.gpg\n\necho \u0026#34;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-ce.gpg] https://download.docker.com/linux/debian $(lsb_release -sc) stable\u0026#34; \u0026gt; /etc/apt/sources.list.d/docker.list\n\ncurl -sS https://download.docker.com/linux/debian/gpg | gpg --dearmor \u0026gt; /usr/share/keyrings/docker-ce.gpg\n\necho \u0026#34;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-ce.gpg] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian $(lsb_release -sc) stable\u0026#34; \u0026gt; /etc/apt/sources.list.d/docker.list\n\napt update\n\napt install docker-ce docker-ce-cli containerd.io docker-compose-plugin\n\ncurl -L https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64 \u0026gt; /usr/local/bin/docker-compose\n\nchmod +x /usr/local/bin/docker-compose\n\u003c/code\u003e\u003c/pre\u003e\u003cp\u003e以上在Debian12下验证过。\u003c/p\u003e","readingTime":1,"tags":null,"title":"拿到Hax的EU VPS，最佳装机指南（小白白）","url":"/posts/2025/%E6%8B%BF%E5%88%B0hax%E7%9A%84eu-vps%E6%9C%80%E4%BD%B3%E8%A3%85%E6%9C%BA%E6%8C%87%E5%8D%97%E5%B0%8F%E7%99%BD%E7%99%BD/"}];
+  var fuseOptions = {
+    keys: [
+      "title",
+    ]
+  };
+
+  var fuse = new Fuse(fuseData, fuseOptions);
+</script>
+
+
+
+    
+
+    
+
+    
+
+    
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.esm.js" integrity="sha256-/IFmi82bIhdYWctu0UddSlJqpnzWm7Vh2C4CM32wF/k=" crossorigin="anonymous"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js" integrity="sha256-mr7eJMX3VC3F7G32mk4oWp1C6a2tlMYxUdptfT7uKI8=" crossorigin="anonymous"></script>
+  </body>
+</html>
