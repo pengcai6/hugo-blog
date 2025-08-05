@@ -26,8 +26,8 @@ noClasses = false
 [params]
 # zenMode = true
 
-lightTheme = "emerald"
-darkTheme = "forest"
+lightTheme = "forest"
+darkTheme = "emerald"
 
 # backgroundImage = "img/global-background.jpg"
 # backgroundImageDark = ""
