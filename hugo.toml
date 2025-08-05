@@ -3,7 +3,6 @@ languageCode = 'en-us'
 title = 'AiEDU | Blog'
 theme = 'dream'
 
-
 [markup]
 [markup.goldmark.parser]
 wrapStandAloneImageWithinParagraph = false
@@ -89,3 +88,8 @@ customCSS = ["css/custom.css"]
 jsDate = true
 jsDateFormat = "yyyy年MM月dd日"
 # jsDateFormat = "yyyy年MM月dd日，cccc"
+
+
+[params.Author]
+name = "AiEDU"
+avatar = "img/personal/avatar.png"
