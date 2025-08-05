@@ -3,6 +3,8 @@ languageCode = 'en-us'
 title = 'AiEDU | Blog'
 theme = 'dream'
 
+relativeurls = true
+
 [markup]
 [markup.goldmark.parser]
 wrapStandAloneImageWithinParagraph = false
@@ -26,8 +28,8 @@ noClasses = false
 [params]
 # zenMode = true
 
-lightTheme = "forest"
-darkTheme = "emerald"
+lightTheme = "emerald"
+darkTheme = "forest"
 
 # backgroundImage = "img/global-background.jpg"
 # backgroundImageDark = ""
