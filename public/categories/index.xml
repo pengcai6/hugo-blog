@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on AiEDU | Blog</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://googhub.nyc.mn/categories/</link>
     <description>Recent content in Categories on AiEDU | Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Nov 2024 09:03:20 -0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://googhub.nyc.mn/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
-      <link>http://localhost:1313/categories/ai/</link>
+      <link>https://googhub.nyc.mn/categories/ai/</link>
       <pubDate>Wed, 20 Nov 2024 09:03:20 -0800</pubDate>
-      <guid>http://localhost:1313/categories/ai/</guid>
+      <guid>https://googhub.nyc.mn/categories/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>技术</title>
-      <link>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/</link>
+      <link>https://googhub.nyc.mn/categories/%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Wed, 20 Nov 2024 09:03:20 -0800</pubDate>
-      <guid>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <guid>https://googhub.nyc.mn/categories/%E6%8A%80%E6%9C%AF/</guid>
       <description></description>
     </item>
   </channel>

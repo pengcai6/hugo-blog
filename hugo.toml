@@ -3,7 +3,6 @@ languageCode = 'en-us'
 title = 'AiEDU | Blog'
 theme = 'dream'
 
-relativeurls = true
 
 [markup]
 [markup.goldmark.parser]

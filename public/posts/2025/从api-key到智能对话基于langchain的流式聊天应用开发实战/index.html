@@ -3,18 +3,18 @@
   x-data
   :class="$store.darkMode.class()"
   :data-theme="$store.darkMode.theme()">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>从API Key到智能对话：基于LangChain的流式聊天应用开发实战 | AiEDU | Blog</title>
 
     
   
-    <link href="../../../img/personal/avatar.png" rel="icon" type="image/x-icon" />
+    <link href="/img/personal/avatar.png" rel="icon" type="image/x-icon" />
   
 
 
-<link rel="canonical" href="http://localhost:1313/posts/2025/%E4%BB%8Eapi-key%E5%88%B0%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%E5%9F%BA%E4%BA%8Elangchain%E7%9A%84%E6%B5%81%E5%BC%8F%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" />
+<link rel="canonical" href="https://googhub.nyc.mn/posts/2025/%E4%BB%8Eapi-key%E5%88%B0%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%E5%9F%BA%E4%BA%8Elangchain%E7%9A%84%E6%B5%81%E5%BC%8F%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" />
 
 
 
@@ -30,7 +30,7 @@
 <meta name="generator" content="Hugo 0.148.2">
 
 
-<meta property="og:url" content="http://localhost:1313/posts/2025/%E4%BB%8Eapi-key%E5%88%B0%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%E5%9F%BA%E4%BA%8Elangchain%E7%9A%84%E6%B5%81%E5%BC%8F%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/">
+<meta property="og:url" content="https://googhub.nyc.mn/posts/2025/%E4%BB%8Eapi-key%E5%88%B0%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%E5%9F%BA%E4%BA%8Elangchain%E7%9A%84%E6%B5%81%E5%BC%8F%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/">
   <meta property="og:site_name" content="AiEDU | Blog">
   <meta property="og:title" content="从API Key到智能对话：基于LangChain的流式聊天应用开发实战">
   <meta property="og:description" content="一、引言：解锁GPT能力的钥匙 当开发者获得OpenAI API Key时，就像拿到了一把打开智能对话宇宙的钥匙。本文将结合langchain框架，通过一个完整的流式聊天Demo，演示如何将API Key转化为具有上下文记忆、多会话管理和流式输出能力的智能对话系统。">
@@ -39,13 +39,13 @@
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-11-20T09:03:20-08:00">
     <meta property="article:modified_time" content="2024-11-20T09:03:20-08:00">
-    <meta property="og:image" content="http://localhost:1313/img/global-background.jpg">
+    <meta property="og:image" content="https://googhub.nyc.mn/img/global-background.jpg">
 
 
 
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/img/global-background.jpg">
+  <meta name="twitter:image" content="https://googhub.nyc.mn/img/global-background.jpg">
   <meta name="twitter:title" content="从API Key到智能对话：基于LangChain的流式聊天应用开发实战">
   <meta name="twitter:description" content="一、引言：解锁GPT能力的钥匙 当开发者获得OpenAI API Key时，就像拿到了一把打开智能对话宇宙的钥匙。本文将结合langchain框架，通过一个完整的流式聊天Demo，演示如何将API Key转化为具有上下文记忆、多会话管理和流式输出能力的智能对话系统。">
       <meta name="twitter:site" content="@g1eny0ung">
@@ -53,7 +53,9 @@
 
 
 
-<link rel="stylesheet" href="../../../css/output.css" />
+  
+
+<link rel="stylesheet" href="/css/output.min.css" />
 
 
 
@@ -84,7 +86,7 @@
 
 
     
-    <link rel="stylesheet" href="../../../css/custom.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
     
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" integrity="sha256-PtHu0lJIiSHfZeNj1nFd6wTX+Squ255SGZ/fc8seCtM=" crossorigin="anonymous"></script>
@@ -108,14 +110,14 @@
     <section class="flex items-center gap-4">
       <div class="avatar cursor-pointer hover:avatar-online" @click="flip = !flip" title="Flip it!">
         <div class="h-10 rounded-full">
-          <img src="../../../img/personal/avatar.png" alt="AiEDU | BLOG" />
+          <img src="/img/personal/avatar.png" alt="AiEDU | BLOG" />
         </div>
       </div>
 
       
       <div>
         
-        <a href="http://localhost:1313/" class="text-lg font-semibold cursor-pointer">
+        <a href="https://googhub.nyc.mn/" class="text-lg font-semibold cursor-pointer">
           AiEDU | BLOG
         </a>
         
@@ -156,7 +158,7 @@
 
 
 <li>
-  <a class="group inline-flex items-center p-2 cursor-pointer" href="../../../search" title="Search">
+  <a class="group inline-flex items-center p-2 cursor-pointer" href="/search" title="Search">
     <ion-icon name="search"></ion-icon>
     Search
   </a>
@@ -182,7 +184,7 @@
 
 
 <li>
-  <a class="inline-flex items-center p-2 cursor-pointer" href="../../../posts" title="Archives">
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/posts" title="Archives">
     <ion-icon name="archive"></ion-icon>
     Archives
   </a>
@@ -192,7 +194,7 @@
 
 
 <li>
-  <a class="inline-flex items-center p-2 cursor-pointer" href="../../../categories" title="All Categories">
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/categories" title="All Categories">
     <ion-icon name="grid"></ion-icon>
     All Categories
   </a>
@@ -209,7 +211,7 @@
 
 
 <li>
-  <a class="inline-flex items-center p-2 cursor-pointer" href="../../../index.xml" title="RSS">
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/index.xml" title="RSS">
     <ion-icon name="logo-rss"></ion-icon>
     RSS
   </a>
@@ -253,7 +255,7 @@
 
       
       
-<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="../../../search" title="Search">
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/search" title="Search">
   <ion-icon class="group-hover:text-primary-content" name="search"></ion-icon>
 </a>
 
@@ -281,7 +283,7 @@
           
           
 <li>
-  <a class="inline-flex items-center p-2 cursor-pointer" href="../../../posts" title="Archives">
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/posts" title="Archives">
     <ion-icon name="archive"></ion-icon>
     Archives
   </a>
@@ -291,7 +293,7 @@
           
           
 <li>
-  <a class="inline-flex items-center p-2 cursor-pointer" href="../../../categories" title="All Categories">
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/categories" title="All Categories">
     <ion-icon name="grid"></ion-icon>
     All Categories
   </a>
@@ -308,7 +310,7 @@
           
           
 <li>
-  <a class="inline-flex items-center p-2 cursor-pointer" href="../../../index.xml" title="RSS">
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/index.xml" title="RSS">
     <ion-icon name="logo-rss"></ion-icon>
     RSS
   </a>
@@ -377,7 +379,7 @@
   <meta itemprop="datePublished" content="2024-11-20T09:03:20-08:00">
   <meta itemprop="dateModified" content="2024-11-20T09:03:20-08:00">
   <meta itemprop="wordCount" content="344">
-  <meta itemprop="image" content="http://localhost:1313/img/global-background.jpg">
+  <meta itemprop="image" content="https://googhub.nyc.mn/img/global-background.jpg">
   <meta itemprop="keywords" content="AI,技术">
 
       <header>
@@ -424,19 +426,19 @@
   
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://x.com/intent/post?text=%e4%bb%8eAPI%20Key%e5%88%b0%e6%99%ba%e8%83%bd%e5%af%b9%e8%af%9d%ef%bc%9a%e5%9f%ba%e4%ba%8eLangChain%e7%9a%84%e6%b5%81%e5%bc%8f%e8%81%8a%e5%a4%a9%e5%ba%94%e7%94%a8%e5%bc%80%e5%8f%91%e5%ae%9e%e6%88%98&amp;url=http://localhost:1313/posts/2025/%E4%BB%8Eapi-key%E5%88%B0%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%E5%9F%BA%E4%BA%8Elangchain%E7%9A%84%E6%B5%81%E5%BC%8F%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" target="_blank" rel="noopener noreferrer"
+      href="https://x.com/intent/post?text=%e4%bb%8eAPI%20Key%e5%88%b0%e6%99%ba%e8%83%bd%e5%af%b9%e8%af%9d%ef%bc%9a%e5%9f%ba%e4%ba%8eLangChain%e7%9a%84%e6%b5%81%e5%bc%8f%e8%81%8a%e5%a4%a9%e5%ba%94%e7%94%a8%e5%bc%80%e5%8f%91%e5%ae%9e%e6%88%98&amp;url=https://googhub.nyc.mn/posts/2025/%E4%BB%8Eapi-key%E5%88%B0%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%E5%9F%BA%E4%BA%8Elangchain%E7%9A%84%E6%B5%81%E5%BC%8F%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" target="_blank" rel="noopener noreferrer"
       title="Share on X">
       <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://facebook.com/sharer/sharer.php?u=http://localhost:1313/posts/2025/%E4%BB%8Eapi-key%E5%88%B0%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%E5%9F%BA%E4%BA%8Elangchain%E7%9A%84%E6%B5%81%E5%BC%8F%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" target="_blank" rel="noopener noreferrer"
+      href="https://facebook.com/sharer/sharer.php?u=https://googhub.nyc.mn/posts/2025/%E4%BB%8Eapi-key%E5%88%B0%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%E5%9F%BA%E4%BA%8Elangchain%E7%9A%84%E6%B5%81%E5%BC%8F%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" target="_blank" rel="noopener noreferrer"
       title="Share on Facebook">
       <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://wa.me/?text=%e4%bb%8eAPI%20Key%e5%88%b0%e6%99%ba%e8%83%bd%e5%af%b9%e8%af%9d%ef%bc%9a%e5%9f%ba%e4%ba%8eLangChain%e7%9a%84%e6%b5%81%e5%bc%8f%e8%81%8a%e5%a4%a9%e5%ba%94%e7%94%a8%e5%bc%80%e5%8f%91%e5%ae%9e%e6%88%98%20http://localhost:1313/posts/2025/%E4%BB%8Eapi-key%E5%88%B0%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%E5%9F%BA%E4%BA%8Elangchain%E7%9A%84%E6%B5%81%E5%BC%8F%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" target="_blank" rel="noopener noreferrer"
+      href="https://wa.me/?text=%e4%bb%8eAPI%20Key%e5%88%b0%e6%99%ba%e8%83%bd%e5%af%b9%e8%af%9d%ef%bc%9a%e5%9f%ba%e4%ba%8eLangChain%e7%9a%84%e6%b5%81%e5%bc%8f%e8%81%8a%e5%a4%a9%e5%ba%94%e7%94%a8%e5%bc%80%e5%8f%91%e5%ae%9e%e6%88%98%20https://googhub.nyc.mn/posts/2025/%E4%BB%8Eapi-key%E5%88%B0%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%E5%9F%BA%E4%BA%8Elangchain%E7%9A%84%E6%B5%81%E5%BC%8F%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" target="_blank" rel="noopener noreferrer"
       title="Share on WhatsApp">
       <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
     </a>
@@ -667,7 +669,7 @@
       <div class="divider"></div>
       <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
         
-        <a role="button" class="btn btn-outline h-12" href="../../../posts/2025/lade.io%E6%B3%A8%E5%86%8C%E5%88%B0%E6%90%AD%E5%BB%BA%E5%BA%94%E7%94%A8-%E5%B0%8F%E7%99%BD%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/" title="Lade.io注册到搭建应用, 小白完全指南">
+        <a role="button" class="btn btn-outline h-12" href="/posts/2025/lade.io%E6%B3%A8%E5%86%8C%E5%88%B0%E6%90%AD%E5%BB%BA%E5%BA%94%E7%94%A8-%E5%B0%8F%E7%99%BD%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/" title="Lade.io注册到搭建应用, 小白完全指南">
           <ion-icon name="chevron-back"></ion-icon>
           <div class="inline-flex flex-col items-start">
             <span class="text-base-content/60 text-xs font-normal">Previous page</span>
@@ -677,7 +679,7 @@
         
 
         
-        <a role="button" class="btn btn-outline h-12" href="../../../posts/2025/%E5%88%86%E4%BA%AB%E5%87%A0%E4%B8%AA%E7%83%AD%E5%BA%A6%E8%BE%83%E9%AB%98%E7%9A%84mcp%E6%9C%8D%E5%8A%A1%E8%81%9A%E5%90%88%E5%B9%B3%E5%8F%B0/" title="分享几个热度较高的MCP服务聚合平台">
+        <a role="button" class="btn btn-outline h-12" href="/posts/2025/%E5%88%86%E4%BA%AB%E5%87%A0%E4%B8%AA%E7%83%AD%E5%BA%A6%E8%BE%83%E9%AB%98%E7%9A%84mcp%E6%9C%8D%E5%8A%A1%E8%81%9A%E5%90%88%E5%B9%B3%E5%8F%B0/" title="分享几个热度较高的MCP服务聚合平台">
           <div class="inline-flex flex-col items-end">
             <span class="text-base-content/60 text-xs font-normal">Next page</span>
             <span class="max-w-48 truncate">分享几个热度较高的MCP服务聚合平台</span>
@@ -976,12 +978,16 @@
 
   
   
-  <script src="../../../js/grid.js"></script>
+    
+  
+  <script src="/js/grid.min.js"></script>
 
 
 
 
-<script src="../../../js/main.js"></script>
+  
+
+<script src="/js/main.min.js"></script>
 
     
 
@@ -1024,7 +1030,9 @@
 
 
 
-<script src="../../../js/toc.js"></script>
+  
+
+<script src="/js/toc.min.js"></script>
 
 
   
