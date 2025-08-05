@@ -50,8 +50,8 @@ utterancesRepo = "g1eny0ung/g1eny0ung.github.io"
 # LEANCLOUD_APP_ID = ""
 # LEANCLOUD_APP_KEY = ""
 
-waline = true
-walineServer = "https://googhub.nyc.mn/"
+# waline = true
+# walineServer = ""
 
 email = "aiedu985@gmail.com"
 
