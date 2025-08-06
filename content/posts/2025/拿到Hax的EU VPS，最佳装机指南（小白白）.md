@@ -1,6 +1,6 @@
 ---
 title: "拿到Hax的EU VPS，最佳装机指南（小白白）"
-date: 2024-11-20T09:03:20-08:00
+date: 2025-05-20
 categories:
   - AI
   - 技术

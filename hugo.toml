@@ -1,5 +1,5 @@
 baseURL = 'https://googhub.nyc.mn/'
-languageCode = 'en-us'
+languageCode = 'zh-cn' #en-us'
 title = 'AiEDU | Blog'
 theme = 'dream'
 

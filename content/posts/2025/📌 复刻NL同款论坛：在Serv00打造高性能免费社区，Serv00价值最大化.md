@@ -1,6 +1,7 @@
 ---
 title: "复刻NL同款论坛：在Serv00打造高性能免费社区，Serv00价值最大化"
-date: 2024-11-20T09:03:20-08:00
+date: 2025-01-20
+author: Flio Niu
 categories:
   - AI
   - 技术

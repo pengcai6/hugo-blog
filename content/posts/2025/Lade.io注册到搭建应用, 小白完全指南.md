@@ -1,6 +1,7 @@
 ---
 title: "Lade.io注册到搭建应用, 小白完全指南"
-date: 2024-11-20T09:03:20-08:00
+date: 2025-05-03
+author: Sherry
 categories:
   - AI
   - 技术

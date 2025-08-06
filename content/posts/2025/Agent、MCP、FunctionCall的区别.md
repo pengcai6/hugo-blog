@@ -1,6 +1,6 @@
 ---
 title: "Agent、MCP、FunctionCall的区别"
-date: 2024-11-20T09:03:20-08:00
+date: 2025-04-08
 categories:
   - AI
   - 技术

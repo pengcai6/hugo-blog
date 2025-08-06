@@ -1,6 +1,7 @@
 ---
 title: "从API Key到智能对话：基于LangChain的流式聊天应用开发实战"
-date: 2024-11-20T09:03:20-08:00
+date: 2025-03-25
+author: Wang Wei
 categories:
   - AI
   - 技术
