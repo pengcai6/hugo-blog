@@ -484,23 +484,23 @@
 <p>重点来了，下面的操作需要在你电脑上进行（我这里以mac电脑为例子，如果你是windows或者linux,请在lade官网看对应系统的操作指南https://www.lade.io/docs/platform/cli）， 另外lade也支持在远程服务器上操作。</p>
 </li>
 </ul>
-<pre tabindex="0"><code># 安装lade环境
-brew install lade-io/tap/lade
-# 进入前面保存好的文件所在的目录
-cd /xx/xx/刚下载好的文件所在目录
-
-# 登入lade
-lade login
-# 创建lade 应用，abcde是应用名称，自定义即可
-lade apps create abcde
-# 部署lade 应用, 名字和上面保持一致
-lade deploy --app abcde
-
-# 等一会儿，查看日志，节点信息在日志中
-lade logs -a abcde
-# 可以查看应用运行状态
-lade apps show abcde
-</code></pre><p>从日志中复制节点信息，导入你的骑墙软件即可玩耍了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># 安装lade环境</span>
+</span></span><span style="display:flex;"><span>brew install lade-io/tap/lade
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 进入前面保存好的文件所在的目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> /xx/xx/刚下载好的文件所在目录
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 登入lade</span>
+</span></span><span style="display:flex;"><span>lade login
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 创建lade 应用，abcde是应用名称，自定义即可</span>
+</span></span><span style="display:flex;"><span>lade apps create abcde
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 部署lade 应用, 名字和上面保持一致</span>
+</span></span><span style="display:flex;"><span>lade deploy --app abcde
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 等一会儿，查看日志，节点信息在日志中</span>
+</span></span><span style="display:flex;"><span>lade logs -a abcde
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 可以查看应用运行状态</span>
+</span></span><span style="display:flex;"><span>lade apps show abcde
+</span></span></code></pre></div><p>从日志中复制节点信息，导入你的骑墙软件即可玩耍了。</p>
 <p>到此为止，lade的应用就算部署完成了。我这里部署的是nodejs应用，当然你也可以举一反三，部署python应用.</p>
 
 

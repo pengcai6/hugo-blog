@@ -26,7 +26,7 @@ categories:
 
 ## 二、基本设置
 * 开机后不管三七二十二，先修改Dns:
-```shell
+```rust
 # 修改resolv.conf文件，将以下nameserver加入
 vi /etc/resolv.conf
 nameserver 2606:4700:4700::1111
@@ -41,14 +41,14 @@ nameserver 8.8.4.4
 service networking restart
 ```
 * 更新系统
-```shell
+```rust
 apt update
 apt upgrade -y
 ```
 
 ## 三、Warp
 我使用的是老王一键脚本(细节教程太多，请自行搜，也可以评论区留言）
-```shell
+```rust
 执行脚本 ./ssh_tool.sh
 选择菜单7
 按提示安装warp
@@ -59,14 +59,14 @@ apt upgrade -y
 
 如果对版本没有要求，建议直接使用apt无脑安装(这个默认安装版本是20.0的)
 
-```shell
+```rust
 apt install docker.io
 
 apt install docker-compose
 ```
 
 如果想安装最新版本，使用以下命令(每次复制一行，在vps执行一次，不要一次全部执行)
-```shell
+```rust
 apt install curl vim wget gnupg dpkg apt-transport-https lsb-release ca-certificates
 
 curl -sSL https://download.docker.com/linux/debian/gpg | gpg --dearmor > /usr/share/keyrings/docker-ce.gpg

@@ -438,107 +438,107 @@
 <h2 id="二环境搭建与初始化">二、环境搭建与初始化</h2>
 <h3 id="1-安全配置api-key">1. 安全配置API Key</h3>
 <p>推荐使用独立的配置文件（config.py）管理敏感信息：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># config.py</span>
-</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">class</span> <span style="color:#0a8;font-weight:bold">Config</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">__init__</span>(<span style="color:#366">self</span>):
-</span></span><span style="display:flex;"><span>        <span style="color:#366">self</span><span style="color:#555">.</span>OPENAI_API_KEY <span style="color:#555">=</span> <span style="color:#c30">&#34;sk-xxx&#34;</span>  <span style="color:#09f;font-style:italic"># 替换为真实Key</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#366">self</span><span style="color:#555">.</span>OPENAI_MODEL <span style="color:#555">=</span> <span style="color:#c30">&#34;gpt-3.5-turbo&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># config.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Config</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">__init__</span>(<span style="font-style:italic">self</span>):
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">self</span><span style="color:#ff79c6">.</span>OPENAI_API_KEY <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;sk-xxx&#34;</span>  <span style="color:#6272a4"># 替换为真实Key</span>
+</span></span><span style="display:flex;"><span>        <span style="font-style:italic">self</span><span style="color:#ff79c6">.</span>OPENAI_MODEL <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;gpt-3.5-turbo&#34;</span>
 </span></span></code></pre></div><h3 id="2-核心依赖安装">2. 核心依赖安装</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install langchain-openai langchain-core langchain-community
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install langchain-openai langchain-core langchain-community
 </span></span></code></pre></div><h2 id="三流式聊天系统架构解析">三、流式聊天系统架构解析</h2>
 <h3 id="1-初始化聊天模型">1. 初始化聊天模型</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">from</span> <span style="color:#0cf;font-weight:bold">langchain_openai</span> <span style="color:#069;font-weight:bold">import</span> ChatOpenAI
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> langchain_openai <span style="color:#ff79c6">import</span> ChatOpenAI
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>model_chat <span style="color:#555">=</span> ChatOpenAI(model<span style="color:#555">=</span>cf<span style="color:#555">.</span>OPENAI_MODEL)  <span style="color:#09f;font-style:italic"># 创建模型实例</span>
+</span></span><span style="display:flex;"><span>model_chat <span style="color:#ff79c6">=</span> ChatOpenAI(model<span style="color:#ff79c6">=</span>cf<span style="color:#ff79c6">.</span>OPENAI_MODEL)  <span style="color:#6272a4"># 创建模型实例</span>
 </span></span></code></pre></div><h3 id="2-构建智能对话链">2. 构建智能对话链</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt_template <span style="color:#555">=</span> ChatPromptTemplate<span style="color:#555">.</span>from_messages([
-</span></span><span style="display:flex;"><span>    (<span style="color:#c30">&#39;system&#39;</span>, <span style="color:#c30">&#39;你是一个专业助手，请用</span><span style="color:#a00">{language}</span><span style="color:#c30">尽所能回答所有问题。&#39;</span>),
-</span></span><span style="display:flex;"><span>    MessagesPlaceholder(variable_name<span style="color:#555">=</span><span style="color:#c30">&#39;my_msg&#39;</span>)  <span style="color:#09f;font-style:italic"># 动态消息占位符</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt_template <span style="color:#ff79c6">=</span> ChatPromptTemplate<span style="color:#ff79c6">.</span>from_messages([
+</span></span><span style="display:flex;"><span>    (<span style="color:#f1fa8c">&#39;system&#39;</span>, <span style="color:#f1fa8c">&#39;你是一个专业助手，请用</span><span style="color:#f1fa8c">{language}</span><span style="color:#f1fa8c">尽所能回答所有问题。&#39;</span>),
+</span></span><span style="display:flex;"><span>    MessagesPlaceholder(variable_name<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;my_msg&#39;</span>)  <span style="color:#6272a4"># 动态消息占位符</span>
 </span></span><span style="display:flex;"><span>])
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>chain <span style="color:#555">=</span> prompt_template <span style="color:#555">|</span> model_chat  <span style="color:#09f;font-style:italic"># 管道式组合</span>
+</span></span><span style="display:flex;"><span>chain <span style="color:#ff79c6">=</span> prompt_template <span style="color:#ff79c6">|</span> model_chat  <span style="color:#6272a4"># 管道式组合</span>
 </span></span></code></pre></div><h3 id="3-会话历史管理">3. 会话历史管理</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>history_msgs <span style="color:#555">=</span> {}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>history_msgs <span style="color:#ff79c6">=</span> {}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">get_history_msg</span>(session_id: <span style="color:#366">str</span>):
-</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> session_id <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">in</span> history_msgs:
-</span></span><span style="display:flex;"><span>        history_msgs[session_id] <span style="color:#555">=</span> ChatMessageHistory()
-</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> history_msgs[session_id]
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">get_history_msg</span>(session_id: <span style="color:#8be9fd;font-style:italic">str</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> session_id <span style="color:#ff79c6">not</span> <span style="color:#ff79c6">in</span> history_msgs:
+</span></span><span style="display:flex;"><span>        history_msgs[session_id] <span style="color:#ff79c6">=</span> ChatMessageHistory()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> history_msgs[session_id]
 </span></span></code></pre></div><h3 id="4-流式响应处理器">4. 流式响应处理器</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>do_msg <span style="color:#555">=</span> RunnableWithMessageHistory(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>do_msg <span style="color:#ff79c6">=</span> RunnableWithMessageHistory(
 </span></span><span style="display:flex;"><span>    chain,
 </span></span><span style="display:flex;"><span>    get_history_msg,
-</span></span><span style="display:flex;"><span>    input_messages_key<span style="color:#555">=</span><span style="color:#c30">&#39;my_msg&#39;</span>
+</span></span><span style="display:flex;"><span>    input_messages_key<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;my_msg&#39;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span></code></pre></div><h2 id="四核心功能演示">四、核心功能演示</h2>
 <h3 id="1-基础对话测试">1. 基础对话测试</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># 第一轮对话</span>
-</span></span><span style="display:flex;"><span>resp1 <span style="color:#555">=</span> do_msg<span style="color:#555">.</span>invoke({
-</span></span><span style="display:flex;"><span>    <span style="color:#c30">&#39;language&#39;</span>: <span style="color:#c30">&#39;中文&#39;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#c30">&#39;my_msg&#39;</span>: [HumanMessage(content<span style="color:#555">=</span><span style="color:#c30">&#39;你好，我是dp&#39;</span>)]
-</span></span><span style="display:flex;"><span>}, config<span style="color:#555">=</span>{<span style="color:#c30">&#39;configurable&#39;</span>: {<span style="color:#c30">&#39;session_id&#39;</span>: <span style="color:#c30">&#39;dp123&#39;</span>}})
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># 第一轮对话</span>
+</span></span><span style="display:flex;"><span>resp1 <span style="color:#ff79c6">=</span> do_msg<span style="color:#ff79c6">.</span>invoke({
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#39;language&#39;</span>: <span style="color:#f1fa8c">&#39;中文&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#39;my_msg&#39;</span>: [HumanMessage(content<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;你好，我是dp&#39;</span>)]
+</span></span><span style="display:flex;"><span>}, config<span style="color:#ff79c6">=</span>{<span style="color:#f1fa8c">&#39;configurable&#39;</span>: {<span style="color:#f1fa8c">&#39;session_id&#39;</span>: <span style="color:#f1fa8c">&#39;dp123&#39;</span>}})
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#366">print</span>(resp1<span style="color:#555">.</span>content)
-</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># 输出：您好，dp！很高兴为您服务。请问今天有什么可以帮您的？</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">print</span>(resp1<span style="color:#ff79c6">.</span>content)
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 输出：您好，dp！很高兴为您服务。请问今天有什么可以帮您的？</span>
 </span></span></code></pre></div><h3 id="2-上下文记忆测试">2. 上下文记忆测试</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># 第二轮对话（相同session_id）</span>
-</span></span><span style="display:flex;"><span>resp2 <span style="color:#555">=</span> do_msg<span style="color:#555">.</span>invoke({
-</span></span><span style="display:flex;"><span>    <span style="color:#c30">&#39;language&#39;</span>: <span style="color:#c30">&#39;中文&#39;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#c30">&#39;my_msg&#39;</span>: [HumanMessage(content<span style="color:#555">=</span><span style="color:#c30">&#39;请问，我的名字叫什么?&#39;</span>)]
-</span></span><span style="display:flex;"><span>}, config<span style="color:#555">=</span>{<span style="color:#c30">&#39;configurable&#39;</span>: {<span style="color:#c30">&#39;session_id&#39;</span>: <span style="color:#c30">&#39;dp123&#39;</span>}})
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># 第二轮对话（相同session_id）</span>
+</span></span><span style="display:flex;"><span>resp2 <span style="color:#ff79c6">=</span> do_msg<span style="color:#ff79c6">.</span>invoke({
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#39;language&#39;</span>: <span style="color:#f1fa8c">&#39;中文&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#39;my_msg&#39;</span>: [HumanMessage(content<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;请问，我的名字叫什么?&#39;</span>)]
+</span></span><span style="display:flex;"><span>}, config<span style="color:#ff79c6">=</span>{<span style="color:#f1fa8c">&#39;configurable&#39;</span>: {<span style="color:#f1fa8c">&#39;session_id&#39;</span>: <span style="color:#f1fa8c">&#39;dp123&#39;</span>}})
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#366">print</span>(resp2<span style="color:#555">.</span>content) 
-</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># 输出：您的名字是dp，对吗？如果我的记忆有误，请随时纠正。</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">print</span>(resp2<span style="color:#ff79c6">.</span>content) 
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 输出：您的名字是dp，对吗？如果我的记忆有误，请随时纠正。</span>
 </span></span></code></pre></div><h3 id="3-流式输出演示">3. 流式输出演示</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># 第三轮对话（新session_id）</span>
-</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">for</span> resp <span style="color:#000;font-weight:bold">in</span> do_msg<span style="color:#555">.</span>stream({
-</span></span><span style="display:flex;"><span>    <span style="color:#c30">&#39;language&#39;</span>: <span style="color:#c30">&#39;英文&#39;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#c30">&#39;my_msg&#39;</span>: [HumanMessage(content<span style="color:#555">=</span><span style="color:#c30">&#39;你有什么功能?&#39;</span>)]
-</span></span><span style="display:flex;"><span>}, config<span style="color:#555">=</span>{<span style="color:#c30">&#39;configurable&#39;</span>: {<span style="color:#c30">&#39;session_id&#39;</span>: <span style="color:#c30">&#39;dp1234&#39;</span>}}):
-</span></span><span style="display:flex;"><span>    <span style="color:#366">print</span>(resp<span style="color:#555">.</span>content, end<span style="color:#555">=</span><span style="color:#c30">&#39; - &#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># 第三轮对话（新session_id）</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">for</span> resp <span style="color:#ff79c6">in</span> do_msg<span style="color:#ff79c6">.</span>stream({
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#39;language&#39;</span>: <span style="color:#f1fa8c">&#39;英文&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#39;my_msg&#39;</span>: [HumanMessage(content<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;你有什么功能?&#39;</span>)]
+</span></span><span style="display:flex;"><span>}, config<span style="color:#ff79c6">=</span>{<span style="color:#f1fa8c">&#39;configurable&#39;</span>: {<span style="color:#f1fa8c">&#39;session_id&#39;</span>: <span style="color:#f1fa8c">&#39;dp1234&#39;</span>}}):
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(resp<span style="color:#ff79c6">.</span>content, end<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39; - &#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># 流式输出示例：</span>
-</span></span><span style="display:flex;"><span><span style="color:#09f;font-style:italic"># I -  can -  assist -  with -  various -  tasks...</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 流式输出示例：</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># I -  can -  assist -  with -  various -  tasks...</span>
 </span></span></code></pre></div><h2 id="五高级应用场景">五、高级应用场景</h2>
 <h3 id="1-多会话管理系统">1. 多会话管理系统</h3>
 <p>通过<code>session_id</code>实现：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sessions <span style="color:#555">=</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#c30">&#34;user_123&#34;</span>: {<span style="color:#c30">&#34;session_id&#34;</span>: <span style="color:#c30">&#34;s_789&#34;</span>},
-</span></span><span style="display:flex;"><span>    <span style="color:#c30">&#34;user_456&#34;</span>: {<span style="color:#c30">&#34;session_id&#34;</span>: <span style="color:#c30">&#34;s_101&#34;</span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sessions <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;user_123&#34;</span>: {<span style="color:#f1fa8c">&#34;session_id&#34;</span>: <span style="color:#f1fa8c">&#34;s_789&#34;</span>},
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;user_456&#34;</span>: {<span style="color:#f1fa8c">&#34;session_id&#34;</span>: <span style="color:#f1fa8c">&#34;s_101&#34;</span>}
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">get_session_config</span>(user_id):
-</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> {<span style="color:#c30">&#34;configurable&#34;</span>: {<span style="color:#c30">&#34;session_id&#34;</span>: sessions[user_id][<span style="color:#c30">&#34;session_id&#34;</span>]}}
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">get_session_config</span>(user_id):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> {<span style="color:#f1fa8c">&#34;configurable&#34;</span>: {<span style="color:#f1fa8c">&#34;session_id&#34;</span>: sessions[user_id][<span style="color:#f1fa8c">&#34;session_id&#34;</span>]}}
 </span></span></code></pre></div><h3 id="2-定制化系统角色">2. 定制化系统角色</h3>
 <p>修改prompt模板实现角色扮演：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>role_template <span style="color:#555">=</span> ChatPromptTemplate<span style="color:#555">.</span>from_messages([
-</span></span><span style="display:flex;"><span>    (<span style="color:#c30">&#39;system&#39;</span>, <span style="color:#c30">&#39;你现在是</span><span style="color:#a00">{role}</span><span style="color:#c30">，请保持角色特征回答问题。&#39;</span>),
-</span></span><span style="display:flex;"><span>    MessagesPlaceholder(variable_name<span style="color:#555">=</span><span style="color:#c30">&#39;history&#39;</span>),
-</span></span><span style="display:flex;"><span>    (<span style="color:#c30">&#39;human&#39;</span>, <span style="color:#c30">&#39;</span><span style="color:#a00">{input}</span><span style="color:#c30">&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>role_template <span style="color:#ff79c6">=</span> ChatPromptTemplate<span style="color:#ff79c6">.</span>from_messages([
+</span></span><span style="display:flex;"><span>    (<span style="color:#f1fa8c">&#39;system&#39;</span>, <span style="color:#f1fa8c">&#39;你现在是</span><span style="color:#f1fa8c">{role}</span><span style="color:#f1fa8c">，请保持角色特征回答问题。&#39;</span>),
+</span></span><span style="display:flex;"><span>    MessagesPlaceholder(variable_name<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;history&#39;</span>),
+</span></span><span style="display:flex;"><span>    (<span style="color:#f1fa8c">&#39;human&#39;</span>, <span style="color:#f1fa8c">&#39;</span><span style="color:#f1fa8c">{input}</span><span style="color:#f1fa8c">&#39;</span>)
 </span></span><span style="display:flex;"><span>])
 </span></span></code></pre></div><h3 id="3-混合式输出控制">3. 混合式输出控制</h3>
 <p>结合流式与非流式处理：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">hybrid_chat</span>(query, stream<span style="color:#555">=</span><span style="color:#069;font-weight:bold">False</span>):
-</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">if</span> stream:
-</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span> do_msg<span style="color:#555">.</span>stream({<span style="color:#c30">&#34;my_msg&#34;</span>: [HumanMessage(content<span style="color:#555">=</span>query)]})
-</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">else</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#069;font-weight:bold">return</span> do_msg<span style="color:#555">.</span>invoke({<span style="color:#c30">&#34;my_msg&#34;</span>: [HumanMessage(content<span style="color:#555">=</span>query)]})
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">hybrid_chat</span>(query, stream<span style="color:#ff79c6">=</span><span style="color:#ff79c6">False</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> stream:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> do_msg<span style="color:#ff79c6">.</span>stream({<span style="color:#f1fa8c">&#34;my_msg&#34;</span>: [HumanMessage(content<span style="color:#ff79c6">=</span>query)]})
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> do_msg<span style="color:#ff79c6">.</span>invoke({<span style="color:#f1fa8c">&#34;my_msg&#34;</span>: [HumanMessage(content<span style="color:#ff79c6">=</span>query)]})
 </span></span></code></pre></div><h2 id="六性能优化实践">六、性能优化实践</h2>
 <h3 id="1-历史记录压缩">1. 历史记录压缩</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">from</span> <span style="color:#0cf;font-weight:bold">langchain.chains</span> <span style="color:#069;font-weight:bold">import</span> ConversationChain
-</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">from</span> <span style="color:#0cf;font-weight:bold">langchain.memory</span> <span style="color:#069;font-weight:bold">import</span> ConversationBufferWindowMemory
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> langchain.chains <span style="color:#ff79c6">import</span> ConversationChain
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> langchain.memory <span style="color:#ff79c6">import</span> ConversationBufferWindowMemory
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>memory <span style="color:#555">=</span> ConversationBufferWindowMemory(k<span style="color:#555">=</span><span style="color:#f60">5</span>)  <span style="color:#09f;font-style:italic"># 保留最近5轮对话</span>
+</span></span><span style="display:flex;"><span>memory <span style="color:#ff79c6">=</span> ConversationBufferWindowMemory(k<span style="color:#ff79c6">=</span><span style="color:#bd93f9">5</span>)  <span style="color:#6272a4"># 保留最近5轮对话</span>
 </span></span></code></pre></div><h3 id="2-异步处理优化">2. 异步处理优化</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">async</span> <span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">async_chat</span>(query):
-</span></span><span style="display:flex;"><span>    <span style="color:#069;font-weight:bold">return</span> <span style="color:#069;font-weight:bold">await</span> do_msg<span style="color:#555">.</span>ainvoke({
-</span></span><span style="display:flex;"><span>        <span style="color:#c30">&#34;my_msg&#34;</span>: [HumanMessage(content<span style="color:#555">=</span>query)]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">async_chat</span>(query):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">await</span> do_msg<span style="color:#ff79c6">.</span>ainvoke({
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;my_msg&#34;</span>: [HumanMessage(content<span style="color:#ff79c6">=</span>query)]
 </span></span><span style="display:flex;"><span>    })
 </span></span></code></pre></div><h3 id="3-缓存策略">3. 缓存策略</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">from</span> <span style="color:#0cf;font-weight:bold">langchain.cache</span> <span style="color:#069;font-weight:bold">import</span> SQLiteCache
-</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">langchain</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">from</span> langchain.cache <span style="color:#ff79c6">import</span> SQLiteCache
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> langchain
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>langchain<span style="color:#555">.</span>llm_cache <span style="color:#555">=</span> SQLiteCache(database_path<span style="color:#555">=</span><span style="color:#c30">&#34;.langchain.db&#34;</span>)
+</span></span><span style="display:flex;"><span>langchain<span style="color:#ff79c6">.</span>llm_cache <span style="color:#ff79c6">=</span> SQLiteCache(database_path<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;.langchain.db&#34;</span>)
 </span></span></code></pre></div><h2 id="七生产环境最佳实践">七、生产环境最佳实践</h2>
 <ol>
 <li>
@@ -553,12 +553,12 @@
 <p><strong>错误处理</strong></p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#069;font-weight:bold">try</span>:
-</span></span><span style="display:flex;"><span>    response <span style="color:#555">=</span> do_msg<span style="color:#555">.</span>invoke(<span style="color:#555">...</span>)
-</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">except</span> openai<span style="color:#555">.</span>APIError <span style="color:#069;font-weight:bold">as</span> e:
-</span></span><span style="display:flex;"><span>    <span style="color:#366">print</span>(<span style="color:#c30">f</span><span style="color:#c30">&#34;API Error: </span><span style="color:#a00">{</span>e<span style="color:#a00">}</span><span style="color:#c30">&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#069;font-weight:bold">except</span> <span style="color:#c00;font-weight:bold">Exception</span> <span style="color:#069;font-weight:bold">as</span> e:
-</span></span><span style="display:flex;"><span>    <span style="color:#366">print</span>(<span style="color:#c30">f</span><span style="color:#c30">&#34;Unexpected error: </span><span style="color:#a00">{</span>e<span style="color:#a00">}</span><span style="color:#c30">&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">try</span>:
+</span></span><span style="display:flex;"><span>    response <span style="color:#ff79c6">=</span> do_msg<span style="color:#ff79c6">.</span>invoke(<span style="color:#ff79c6">...</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">except</span> openai<span style="color:#ff79c6">.</span>APIError <span style="color:#ff79c6">as</span> e:
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;API Error: </span><span style="color:#f1fa8c">{</span>e<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">except</span> Exception <span style="color:#ff79c6">as</span> e:
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Unexpected error: </span><span style="color:#f1fa8c">{</span>e<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
 </span></span></code></pre></div><ol start="3">
 <li><strong>监控指标</strong>
 <ul>
@@ -584,11 +584,11 @@
 <li>考虑模型降级策略</li>
 </ul>
 <p><strong>Q2 如何提升流式响应速度？</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model_chat <span style="color:#555">=</span> ChatOpenAI(
-</span></span><span style="display:flex;"><span>    model<span style="color:#555">=</span>cf<span style="color:#555">.</span>OPENAI_MODEL,
-</span></span><span style="display:flex;"><span>    streaming<span style="color:#555">=</span><span style="color:#069;font-weight:bold">True</span>,
-</span></span><span style="display:flex;"><span>    temperature<span style="color:#555">=</span><span style="color:#f60">0.7</span>,
-</span></span><span style="display:flex;"><span>    max_tokens<span style="color:#555">=</span><span style="color:#f60">500</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model_chat <span style="color:#ff79c6">=</span> ChatOpenAI(
+</span></span><span style="display:flex;"><span>    model<span style="color:#ff79c6">=</span>cf<span style="color:#ff79c6">.</span>OPENAI_MODEL,
+</span></span><span style="display:flex;"><span>    streaming<span style="color:#ff79c6">=</span><span style="color:#ff79c6">True</span>,
+</span></span><span style="display:flex;"><span>    temperature<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0.7</span>,
+</span></span><span style="display:flex;"><span>    max_tokens<span style="color:#ff79c6">=</span><span style="color:#bd93f9">500</span>
 </span></span><span style="display:flex;"><span>)
 </span></span></code></pre></div><p><strong>Q3 历史记录存储方案</strong></p>
 <ul>

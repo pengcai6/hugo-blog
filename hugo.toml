@@ -27,7 +27,7 @@ inline = [['\(', '\)'], ['$', '$']]
 
 [markup.highlight]
 # noClasses = false
-style = 'manni'
+style = 'dracula'
 
 # [taxonomies]
 # category = "categories"
