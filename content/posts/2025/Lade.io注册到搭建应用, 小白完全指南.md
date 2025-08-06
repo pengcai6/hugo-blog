@@ -71,7 +71,7 @@ categories:
 ![](https://cdn.jsdelivr.net/gh/dgdghub/dg-pic@main/blog/20250519112501403.png)
 
 * 重点来了，下面的操作需要在你电脑上进行（我这里以mac电脑为例子，如果你是windows或者linux,请在lade官网看对应系统的操作指南https://www.lade.io/docs/platform/cli）， 另外lade也支持在远程服务器上操作。
-```
+```shell
 # 安装lade环境
 brew install lade-io/tap/lade
 # 进入前面保存好的文件所在的目录
