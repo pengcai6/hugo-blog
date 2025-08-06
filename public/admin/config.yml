@@ -85,4 +85,5 @@ collections:
         widget: 'markdown'
   - name: 'blog'
     label: 'Blog'
+    create: true
     pageRefer: 'https://www.googhub.nyc.mn'
