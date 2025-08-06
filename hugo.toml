@@ -12,6 +12,7 @@ hasCJKLanguage = true
 [markup]
 [markup.goldmark.parser]
 wrapStandAloneImageWithinParagraph = false
+
 [markup.goldmark.parser.attribute]
 block = true
 
@@ -25,9 +26,15 @@ enable = true
 block = [['\[', '\]'], ['$$', '$$']]
 inline = [['\(', '\)'], ['$', '$']]
 
+# 代码高亮
 [markup.highlight]
-# noClasses = false
+noClasses = true
+codeFences = true
 style = 'dracula'
+lineNoStart = 1
+lineNos = true
+lineNumbersInTable = true
+tabWidth = 4
 
 # [taxonomies]
 # category = "categories"

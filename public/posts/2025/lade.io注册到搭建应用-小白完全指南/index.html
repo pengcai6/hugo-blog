@@ -354,7 +354,7 @@
   <meta itemprop="description" content="说明 我尽量简化，所以尽量用图说话：红色线代表需要要操作的, 所以你可以按着红色标识操作 如果你已经有账号，可以直接跳转到第二节 目前作者增加了github账号验证，所以你得有一个注册时间大于6个月的github账号 所用到的代码（https://github.com/eooce/Sing-box/tree/main） 我是小白，所以写作水平有限，请大家多多包涵">
   <meta itemprop="datePublished" content="2025-05-03T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-05-03T00:00:00+00:00">
-  <meta itemprop="wordCount" content="999">
+  <meta itemprop="wordCount" content="1015">
   <meta itemprop="image" content="https://googhub.nyc.mn/img/global-background.jpg">
   <meta itemprop="keywords" content="AI,技术">
 
@@ -365,7 +365,7 @@
             <span data-format="luxon">2025-05-03T00:00:00Z</span>
           
 
-          | <span>2分钟阅读</span>
+          | <span>3分钟阅读</span>
 
           
           | <span>更新于
@@ -484,7 +484,27 @@
 <p>重点来了，下面的操作需要在你电脑上进行（我这里以mac电脑为例子，如果你是windows或者linux,请在lade官网看对应系统的操作指南https://www.lade.io/docs/platform/cli）， 另外lade也支持在远程服务器上操作。</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># 安装lade环境</span>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># 安装lade环境</span>
 </span></span><span style="display:flex;"><span>brew install lade-io/tap/lade
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 进入前面保存好的文件所在的目录</span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> /xx/xx/刚下载好的文件所在目录
@@ -500,7 +520,9 @@
 </span></span><span style="display:flex;"><span>lade logs -a abcde
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># 可以查看应用运行状态</span>
 </span></span><span style="display:flex;"><span>lade apps show abcde
-</span></span></code></pre></div><p>从日志中复制节点信息，导入你的骑墙软件即可玩耍了。</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从日志中复制节点信息，导入你的骑墙软件即可玩耍了。</p>
 <p>到此为止，lade的应用就算部署完成了。我这里部署的是nodejs应用，当然你也可以举一反三，部署python应用.</p>
 
 
@@ -539,6 +561,14 @@
     @scroll.window="debouncedScroll"
     class="hidden lg:flex lg:flex-col lg:items-end lg:self-start"
   >
+    
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#说明">说明</a></li>
+    <li><a href="#一注册账号">一、注册账号</a></li>
+    <li><a href="#二部署应用">二、部署应用</a></li>
+  </ul>
+</nav>
     
   </div>
 </div>

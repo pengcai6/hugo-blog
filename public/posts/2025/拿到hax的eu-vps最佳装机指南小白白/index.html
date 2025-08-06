@@ -355,7 +355,7 @@
   <meta itemprop="description" content="概要 最近Hax EU区域的Vps更换硬盘，导致坚持一年多的EU终究是下线了，需要重新蹲抢，不过很辛运，作为老用户，很快就拿到一台。于是又开始重复多次的开机–&gt; 装系统–&gt;配置环境–&gt;搭建点；经历多了自然有一些自己的小心得，顺便记录下来作为以后的操作指南。">
   <meta itemprop="datePublished" content="2025-05-20T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-05-20T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1086">
+  <meta itemprop="wordCount" content="1124">
   <meta itemprop="image" content="https://googhub.nyc.mn/img/global-background.jpg">
   <meta itemprop="keywords" content="AI,技术">
 
@@ -443,7 +443,23 @@
 <ul>
 <li>开机后不管三七二十二，先修改Dns:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span># 修改resolv.conf文件，将以下nameserver加入
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span># 修改resolv.conf文件，将以下nameserver加入
 </span></span><span style="display:flex;"><span>vi <span style="color:#ff79c6">/</span>etc<span style="color:#ff79c6">/</span>resolv.conf
 </span></span><span style="display:flex;"><span>nameserver <span style="color:#bd93f9">2606</span>:<span style="color:#bd93f9">4700</span>:<span style="color:#bd93f9">4700</span>::<span style="color:#bd93f9">1111</span>
 </span></span><span style="display:flex;"><span>nameserver <span style="color:#bd93f9">2606</span>:<span style="color:#bd93f9">4700</span>:<span style="color:#bd93f9">4700</span>::<span style="color:#bd93f9">1001</span>
@@ -455,24 +471,74 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span># 重启网络
 </span></span><span style="display:flex;"><span>service networking restart
-</span></span></code></pre></div><ul>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>更新系统</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>apt update
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>apt update
 </span></span><span style="display:flex;"><span>apt upgrade <span style="color:#ff79c6">-</span>y
-</span></span></code></pre></div><h2 id="三warp">三、Warp</h2>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="三warp">三、Warp</h2>
 <p>我使用的是老王一键脚本(细节教程太多，请自行搜，也可以评论区留言）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>执行脚本 .<span style="color:#ff79c6">/</span>ssh_tool.sh
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>执行脚本 .<span style="color:#ff79c6">/</span>ssh_tool.sh
 </span></span><span style="display:flex;"><span>选择菜单<span style="color:#bd93f9">7</span>
 </span></span><span style="display:flex;"><span>按提示安装warp
 </span></span><span style="display:flex;"><span>再次进入warp开启加速，选择<span style="color:#bd93f9">16</span>
-</span></span></code></pre></div><h2 id="四部署docker">四、部署docker</h2>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="四部署docker">四、部署docker</h2>
 <p>如果对版本没有要求，建议直接使用apt无脑安装(这个默认安装版本是20.0的)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>apt install docker.io
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>apt install docker.io
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>apt install docker<span style="color:#ff79c6">-</span>compose
-</span></span></code></pre></div><p>如果想安装最新版本，使用以下命令(每次复制一行，在vps执行一次，不要一次全部执行)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>apt install curl vim wget gnupg dpkg apt<span style="color:#ff79c6">-</span>transport<span style="color:#ff79c6">-</span>https lsb<span style="color:#ff79c6">-</span>release ca<span style="color:#ff79c6">-</span>certificates
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果想安装最新版本，使用以下命令(每次复制一行，在vps执行一次，不要一次全部执行)</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>apt install curl vim wget gnupg dpkg apt<span style="color:#ff79c6">-</span>transport<span style="color:#ff79c6">-</span>https lsb<span style="color:#ff79c6">-</span>release ca<span style="color:#ff79c6">-</span>certificates
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>curl <span style="color:#ff79c6">-</span>sSL https:<span style="color:#6272a4">//download.docker.com/linux/debian/gpg | gpg --dearmor &gt; /usr/share/keyrings/docker-ce.gpg
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
@@ -489,7 +555,9 @@
 </span></span><span style="display:flex;"><span>curl <span style="color:#ff79c6">-</span>L https:<span style="color:#6272a4">//github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64 &gt; /usr/local/bin/docker-compose
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
 </span></span><span style="display:flex;"><span>chmod <span style="color:#ff79c6">+</span>x <span style="color:#ff79c6">/</span>usr<span style="color:#ff79c6">/</span>local<span style="color:#ff79c6">/</span>bin<span style="color:#ff79c6">/</span>docker<span style="color:#ff79c6">-</span>compose
-</span></span></code></pre></div><p>以上在Debian12下验证过。</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以上在Debian12下验证过。</p>
 <h2 id="五搭建节点">五、搭建节点</h2>
 <p>如果你有多台Eu，建议一台部署3xui，一台部署F佬的一键梭哈(具体部署请看专门贴，我这里就不搬运了，如果有mjj懒得搜，也可以评论告诉我)。区别如下:</p>
 <p>3xui部署的节点，缺点是网络速度会慢一点，点是CPU和内存的使用比较温柔，基本没有超过60%的情况，网速也是平稳在一个区间内，没有忽然很高，忽然很低的情况。</p>
@@ -533,6 +601,18 @@
     @scroll.window="debouncedScroll"
     class="hidden lg:flex lg:flex-col lg:items-end lg:self-start"
   >
+    
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概要">概要</a></li>
+    <li><a href="#一操作系统选择">一、操作系统选择</a></li>
+    <li><a href="#二基本设置">二、基本设置</a></li>
+    <li><a href="#三warp">三、Warp</a></li>
+    <li><a href="#四部署docker">四、部署docker</a></li>
+    <li><a href="#五搭建节点">五、搭建节点</a></li>
+    <li><a href="#六总结">六、总结</a></li>
+  </ul>
+</nav>
     
   </div>
 </div>
