@@ -1,8 +1,13 @@
 baseURL = 'https://googhub.nyc.mn/'
-languageCode = 'zh-cn' #en-us'
+defaultContentLanguage = "zh"
+languageCode = "zh-Hans"
 title = 'AiEDU | Blog'
 theme = 'dream'
 
+enableGitInfo = true
+enableRobotsTXT = true
+
+hasCJKLanguage = true
 
 [markup]
 [markup.goldmark.parser]
@@ -56,7 +61,7 @@ utterancesRepo = "g1eny0ung/g1eny0ung.github.io"
 
 email = "aiedu985@gmail.com"
 
-siteStartYear = 2025
+siteStartYear = 2023
 
 favicon = 'img/personal/avatar.png'
 
