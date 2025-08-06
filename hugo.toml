@@ -55,7 +55,7 @@ motto = "知识改变命运，AI改变知识。"
 
 rss = true
 
-utterancesRepo = "g1eny0ung/g1eny0ung.github.io"
+# utterancesRepo = "88899/hugo-blog"
 
 # valine = true
 # LEANCLOUD_APP_ID = ""
