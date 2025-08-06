@@ -6,8 +6,15 @@
     <description>Recent content in 归档 on AiEDU | Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Nov 2024 09:03:20 -0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://googhub.nyc.mn/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>测试</title>
+      <link>https://googhub.nyc.mn/posts/2025/%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Wed, 06 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://googhub.nyc.mn/posts/2025/%E6%B5%8B%E8%AF%95/</guid>
+      <description>&lt;p&gt;测试&lt;/p&gt;&#xA;&lt;p&gt;这是一份测试文档&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Agent、MCP、FunctionCall的区别</title>
       <link>https://googhub.nyc.mn/posts/2025/agentmcpfunctioncall%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
@@ -56,13 +63,6 @@
       <pubDate>Wed, 20 Nov 2024 09:03:20 -0800</pubDate>
       <guid>https://googhub.nyc.mn/posts/2025/%E6%8B%BF%E5%88%B0hax%E7%9A%84eu-vps%E6%9C%80%E4%BD%B3%E8%A3%85%E6%9C%BA%E6%8C%87%E5%8D%97%E5%B0%8F%E7%99%BD%E7%99%BD/</guid>
       <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;&#xA;&lt;p&gt;最近Hax EU区域的Vps更换硬盘，导致坚持一年多的EU终究是下线了，需要重新蹲抢，不过很辛运，作为老用户，很快就拿到一台。于是又开始重复多次的开机&amp;ndash;&amp;gt; 装系统&amp;ndash;&amp;gt;配置环境&amp;ndash;&amp;gt;搭建点；经历多了自然有一些自己的小心得，顺便记录下来作为以后的操作指南。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>https://googhub.nyc.mn/posts/2025/%E6%B5%8B%E8%AF%95/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://googhub.nyc.mn/posts/2025/%E6%B5%8B%E8%AF%95/</guid>
-      <description>&lt;p&gt;测试&lt;/p&gt;&#xA;&lt;p&gt;这是一份测试文档&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
