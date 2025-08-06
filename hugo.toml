@@ -76,7 +76,7 @@ showPrevNextPost = true
 
 # https://gohugo.io/templates/embedded/#configure-x-twitter-cards
 [params.social]
-twitter = "g1eny0ung"
+twitter = "dgdghub"
 
 [params.navItems]
 github = { href = "https://github.com/88899", target = "_blank", icon = "logo-github", title = "GitHub" }
