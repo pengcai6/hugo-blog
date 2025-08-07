@@ -3,8 +3,9 @@
 @source "../layouts";
 
 @plugin '@tailwindcss/typography';
+
 @plugin "daisyui" {
-  themes: emerald --default, forest --prefersdark;
+  themes: emerald --default, dracula --prefersdark;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -24,6 +25,7 @@
   background-position: center;
   background-size: cover;
   z-index: -1;
+  transition: all 0.3s ease-in-out;
 }
 
 .flip-container {
@@ -88,7 +90,7 @@
 }
 
 .dream-alert {
-  > .heading {
+  >.heading {
     @apply flex items-center gap-1 text-sm font-medium;
   }
 
