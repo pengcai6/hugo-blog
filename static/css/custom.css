@@ -7,13 +7,13 @@
   color: #333c4d;
 }
 
-[data-theme="forest"] #disqus_thread {
+[data-theme="dracula"] #disqus_thread {
   color-scheme: none;
-  background-color: #171213;
+  background-color: #282a36;
 }
 
-[data-theme="forest"] #disqus_thread a {
-  color: #cbc9ca;
+[data-theme="dracula"] #disqus_thread a {
+  color: #f8f8f2;
 }
 
 /* ==============================================
@@ -34,13 +34,9 @@ body {
   background-attachment: fixed;
 }
 
-/* 深色模式的背景纹理 */
-[data-theme="dark"] body {
-  background:
-    radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(17, 24, 39, 0.9) 100%);
-  background-attachment: fixed;
+/* 深色模式的背景纹理 - 移除遮罩以显示纯净背景图片 */
+[data-theme="dracula"] body {
+  background: none;
 }
 
 /* 卡片样式优化 - 覆盖DaisyUI默认样式 */
@@ -889,7 +885,151 @@ pre .copy-button.copied::before {
   border-left-color: #059669;
 }
 
-/* 滚动条美化 */
+/* Dream主题TOC侧边栏修复 - 强制显示和固定定位 */
+[x-data="tocHighlighter()"] {
+  position: sticky !important;
+  top: 2rem !important;
+  max-height: calc(100vh - 4rem) !important;
+  z-index: 10;
+  align-self: flex-start !important;
+  display: flex !important;
+  /* 覆盖hidden类 */
+  flex-direction: column !important;
+}
+
+/* 移动端隐藏TOC */
+@media (max-width: 1023px) {
+  [x-data="tocHighlighter()"] {
+    display: none !important;
+  }
+}
+
+/* 首页摘要优化 - 提升加载速度和视觉效果 */
+.dream-post-summary-card-description {
+  line-height: 1.6;
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin: 0.75rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* 深色模式下的摘要文字颜色 */
+[data-theme="dark"] .dream-post-summary-card-description {
+  color: #9ca3af;
+}
+
+/* 摘要卡片内容间距优化 */
+.dream-post-summary-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* 标签样式微调 */
+.dream-post-summary-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* 确保摘要文本不会换行过度 */
+.dream-post-summary-card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 响应式摘要优化 */
+@media (max-width: 768px) {
+  .dream-post-summary-card-description {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    font-size: 0.9rem;
+  }
+
+  .dream-post-summary-card-content {
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+}
+
+/* TOC内容区域样式优化 */
+#TableOfContents {
+  background: rgba(34, 197, 94, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  padding: 1.5rem;
+  max-height: calc(70vh);
+  overflow-y: auto;
+  width: 250px;
+  margin-bottom: 1rem;
+}
+
+/* TOC滚动条隐藏 */
+#TableOfContents {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#TableOfContents::-webkit-scrollbar {
+  display: none;
+}
+
+/* TOC链接样式 */
+#TableOfContents a {
+  color: #059669;
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: block;
+}
+
+#TableOfContents a:hover {
+  color: #047857;
+  background: rgba(34, 197, 94, 0.1);
+  padding-left: 0.5rem;
+}
+
+/* TOC列表样式 */
+#TableOfContents ul {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+}
+
+#TableOfContents>ul {
+  padding-left: 0;
+}
+
+#TableOfContents li {
+  margin: 0.25rem 0;
+}
+
+/* 暗色模式TOC样式 */
+[data-theme="dark"] #TableOfContents {
+  background: rgba(31, 41, 55, 0.8);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+[data-theme="dark"] #TableOfContents a {
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] #TableOfContents a:hover {
+  color: #a7f3d0;
+  background: rgba(34, 197, 94, 0.2);
+}
+
+/* 滚动条美化 - 明色模式 */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -906,6 +1046,25 @@ pre .copy-button.copied::before {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+}
+
+/* 滚动条美化 - 暗色模式 (Dracula主题) */
+[data-theme="dracula"] ::-webkit-scrollbar {
+  width: 8px;
+}
+
+[data-theme="dracula"] ::-webkit-scrollbar-track {
+  background: #44475a;
+  border-radius: 4px;
+}
+
+[data-theme="dracula"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #8be9fd 0%, #50fa7b 100%);
+  border-radius: 4px;
+}
+
+[data-theme="dracula"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #bd93f9 0%, #ff79c6 100%);
 }
 
 /* 底部样式优化 */
@@ -1142,15 +1301,20 @@ pre .copy-button.copied::before {
   justify-content: space-between;
 }
 
-.dream-post-summary-card .card-body pre,
-.dream-post-summary-card .card-body code,
-.dream-post-summary-card .card-body .highlight,
-.dream-post-summary-card .card-body blockquote,
-.dream-post-summary-card .card-body table,
-.dream-post-summary-card .card-body iframe,
-.dream-post-summary-card .card-body video {
+/* 只在首页列表页的摘要卡片中隐藏代码块，单篇文章页面不受影响 */
+.lg\\:grid .dream-post-summary-card .card-body pre,
+.lg\\:grid .dream-post-summary-card .card-body code,
+.lg\\:grid .dream-post-summary-card .card-body .highlight,
+.lg\\:grid .dream-post-summary-card .card-body blockquote,
+.lg\\:grid .dream-post-summary-card .card-body table,
+.lg\\:grid .dream-post-summary-card .card-body iframe,
+.lg\\:grid .dream-post-summary-card .card-body video,
+/* 也适用于常规的card选择器 */
+.lg\\:grid .card .highlight,
+.lg\\:grid .card pre,
+.lg\\:grid .card code[class*="language-"] {
   display: none !important;
-  /* 隐藏内容区域的媒体元素 */
+  /* 只在首页网格布局中隐藏代码相关元素 */
 }
 
 /* 通用文章摘要长度限制 */
@@ -1653,4 +1817,116 @@ img {
   background: rgba(31, 41, 55, 0.98) !important;
   backdrop-filter: blur(3px) !important;
   -webkit-backdrop-filter: blur(3px) !important;
+}
+
+/* HugoMods Encrypt 解密按钮样式 */
+.hugo-decrypt-button {
+  background-color: #4F46E5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 8px;
+  transition: all 0.2s ease;
+  min-width: 60px;
+}
+
+.hugo-decrypt-button:hover {
+  background-color: #4338CA;
+  transform: translateY(-1px);
+}
+
+.hugo-decrypt-button:active {
+  transform: translateY(0);
+}
+
+/* 为按钮添加文本 */
+.hugo-decrypt-button::after {
+  content: "解锁";
+}
+
+/* 深色模式下的按钮样式 */
+[data-theme="dracula"] .hugo-decrypt-button {
+  background-color: #6272a4;
+}
+
+[data-theme="dracula"] .hugo-decrypt-button:hover {
+  background-color: #44475a;
+}
+
+/* 加密表单样式 */
+.hugo-decrypt-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.hugo-decrypt-form input[name="hugo-encrypt-password"] {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #E5E7EB;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.hugo-decrypt-form input[name="hugo-encrypt-password"]:focus {
+  outline: none;
+  border-color: #4F46E5;
+}
+
+/* 深色模式下的输入框样式 */
+[data-theme="dracula"] .hugo-decrypt-form input[name="hugo-encrypt-password"] {
+  background-color: #44475a;
+  border-color: #6272a4;
+  color: #f8f8f2;
+}
+
+[data-theme="dracula"] .hugo-decrypt-form input[name="hugo-encrypt-password"]:focus {
+  border-color: #50fa7b;
+}
+
+/* 加密容器样式 */
+.hugo-encrypt {
+  background-color: #F9FAFB;
+  border: 2px dashed #D1D5DB;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  transition: all 0.3s ease;
+}
+
+.hugo-encrypt:hover {
+  border-color: #4F46E5;
+  background-color: #F3F4F6;
+}
+
+/* 深色模式下的加密容器 */
+[data-theme="dracula"] .hugo-encrypt {
+  background-color: #44475a;
+  border-color: #6272a4;
+  color: #f8f8f2;
+}
+
+[data-theme="dracula"] .hugo-encrypt:hover {
+  border-color: #50fa7b;
+  background-color: #6272a4;
+}
+
+/* 加密信息样式 */
+.hugo-encrypt-info {
+  display: flex;
+  align-items: center;
+  color: #6B7280;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+[data-theme="dracula"] .hugo-encrypt-info {
+  color: #8be9fd;
 }

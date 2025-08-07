@@ -1,0 +1,108 @@
+{{/* 将这个文件移到正确位置：layouts/_default/summary.html */}}
+<a class="card bg-base-100 hover:bg-base-content/10 shadow-xl cursor-pointer dark:border dark:border-base-content/30"
+    href="{{ .RelPermalink }}">
+    {{ if .Params.cover }}
+    <figure>
+        {{ with .Resources.Get .Params.cover }}
+        {{ if eq .MediaType.SubType "svg" }}
+        <img src="{{ .RelPermalink }}" alt="{{ .Title }}" />
+        {{ else }}
+        {{ $webp := .Resize (printf "%dx%d webp" .Width .Height) }}
+        <picture>
+            <source srcset="{{ $webp.RelPermalink }}" type="image/webp" />
+            <img src="{{ .RelPermalink }}" alt="{{ .Title }}" />
+        </picture>
+        {{ end }}
+        {{ else }}
+        <img src="{{ .Params.cover }}" alt="{{ .Title }}" />
+        {{ end }}
+    </figure>
+    {{ else if not site.Params.noDefaultSummaryCover }}
+    <figure>
+        {{ with resources.Get (printf "images/default%d.jpg" (index (seq 4 | shuffle) 0)) }}
+        {{ $webp := .Resize (printf "%dx%d webp" .Width .Height) }}
+        <picture>
+            <source srcset="{{ $webp.RelPermalink }}" type="image/webp" />
+            <img src="{{ .RelPermalink }}" alt="{{ .Title }}" />
+        </picture>
+        {{ end }}
+    </figure>
+    {{ end }}
+
+    <div class="card-body">
+        <h2 class="card-title">{{ .Title }}</h2>
+
+        <p class="date text-base-content/60">
+            {{ if site.Params.Experimental.jsDate }}
+            <span data-format="luxon">{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}</span>
+            {{ else }}
+            {{ .Date | time.Format "Monday, Jan 2, 2006" }}
+            {{ end }}
+        </p>
+
+        {{/* 高级摘要过滤 - 移除图片、代码块和技术内容 */}}
+        {{ $summary := "" }}
+        {{ if .Description }}
+        {{ $summary = .Description }}
+        {{ else }}
+        {{/* 从原始内容提取纯文本，然后过滤 */}}
+        {{ $content := .Content | plainify }}
+
+        {{/* 移除常见的代码特征字符串 */}}
+        {{ $content = replace $content "```" "" }}
+        {{ $content = replace $content "`" "" }}
+        {{ $content = replace $content "function" "" }}
+        {{ $content = replace $content "class" "" }}
+        {{ $content = replace $content "const" "" }}
+        {{ $content = replace $content "let" "" }}
+        {{ $content = replace $content "var" "" }}
+        {{ $content = replace $content "import" "" }}
+        {{ $content = replace $content "export" "" }}
+        {{ $content = replace $content "return" "" }}
+        {{ $content = replace $content "{" "" }}
+        {{ $content = replace $content "}" "" }}
+        {{ $content = replace $content "(" "" }}
+        {{ $content = replace $content ")" "" }}
+        {{ $content = replace $content "[" "" }}
+        {{ $content = replace $content "]" "" }}
+        {{ $content = replace $content "<" "" }}
+        {{ $content = replace $content ">" "" }}
+        {{ $content = replace $content ";" "" }}
+        {{ $content = replace $content "=" "" }}
+        
+        {{/* 移除多余空白字符 */}}
+        {{ $content = replaceRE "\\s+" " " $content }}
+        {{ $content = strings.TrimSpace $content }}
+        
+        {{/* 如果过滤后内容太短，使用文章标题作为摘要 */}}
+        {{ if lt (len $content) 20 }}
+          {{ $summary = .Title }}
+        {{ else if gt (len $content) 120 }}
+          {{ $summary = printf "%s..." (substr $content 0 120) }}
+        {{ else }}
+          {{ $summary = $content }}
+        {{ end }}
+      {{ end }}
+      
+      {{/* 输出最终摘要 */}}
+      {{ $summary }}
+
+      {{ $hasAuthor := or .Params.author site.Params.author }} <div
+            class="card-actions justify-between items-center mt-4">
+            {{ if $hasAuthor }}
+            {{ partial "author.html" (dict "Params" .Params "template" "summary") }}
+            {{ end }}
+
+            <div class="flex items-center">
+                <ion-icon name="time" class="mr-1"></ion-icon>
+                {{ if site.Params.enableReadingTime }}
+                {{ if eq .ReadingTime 1 }}
+                {{ T "oneMinRead" }}
+                {{ else }}
+                {{ T "readingTime" .ReadingTime }}
+                {{ end }}
+                {{ end }}
+            </div>
+    </div>
+    </div>
+</a>
