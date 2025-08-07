@@ -34,7 +34,7 @@ jobs:
       - name: Install Hugo CLI
         run: |
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb          
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Install Dart Sass
         run: sudo snap install dart-sass
       - name: Checkout
@@ -44,14 +44,21 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.21'
+          go-version: "1.21"
       - name: Install HugoMods encrypt CLI
         run: go install github.com/hugomods/encrypt/commands/encrypt@latest
+        env:
+          GOPROXY: https://proxy.golang.org,direct
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Initialize Hugo modules
+        run: |
+          hugo mod init github.com/pengcai6/hugo-blog || true
+          hugo mod get github.com/hugomods/encrypt
+          hugo mod tidy
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
@@ -60,7 +67,7 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"          
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Encrypt content
         run: |
           export PATH=$PATH:$(go env GOPATH)/bin
