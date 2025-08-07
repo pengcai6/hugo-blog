@@ -137,3 +137,41 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# =====================================
+# Hugo Static Site Generator
+# =====================================
+
+# Generated public files (Hugo output)
+public/
+# Hugo resources
+resources/_gen/
+
+# =====================================
+# Project Specific Ignores
+# =====================================
+
+# Old Hexo backup directory
+hexo/
+
+# Test files
+static/test-glassmorphism.html
+public/test-glassmorphism.html
+
+# Temporary files
+*.tmp
+*.temp
+
+# Hugo server lock file
+.hugo_build.lock
+
+# Local development
+.vscode/settings.json
+.vscode/launch.json
+
+# Backup files
+*.bak
+*~
+
+# Logs
+*.log
