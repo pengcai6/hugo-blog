@@ -15,3 +15,1642 @@
 [data-theme="forest"] #disqus_thread a {
   color: #cbc9ca;
 }
+
+/* ==============================================
+   自定义样式美化 - Dream主题增强
+   ============================================== */
+
+/* 主页背景美化 - 增强纹理效果 */
+.dream-background {
+  background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(85, 98, 112, 0.1) 100%);
+}
+
+/* 为body添加更丰富的背景纹理 */
+body {
+  background:
+    radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(118, 75, 162, 0.05) 0%, rgba(78, 205, 196, 0.05) 100%);
+  background-attachment: fixed;
+}
+
+/* 深色模式的背景纹理 */
+[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(17, 24, 39, 0.9) 100%);
+  background-attachment: fixed;
+}
+
+/* 卡片样式优化 - 覆盖DaisyUI默认样式 */
+.card,
+.dream-post-summary-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, background-color 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-height: 320px;
+  /* 最小高度而非固定高度 */
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  /* 允许内容正常显示 */
+
+  /* 默认状态：透明的毛玻璃效果 */
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+
+  /* 增强玻璃质感 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 8px 32px rgba(31, 38, 135, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.card:hover,
+.dream-post-summary-card:hover {
+  transform: translateY(-5px) !important;
+
+  /* 悬停状态：不透明，内容清晰可读 */
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+
+  box-shadow:
+    0 12px 40px rgba(31, 38, 135, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* 强制覆盖 DaisyUI 的 bg-base-100 和 hover:bg-base-content/10 */
+.card.bg-base-100 {
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+
+.card.bg-base-100:hover,
+.card.hover\:bg-base-content\/10:hover {
+  background: rgba(255, 255, 255, 0.98) !important;
+}
+
+/* 头部标题美化 - 绿色主题 */
+.dream-header-title {
+  font-weight: 700;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 座右铭样式 */
+.dream-motto {
+  font-style: italic;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* 导航栏优化 */
+.dream-nav {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* 代码块样式增强 - 护眼绿叶配色方案 */
+pre {
+  border-radius: 12px;
+  border: 1px solid rgba(134, 239, 172, 0.3);
+  margin: 1.5rem auto;
+  /* 居中显示 */
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  overflow-y: visible;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  /* 固定最大宽度 */
+
+  /* 温和的绿色毛玻璃背景 */
+  background: rgba(240, 253, 244, 0.8) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  /* 柔和的绿色阴影 */
+  box-shadow:
+    0 8px 32px rgba(34, 197, 94, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* 确保代码内容不会被截断 */
+pre code {
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  white-space: pre;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* 基础滚动设置 */
+pre {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+}
+
+/* PC端滚动条样式 */
+@media (min-width: 769px) {
+  pre::-webkit-scrollbar {
+    height: 8px;
+    background: rgba(240, 253, 244, 0.3);
+    border-radius: 4px;
+  }
+
+  pre::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, rgba(34, 197, 94, 0.3), rgba(16, 185, 129, 0.4));
+    border-radius: 4px;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  pre::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, rgba(34, 197, 94, 0.5), rgba(16, 185, 129, 0.6));
+    border-color: rgba(34, 197, 94, 0.4);
+    transform: scaleY(1.2);
+  }
+
+  pre::-webkit-scrollbar-track {
+    background: rgba(240, 253, 244, 0.2);
+    border-radius: 4px;
+    margin: 0 1rem;
+  }
+}
+
+/* 深色模式的代码块 */
+[data-theme="dark"] pre {
+  background: rgba(20, 83, 45, 0.7) !important;
+  border: 1px solid rgba(134, 239, 172, 0.2);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(134, 239, 172, 0.1);
+}
+
+/* 重写代码高亮颜色 - 自然护眼配色方案 */
+.chroma {
+  background: transparent !important;
+  color: #374151;
+  /* 温和的深灰色 */
+}
+
+/* 关键字 - 使用深绿色 */
+.chroma .k,
+.chroma .kc,
+.chroma .kd,
+.chroma .kn,
+.chroma .kp,
+.chroma .kr {
+  color: #15803d;
+  font-weight: 600;
+}
+
+/* 类型关键字 - 使用森林绿 */
+.chroma .kt {
+  color: #166534;
+  font-weight: 600;
+}
+
+/* 字符串 - 使用护眼的土褐色 */
+.chroma .s,
+.chroma .sa,
+.chroma .sb,
+.chroma .sc,
+.chroma .dl,
+.chroma .sd,
+.chroma .s2,
+.chroma .se,
+.chroma .sh,
+.chroma .si,
+.chroma .sx,
+.chroma .s1 {
+  color: #8b5a3c;
+}
+
+/* 字符串符号 - 使用深土褐色 */
+.chroma .ss {
+  color: #6d4423;
+}
+
+/* 正则表达式 - 使用橄榄绿 */
+.chroma .sr {
+  color: #65a30d;
+}
+
+/* 注释 - 使用柔和的灰绿色 */
+.chroma .c,
+.chroma .ch,
+.chroma .cm,
+.chroma .c1,
+.chroma .cs,
+.chroma .cp,
+.chroma .cpf {
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* 数字 - 使用深青色 */
+.chroma .m,
+.chroma .mb,
+.chroma .mf,
+.chroma .mh,
+.chroma .mi,
+.chroma .mo,
+.chroma .il {
+  color: #0f766e;
+}
+
+/* 函数名 - 使用柔和的绿色 */
+.chroma .nf,
+.chroma .nl {
+  color: #65a30d;
+  font-weight: 600;
+}
+
+/* 类名 - 使用深绿色 */
+.chroma .nc {
+  color: #15803d;
+  font-weight: 600;
+}
+
+/* 变量 - 使用青绿色 */
+.chroma .nv,
+.chroma .vc,
+.chroma .vg,
+.chroma .vi,
+.chroma .vm {
+  color: #047857;
+}
+
+/* 属性 - 使用翠绿色 */
+.chroma .na {
+  color: #059669;
+}
+
+/* 内置函数 - 使用深绿色 */
+.chroma .nb {
+  color: #16a34a;
+}
+
+/* 操作符 - 使用深灰色 */
+.chroma .o,
+.chroma .ow {
+  color: #374151;
+  font-weight: 500;
+}
+
+/* 标签名 - 使用深蓝绿色 */
+.chroma .nt {
+  color: #0d9488;
+}
+
+/* 行号样式优化 - 柔和的绿灰色 */
+.chroma .lnt,
+.chroma .ln {
+  color: #9ca3af;
+  user-select: none;
+  margin-right: 1rem;
+  padding-right: 0.5rem;
+  border-right: 1px solid rgba(156, 163, 175, 0.3);
+}
+
+/* 深色模式的代码高亮 - 更亮的绿色系 */
+[data-theme="dark"] .chroma {
+  color: #d1fae5;
+}
+
+[data-theme="dark"] .chroma .k,
+[data-theme="dark"] .chroma .kc,
+[data-theme="dark"] .chroma .kd,
+[data-theme="dark"] .chroma .kn,
+[data-theme="dark"] .chroma .kp,
+[data-theme="dark"] .chroma .kr {
+  color: #86efac;
+}
+
+[data-theme="dark"] .chroma .kt {
+  color: #bbf7d0;
+}
+
+[data-theme="dark"] .chroma .s,
+[data-theme="dark"] .chroma .sa,
+[data-theme="dark"] .chroma .sb,
+[data-theme="dark"] .chroma .sc,
+[data-theme="dark"] .chroma .dl,
+[data-theme="dark"] .chroma .sd,
+[data-theme="dark"] .chroma .s2,
+[data-theme="dark"] .chroma .se,
+[data-theme="dark"] .chroma .sh,
+[data-theme="dark"] .chroma .si,
+[data-theme="dark"] .chroma .sx,
+[data-theme="dark"] .chroma .s1 {
+  color: #d4b896;
+}
+
+[data-theme="dark"] .chroma .ss {
+  color: #c5a572;
+}
+
+[data-theme="dark"] .chroma .sr {
+  color: #bef264;
+}
+
+[data-theme="dark"] .chroma .c,
+[data-theme="dark"] .chroma .ch,
+[data-theme="dark"] .chroma .cm,
+[data-theme="dark"] .chroma .c1,
+[data-theme="dark"] .chroma .cs,
+[data-theme="dark"] .chroma .cp,
+[data-theme="dark"] .chroma .cpf {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .chroma .m,
+[data-theme="dark"] .chroma .mb,
+[data-theme="dark"] .chroma .mf,
+[data-theme="dark"] .chroma .mh,
+[data-theme="dark"] .chroma .mi,
+[data-theme="dark"] .chroma .mo,
+[data-theme="dark"] .chroma .il {
+  color: #22d3ee;
+}
+
+[data-theme="dark"] .chroma .nf,
+[data-theme="dark"] .chroma .nl {
+  color: #84cc16;
+}
+
+[data-theme="dark"] .chroma .nc {
+  color: #86efac;
+}
+
+[data-theme="dark"] .chroma .nv,
+[data-theme="dark"] .chroma .vc,
+[data-theme="dark"] .chroma .vg,
+[data-theme="dark"] .chroma .vi,
+[data-theme="dark"] .chroma .vm {
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] .chroma .na {
+  color: #34d399;
+}
+
+[data-theme="dark"] .chroma .nb {
+  color: #4ade80;
+}
+
+[data-theme="dark"] .chroma .o,
+[data-theme="dark"] .chroma .ow {
+  color: #d1fae5;
+}
+
+[data-theme="dark"] .chroma .nt {
+  color: #5eead4;
+}
+
+[data-theme="dark"] .chroma .lnt,
+[data-theme="dark"] .chroma .ln {
+  color: #6b7280;
+  border-right-color: rgba(107, 114, 128, 0.3);
+}
+
+/* 行内代码样式 - 绿色系 */
+code {
+  background: rgba(240, 253, 244, 0.8);
+  color: #15803d;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 500;
+  border: 1px solid rgba(21, 128, 61, 0.2);
+}
+
+[data-theme="dark"] code {
+  background: rgba(20, 83, 45, 0.8);
+  color: #86efac;
+  border-color: rgba(134, 239, 172, 0.2);
+}
+
+/* 代码块横向滚动优化 - 现代触控体验 */
+@media (min-width: 769px) {
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    /* 优化触控板滚动体验 */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+  }
+
+  /* 代码块内容确保不换行 */
+  pre code {
+    white-space: pre;
+    word-wrap: normal;
+    overflow-wrap: normal;
+  }
+
+  /* 改进滚动条易用性 - 始终显示微妙的提示 */
+  pre::-webkit-scrollbar {
+    height: 8px;
+    background: rgba(240, 253, 244, 0.3);
+    border-radius: 4px;
+  }
+
+  pre::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, rgba(34, 197, 94, 0.3), rgba(16, 185, 129, 0.4));
+    border-radius: 4px;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  pre::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, rgba(34, 197, 94, 0.5), rgba(16, 185, 129, 0.6));
+    border-color: rgba(34, 197, 94, 0.4);
+    transform: scaleY(1.2);
+  }
+
+  pre::-webkit-scrollbar-track {
+    background: rgba(240, 253, 244, 0.2);
+    border-radius: 4px;
+    margin: 0 1rem;
+  }
+
+  /* 添加微妙的视觉提示 */
+  pre {
+    position: relative;
+  }
+
+  /* 默认不显示提示 */
+  pre::before {
+    content: '';
+    opacity: 0;
+  }
+
+  /* 优化滚动提示 - 更明显的视觉指引 */
+  pre.scrollable-code::before {
+    content: '🌿 可向右滑动查看更多';
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    color: #15803d;
+    opacity: 0.8;
+    /* 默认显示，不完全隐藏 */
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, rgba(240, 253, 244, 0.95), rgba(220, 252, 231, 0.9));
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    box-shadow:
+      0 2px 6px rgba(34, 197, 94, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    z-index: 5;
+  }
+
+  /* 鼠标悬停时更加明显 */
+  pre.scrollable-code:hover::before {
+    opacity: 1;
+    transform: translateY(-1px);
+    box-shadow:
+      0 4px 8px rgba(34, 197, 94, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  /* 滚动到末尾时的提示 */
+  pre.scrollable-code.scrolled-end::before {
+    content: '🍃 已到末尾';
+    opacity: 0.6;
+    color: #166534;
+  }
+
+  /* 深色模式提示样式优化 */
+  [data-theme="dark"] pre.scrollable-code::before {
+    color: #86efac;
+    background: linear-gradient(135deg, rgba(20, 83, 45, 0.95), rgba(34, 197, 94, 0.2));
+    border-color: rgba(134, 239, 172, 0.3);
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(134, 239, 172, 0.1);
+  }
+
+  [data-theme="dark"] pre.scrollable-code:hover::before {
+    box-shadow:
+      0 4px 8px rgba(34, 197, 94, 0.2),
+      inset 0 1px 0 rgba(134, 239, 172, 0.15);
+  }
+
+  [data-theme="dark"] pre.scrollable-code.scrolled-end::before {
+    color: #bbf7d0;
+  }
+
+  /* 深色模式滚动条优化 */
+  [data-theme="dark"] pre::-webkit-scrollbar {
+    background: rgba(20, 83, 45, 0.3);
+  }
+
+  [data-theme="dark"] pre::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, rgba(134, 239, 172, 0.3), rgba(34, 197, 94, 0.4));
+    border-color: rgba(134, 239, 172, 0.2);
+  }
+
+  [data-theme="dark"] pre::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, rgba(134, 239, 172, 0.5), rgba(34, 197, 94, 0.6));
+    border-color: rgba(134, 239, 172, 0.4);
+  }
+
+  [data-theme="dark"] pre::-webkit-scrollbar-track {
+    background: rgba(20, 83, 45, 0.2);
+  }
+
+  /* 添加平滑的滚动过渡效果 */
+  pre.scrollable-code {
+    scroll-behavior: smooth;
+    transition: box-shadow 0.3s ease;
+  }
+
+  /* 滚动时添加更明显的阴影效果 */
+  pre.scrollable-code:hover {
+    box-shadow:
+      0 12px 40px rgba(34, 197, 94, 0.15),
+      0 4px 16px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* ===============================================
+   代码块横向滚动修复 - 固定宽度 + 支持右滑
+   =============================================== */
+
+/* 代码块固定宽度设计 - 合理宽度 + 横向滚动 */
+pre,
+.highlight {
+  /* 固定合理宽度，不占满全屏 */
+  width: 100% !important;
+  max-width: 900px !important;
+  /* 固定最大宽度为900px */
+  margin: 1.5rem auto !important;
+  /* 居中显示 */
+
+  /* 确保横向滚动 */
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+
+  /* 代码内容样式 */
+  box-sizing: border-box;
+  padding: 1.5rem !important;
+
+  /* 确保不被父容器限制 */
+  position: relative;
+  z-index: 1;
+}
+
+/* 确保代码内容支持横向滚动 */
+pre code {
+  display: block !important;
+  width: max-content !important;
+  /* 内容宽度由代码长度决定 */
+  min-width: 100% !important;
+  white-space: pre !important;
+  /* 不换行 */
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* PC端代码块最大宽度优化 */
+@media (min-width: 769px) {
+  pre {
+    max-width: 1000px !important;
+    /* PC端稍微宽一些 */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* iOS 滚动优化 */
+    overscroll-behavior-x: contain;
+    /* 防止过度滚动影响页面 */
+  }
+
+  /* 深色模式滚动条样式 */
+  [data-theme="dark"] pre::-webkit-scrollbar {
+    background: rgba(20, 83, 45, 0.3);
+  }
+
+  [data-theme="dark"] pre::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, rgba(134, 239, 172, 0.3), rgba(34, 197, 94, 0.4));
+    border-color: rgba(134, 239, 172, 0.2);
+  }
+
+  [data-theme="dark"] pre::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, rgba(134, 239, 172, 0.5), rgba(34, 197, 94, 0.6));
+    border-color: rgba(134, 239, 172, 0.4);
+  }
+
+  [data-theme="dark"] pre::-webkit-scrollbar-track {
+    background: rgba(20, 83, 45, 0.2);
+  }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+
+  pre,
+  .highlight {
+    max-width: calc(100vw - 2rem) !important;
+    /* 移动端留出边距 */
+    margin: 1.5rem 1rem !important;
+  }
+}
+
+/* 代码块容器优化 */
+.highlight {
+  margin: 1.5rem auto;
+  /* 居中显示 */
+  border-radius: 12px;
+  overflow: visible;
+  /* 允许内容溢出，让pre标签处理滚动 */
+  width: 100%;
+  max-width: 900px;
+  /* 与pre标签保持一致的最大宽度 */
+}
+
+/* 复制按钮样式 - 自然绿叶主题设计 */
+.highlight .copy-button,
+pre .copy-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  /* 使用自然的叶子绿色渐变 */
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.2));
+  border: 1.5px solid rgba(34, 197, 94, 0.25);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #15803d;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  letter-spacing: 0.5px;
+  /* 添加微妙的阴影 */
+  box-shadow:
+    0 2px 8px rgba(34, 197, 94, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  /* 添加叶子图标 */
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  user-select: none;
+  z-index: 10;
+}
+
+/* 添加叶子图标 */
+.highlight .copy-button::before,
+pre .copy-button::before {
+  content: '🌿';
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.highlight .copy-button:hover,
+pre .copy-button:hover {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(16, 185, 129, 0.3));
+  border-color: rgba(34, 197, 94, 0.4);
+  transform: translateY(-1px) scale(1.02);
+  color: #166534;
+  box-shadow:
+    0 4px 12px rgba(34, 197, 94, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.highlight .copy-button:active,
+pre .copy-button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow:
+    0 1px 4px rgba(34, 197, 94, 0.2),
+    inset 0 2px 4px rgba(34, 197, 94, 0.1);
+}
+
+/* 复制成功状态 */
+.highlight .copy-button.copied,
+pre .copy-button.copied {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(16, 185, 129, 0.4));
+  color: #065f46;
+  border-color: rgba(34, 197, 94, 0.5);
+}
+
+.highlight .copy-button.copied::before,
+pre .copy-button.copied::before {
+  content: '✓';
+  color: #065f46;
+}
+
+/* 深色模式优化 */
+[data-theme="dark"] .highlight .copy-button,
+[data-theme="dark"] pre .copy-button {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.25));
+  border-color: rgba(134, 239, 172, 0.3);
+  color: #86efac;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(134, 239, 172, 0.1);
+}
+
+[data-theme="dark"] .highlight .copy-button:hover,
+[data-theme="dark"] pre .copy-button:hover {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(16, 185, 129, 0.35));
+  border-color: rgba(134, 239, 172, 0.4);
+  color: #bbf7d0;
+  box-shadow:
+    0 4px 12px rgba(34, 197, 94, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(134, 239, 172, 0.2);
+}
+
+[data-theme="dark"] .highlight .copy-button.copied,
+[data-theme="dark"] pre .copy-button.copied {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.4), rgba(16, 185, 129, 0.5));
+  color: #d1fae5;
+  border-color: rgba(134, 239, 172, 0.5);
+}
+
+/* 目录样式 */
+.dream-toc {
+  background: rgba(248, 250, 252, 0.8);
+  border-radius: 10px;
+  padding: 1.5rem;
+  border-left: 4px solid #10b981;
+}
+
+/* 标签样式美化 - 绿色主题 */
+.dream-tag {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.dream-tag:hover {
+  transform: scale(1.05);
+  color: white;
+  text-decoration: none;
+}
+
+/* 分类样式美化 - 护眼绿色主题 */
+.dream-category {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  color: #065f46;
+  border-radius: 15px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .dream-post-summary-card {
+    margin-bottom: 1rem;
+  }
+
+  .dream-header-title {
+    font-size: 1.8rem;
+  }
+
+  /* 移动端单列布局 */
+  .dream-posts-container,
+  .dream-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* 移动端摘要行数减少 */
+  .dream-post-summary-excerpt {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    max-height: 3.2em;
+  }
+}
+
+/* 深色模式适配 */
+[data-theme="dark"] .dream-nav {
+  background: rgba(17, 24, 39, 0.95);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .dream-post-summary-card {
+  /* 默认状态：透明的毛玻璃效果 */
+  background: rgba(31, 41, 55, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .dream-post-summary-card:hover {
+  /* 悬停状态：不透明，内容清晰可读 */
+  background: rgba(31, 41, 55, 0.98) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-theme="dark"] .dream-toc {
+  background: rgba(31, 41, 55, 0.8);
+  border-left-color: #059669;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+}
+
+/* 底部样式优化 */
+.dream-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(248, 250, 252, 0.8);
+}
+
+[data-theme="dark"] .dream-footer {
+  border-top-color: rgba(255, 255, 255, 0.1);
+  background: rgba(17, 24, 39, 0.8);
+}
+
+/* 文章内容样式优化 */
+.dream-single-post-content {
+  line-height: 1.8;
+}
+
+.dream-single-post-content h2,
+.dream-single-post-content h3 {
+  border-left: 4px solid #10b981;
+  padding-left: 1rem;
+  margin-top: 2rem;
+}
+
+/* 首页布局优化 */
+.dream-masonry-container {
+  gap: 1.5rem;
+}
+
+/* 首页英雄区域毛玻璃效果 - 默认更透明，悬停变不透明 */
+.dream-home-hero {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  box-shadow:
+    0 8px 32px rgba(31, 38, 135, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.dream-home-hero:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 12px 40px rgba(31, 38, 135, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* 深色模式的英雄区域 */
+[data-theme="dark"] .dream-home-hero {
+  background: rgba(31, 41, 55, 0.65) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .dream-home-hero:hover {
+  background: rgba(31, 41, 55, 0.9) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* 文章列表网格布局 - 确保一致高度 */
+.dream-posts-container,
+.dream-main-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+  /* 顶部对齐 */
+}
+
+/* 卡片内容区域 */
+.dream-post-summary-card .dream-post-summary-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 卡片底部信息固定位置 */
+.dream-post-summary-meta,
+.dream-post-meta {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* 文章摘要优化 */
+.dream-post-summary-excerpt {
+  color: #6b7280;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* 限制显示3行 */
+  line-clamp: 3;
+  /* 标准属性 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4.8em;
+  /* 约3行的高度 */
+  margin-bottom: 1rem;
+}
+
+/* 文章标题高度限制 */
+.dream-post-summary-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* 标题最多显示2行 */
+  line-clamp: 2;
+  /* 标准属性 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  max-height: 2.8em;
+  /* 约2行的高度 */
+  margin-bottom: 0.8rem;
+}
+
+/* 文章内容截断 */
+.dream-post-content,
+.dream-post-summary-content,
+.dream-single-post-content p {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  /* 内容最多显示4行 */
+  line-clamp: 4;
+  /* 标准属性 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 6.4em;
+  /* 约4行的高度 */
+  line-height: 1.6;
+}
+
+/* 首页专用的文章内容截断 - 更严格的限制 */
+.dream-home .dream-post-summary-card .dream-post-content,
+.dream-home .dream-post-summary-content,
+.dream-list .dream-post-summary-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* 首页只显示3行 */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4.8em;
+  line-height: 1.6;
+  word-break: break-word;
+  /* 处理长单词 */
+}
+
+/* 防止图片、代码块、表格等在摘要中显示 */
+.dream-post-summary-content img,
+.dream-post-summary-content pre,
+.dream-post-summary-content code,
+.dream-post-summary-content blockquote,
+.dream-post-summary-content table,
+.dream-post-summary-content iframe,
+.dream-post-summary-content video,
+.dream-post-summary-content audio,
+.dream-post-summary-content svg,
+.dream-post-summary-excerpt img,
+.dream-post-summary-excerpt pre,
+.dream-post-summary-excerpt code,
+.dream-post-summary-excerpt blockquote,
+.dream-post-summary-excerpt table {
+  display: none !important;
+}
+
+/* 针对可能的代码行内元素 */
+.dream-post-summary-content code[class*="language-"],
+.dream-post-summary-content .highlight,
+.dream-post-summary-content .highlighter-rouge,
+.dream-post-summary-excerpt code[class*="language-"],
+.dream-post-summary-excerpt .highlight,
+.dream-post-summary-excerpt .highlighter-rouge {
+  display: none !important;
+}
+
+/* 封面图片显示优化 */
+.card figure,
+.dream-post-summary-card figure {
+  margin: 0;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  flex-shrink: 0;
+  /* 防止图片被压缩 */
+}
+
+.card figure img,
+.dream-post-summary-card figure img {
+  width: 100%;
+  height: 200px;
+  /* 固定封面图片高度 */
+  object-fit: cover;
+  /* 保持比例裁剪 */
+  display: block !important;
+  transition: transform 0.3s ease;
+}
+
+.card:hover figure img,
+.dream-post-summary-card:hover figure img {
+  transform: scale(1.05);
+  /* hover时轻微放大 */
+}
+
+/* 卡片内容区域 */
+.card .card-body,
+.dream-post-summary-card .card-body {
+  flex: 1;
+  /* 占用剩余空间 */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dream-post-summary-card .card-body pre,
+.dream-post-summary-card .card-body code,
+.dream-post-summary-card .card-body .highlight,
+.dream-post-summary-card .card-body blockquote,
+.dream-post-summary-card .card-body table,
+.dream-post-summary-card .card-body iframe,
+.dream-post-summary-card .card-body video {
+  display: none !important;
+  /* 隐藏内容区域的媒体元素 */
+}
+
+/* 通用文章摘要长度限制 */
+.dream-post-summary,
+.dream-post-excerpt,
+article .dream-post-content,
+.dream-card-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4.8em;
+  line-height: 1.6;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* 专门针对Dream主题的文章摘要区域 */
+.dream-post-summary-card p,
+.dream-post-summary-excerpt p,
+.dream-post-summary-content>*:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.2em;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+/* 强制文本截断，处理所有类型内容 */
+.dream-post-summary-card .dream-post-summary-content>div,
+.dream-post-summary-card .dream-post-summary-excerpt>div {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.2em;
+  line-height: 1.6;
+}
+
+/* 确保代码片段不破坏布局 */
+.dream-post-summary-card *:not(img):not(pre):not(code):not(table) {
+  max-height: 3.2em;
+  overflow: hidden;
+}
+
+/* 强制限制所有摘要相关的div */
+div[class*="summary"],
+div[class*="excerpt"],
+div[class*="content"] p:not(.dream-single-post-content p) {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-height: 4.8em !important;
+  line-height: 1.6 !important;
+}
+
+/* JavaScript截断后的内容样式 */
+.dream-truncated-content {
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.dream-truncated-content p {
+  margin: 0;
+  display: block !important;
+  -webkit-line-clamp: none !important;
+  line-clamp: none !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* 针对Dream主题的卡片内容优化 */
+.card-body>p:not(.date):not([class]) {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-height: 4.8em !important;
+  line-height: 1.6 !important;
+  margin-bottom: 1rem !important;
+  color: #6b7280;
+}
+
+/* 针对具体的摘要内容 */
+.card-body>div:not([class]),
+.card-body>*:not(.card-title):not(.date):not(.card-actions):not([class*="author"]) {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-height: 4.8em !important;
+  line-height: 1.6 !important;
+  word-break: break-word !important;
+}
+
+/* 搜索页面优化 */
+.dream-search-container {
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.dream-search-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 30px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: rgba(248, 250, 252, 0.8);
+}
+
+.dream-search-input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  background: white;
+}
+
+/* 文章标题美化 - 绿色主题 */
+.dream-single-title {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 时间显示优化 */
+.dream-post-meta {
+  color: #6b7280;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dream-post-meta svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+/* 列表页面优化 */
+.dream-posts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* 分页导航美化 */
+.dream-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 3rem 0;
+}
+
+.dream-pagination a,
+.dream-pagination span {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.dream-pagination a {
+  background: #f8fafc;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+.dream-pagination a:hover {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.dream-pagination .current {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+/* 加载动画 - 绿色主题 */
+.dream-loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(16, 185, 129, 0.3);
+  border-radius: 50%;
+  border-top-color: #10b981;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 提示框样式 */
+.dream-alert {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border-left: 4px solid;
+}
+
+.dream-alert-info {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  color: #1e40af;
+}
+
+.dream-alert-success {
+  background: #f0fdf4;
+  border-color: #10b981;
+  color: #065f46;
+}
+
+.dream-alert-warning {
+  background: #fef7ed;
+  border-color: #d97706;
+  color: #7c2d12;
+}
+
+.dream-alert-error {
+  background: #fef2f2;
+  border-color: #ef4444;
+  color: #b91c1c;
+}
+
+/* 工具提示 */
+.dream-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.dream-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #374151;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.dream-tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* 图片画廊优化 */
+.dream-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.dream-gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.dream-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* 代码行号优化 */
+.highlight .lineno {
+  color: #6b7280;
+  user-select: none;
+  margin-right: 1rem;
+  padding-right: 0.5rem;
+  border-right: 1px solid #e5e7eb;
+}
+
+/* 表格优化 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+thead {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+[data-theme="dark"] table {
+  background: #1f2937;
+}
+
+[data-theme="dark"] tbody tr:hover {
+  background: #374151;
+}
+
+/* 性能优化 */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 毛玻璃效果增强 - 添加微妙的动画 */
+@keyframes glassmorphism-glow {
+
+  0%,
+  100% {
+    box-shadow:
+      0 8px 32px rgba(31, 38, 135, 0.15),
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  50% {
+    box-shadow:
+      0 10px 35px rgba(31, 38, 135, 0.18),
+      0 3px 10px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* 为所有毛玻璃元素添加微妙呼吸动画 */
+.dream-post-summary-card,
+.dream-home-hero {
+  animation: glassmorphism-glow 6s ease-in-out infinite;
+}
+
+/* 悬停时暂停动画，使用静态效果 */
+.dream-post-summary-card:hover,
+.dream-home-hero:hover {
+  animation-play-state: paused;
+}
+
+/* 强制处理摘要中的所有内容 - 最终解决方案 */
+.dream-post-summary-card .dream-post-summary-content,
+.dream-post-summary-card .dream-post-summary-excerpt {
+  max-height: 200px;
+  /* 严格限制内容高度 */
+  overflow: hidden;
+  position: relative;
+}
+
+/* 渐变遮罩效果，让截断更自然 */
+.dream-post-summary-card .dream-post-summary-content::after,
+.dream-post-summary-card .dream-post-summary-excerpt::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(transparent, white);
+  pointer-events: none;
+}
+
+[data-theme="dark"] .dream-post-summary-card .dream-post-summary-content::after,
+[data-theme="dark"] .dream-post-summary-card .dream-post-summary-excerpt::after {
+  background: linear-gradient(transparent, #1f2937);
+}
+
+/* 防止任何子元素破坏布局 */
+.dream-post-summary-card * {
+  max-width: 100% !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* 特殊处理可能出现的大尺寸元素 */
+.dream-post-summary-card pre,
+.dream-post-summary-card code,
+.dream-post-summary-card img,
+.dream-post-summary-card table,
+.dream-post-summary-card iframe,
+.dream-post-summary-card video {
+  display: none !important;
+}
+
+/* 毛玻璃效果降级处理 - 不支持backdrop-filter的浏览器 */
+@supports not (backdrop-filter: blur(10px)) {
+  .dream-post-summary-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  [data-theme="dark"] .dream-post-summary-card {
+    background: rgba(31, 41, 55, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dream-home-hero {
+    background: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  [data-theme="dark"] .dream-home-hero {
+    background: rgba(31, 41, 55, 0.9) !important;
+  }
+}
+
+/* 打印样式 */
+@media print {
+
+  .dream-nav,
+  .dream-footer,
+  .back-to-top,
+  .reading-progress {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+
+  .dream-post-summary-card {
+    break-inside: avoid;
+  }
+}
+
+/* ==============================================
+   最终毛玻璃效果规则 - 覆盖所有之前的设置
+   ============================================== */
+
+/* 默认状态：透明的毛玻璃效果 */
+.dream-post-summary-card {
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+}
+
+/* 悬停状态：变成不透明 */
+.dream-post-summary-card:hover {
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(3px) !important;
+  -webkit-backdrop-filter: blur(3px) !important;
+}
+
+/* 深色模式版本 */
+[data-theme="dark"] .dream-post-summary-card {
+  background: rgba(31, 41, 55, 0.35) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+}
+
+[data-theme="dark"] .dream-post-summary-card:hover {
+  background: rgba(31, 41, 55, 0.98) !important;
+  backdrop-filter: blur(3px) !important;
+  -webkit-backdrop-filter: blur(3px) !important;
+}

@@ -1,13 +1,17 @@
-baseURL = 'https://googhub.nyc.mn/'
+baseURL = 'https://www.cai094.top/'
 defaultContentLanguage = "zh"
 languageCode = "zh-Hans"
-title = 'AiEDU | Blog'
+title = '你也不是我的救赎'
 theme = 'dream'
 
 enableGitInfo = true
 enableRobotsTXT = true
 
 hasCJKLanguage = true
+
+# 摘要设置 - 限制主页文章显示长度
+summaryLength = 100
+# 也可以使用<!--more-->手动截断
 
 [markup]
 [markup.goldmark.parser]
@@ -36,71 +40,80 @@ lineNos = true
 lineNumbersInTable = true
 tabWidth = 4
 
-# [taxonomies]
-# category = "categories"
-# tag = "tags"
-# series = "series"
+# 启用分类和标签
+[taxonomies]
+category = "categories"
+tag = "tags"
 
 [params]
-# zenMode = true
+# zenMode = true  # 暂时关闭zen模式以展示更多功能
+zenMode = false  # 关闭zen模式以显示完整功能
 
 lightTheme = "emerald"
 darkTheme = "forest"
 
-# backgroundImage = "img/global-background.jpg"
-# backgroundImageDark = ""
+backgroundImage = "img/global-background.jpg"
+backgroundImageDark = "img/global-background.jpg"
 
 images = ["img/global-background.jpg"]
 
-author = "AiEDU"
-description = "Just do it!"
+author = "cai6"
+description = "蔡的小破站 - 记录技术学习与生活感悟，分享编程智慧"
 avatar = "img/personal/avatar.png"
-headerTitle = "AiEDU | BLOG"
-motto = "知识改变命运，AI改变知识。"
+headerTitle = "cai6的技术博客"
+headerBottomText = "「探索技术的无限可能，分享成长的点点滴滴」"
+motto = "智慧源于思考，成长在于实践"
 
-# footerBottomText = ""
+footerBottomText = "© 2024 cai6 | 博客分享技术与生活 | 保持好奇，永远学习 🌱"
 
 rss = true
 
-# utterancesRepo = "88899/hugo-blog"
+# 启用GitHub Issues评论系统
+utterancesRepo = "pengcai6/hugo-blog"
 
-# valine = true
-# LEANCLOUD_APP_ID = ""
-# LEANCLOUD_APP_KEY = ""
+email = "pengcai6@gmail.com"
 
-# waline = true
-# walineServer = ""
-
-email = "aiedu985@gmail.com"
-
-siteStartYear = 2023
+siteStartYear = 2024
 
 favicon = 'img/personal/avatar.png'
 
 # Syntax highlighting
 customSyntaxHighlighting = true
 
-# options
+# Navigation options
 stickyNav = true
 reorderNavItems = ["about", "search", "github", "posts", "categories", "tags", "rss"]
-collapseNavItems = ["posts", "categories", "tags", "rss"]
-# noDefaultSummaryCover = true
+collapseNavItems = ["categories", "tags"]
+
+# Post display options
+noDefaultSummaryCover = false
 showTableOfContents = true
 showSummaryCoverInPost = true
 imageZoomableInPost = true
 showPrevNextPost = true
-# reorderShares = ["x", "facebook", "whatsapp"]
+
+# 启用阅读时间估算
+enableReadingTime = true
+
+# 启用更多功能
+enableMathJax = true
+enableGitInfo = true
+enableSitemap = true
+enableRobotsTXT = true
+
+# Share buttons (可以根据需要调整)
+reorderShares = ["x", "facebook", "whatsapp"]
 
 # https://gohugo.io/templates/embedded/#configure-x-twitter-cards
-[params.social]
-twitter = "dgdghub"
+# [params.social]
+# twitter = "dgdghub"
 
 [params.navItems]
-github = { href = "https://github.com/88899", target = "_blank", icon = "logo-github", title = "GitHub" }
+github = { href = "https://github.com/pengcai6", target = "_blank", icon = "logo-github", title = "GitHub" }
 
 [params.advanced]
 customCSS = ["css/custom.css"]
-# customJS = []
+customJS = ["js/custom.js"]
 
 [params.experimental]
 jsDate = true
@@ -108,6 +121,6 @@ jsDateFormat = "yyyy年MM月dd日"
 # jsDateFormat = "yyyy年MM月dd日，cccc"
 
 # for peht theme
-#[params.Author]
-#name = "AiEDU"
-#avatar = "img/personal/avatar.png"
+# [params.Author]
+# name = "cai6"
+# avatar = "img/personal/avatar.png"
