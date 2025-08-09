@@ -1,84 +1,92 @@
 <!DOCTYPE html>
-<html lang="{{ site.LanguageCode }}"
-  x-data
-  :class="$store.darkMode.class()"
-  :data-theme="$store.darkMode.theme()">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ block "title" . -}} {{ T "home" }} {{- end }} | {{ site.Title }}</title>
+<html lang="{{ site.LanguageCode }}" x-data :class="$store.darkMode.class()" :data-theme="$store.darkMode.theme()">
 
-    {{ partial "head.html" . }}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ block "title" . -}} {{ T "home" }} {{- end }} | {{ site.Title }}</title>
 
-    {{ block "css" . }} {{ end }}
+  <!-- PWA Meta -->
+  {{ partialCached "pwa/assets/meta" . }}
 
-    {{ range site.Params.Advanced.customCSS }}
-    <link rel="stylesheet" href="{{ . | relURL }}" />
-    {{ end }}
+  {{ partial "head.html" . }}
 
-    <!-- 导入 HugoMods encrypt CSS -->
-    {{ partial "encrypt/assets/css" . }}
+  {{ block "css" . }} {{ end }}
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" integrity="sha256-PtHu0lJIiSHfZeNj1nFd6wTX+Squ255SGZ/fc8seCtM=" crossorigin="anonymous"></script>
-  </head>
+  {{ range site.Params.Advanced.customCSS }}
+  <link rel="stylesheet" href="{{ . | relURL }}" />
+  {{ end }}
 
-  <body x-data="{
+  <!-- 导入 HugoMods encrypt CSS -->
+  {{ partial "encrypt/assets/css" . }}
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"
+    integrity="sha256-PtHu0lJIiSHfZeNj1nFd6wTX+Squ255SGZ/fc8seCtM=" crossorigin="anonymous"></script>
+</head>
+
+<body x-data="{
     flip: false,
   }">
-    <!-- If backgroundImage defined -->
-    <div id="dream-global-bg"></div>
+  <!-- If backgroundImage defined -->
+  <div id="dream-global-bg"></div>
 
-    {{ partial "nav.html" . }}
+  {{ partial "nav.html" . }}
 
-    <div class="flip-container" :class="{ 'flip-it': flip }">
-      <div class="flipper">
-        <div class="front">
-          <div class="container">
-            {{ block "main" . }} {{ end }}
+  <div class="flip-container" :class="{ 'flip-it': flip }">
+    <div class="flipper">
+      <div class="front">
+        <div class="container">
+          {{ block "main" . }} {{ end }}
 
-            {{ partial "footer.html" . }}
-          </div>
+          {{ partial "footer.html" . }}
         </div>
-        <div class="back">
-          <div class="container">
-            {{ if site.Params.zenMode }}
-            {{ partial "zen-back.html" . }}
-            {{ else }}
-            {{ partial "back.html" . }}
-            {{ end }}
+      </div>
+      <div class="back">
+        <div class="container">
+          {{ if site.Params.zenMode }}
+          {{ partial "zen-back.html" . }}
+          {{ else }}
+          {{ partial "back.html" . }}
+          {{ end }}
 
-            {{ partial "footer.html" . }}
-          </div>
+          {{ partial "footer.html" . }}
         </div>
       </div>
     </div>
+  </div>
 
-    {{ partial "scripts.html" . }}
-    {{ block "js" . }} {{ end }}
+  {{ partial "scripts.html" . }}
+  {{ block "js" . }} {{ end }}
 
-    {{ if .Store.Get "hasMermaid" }}
-      <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ startOnLoad: true });
-      </script>
-    {{ end }}
+  {{ if .Store.Get "hasMermaid" }}
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+  {{ end }}
 
-    {{ if .Store.Get "hasMathjax" }}
-      {{ partialCached "mathjax.html" . }}
-    {{ end }}
+  {{ if .Store.Get "hasMathjax" }}
+  {{ partialCached "mathjax.html" . }}
+  {{ end }}
 
-    {{ range site.Params.Advanced.customJS }}
-    <script src="{{ . | relURL }}"></script>
-    {{ end }}
+  {{ range site.Params.Advanced.customJS }}
+  <script src="{{ . | relURL }}"></script>
+  {{ end }}
 
-    <!-- 导入 HugoMods encrypt JS -->
-    {{ partial "encrypt/assets/js" . }}
+  <!-- 导入 HugoMods encrypt JS -->
+  {{ partial "encrypt/assets/js" . }}
 
-    {{ if site.Config.Services.GoogleAnalytics.ID }}
-    {{ template "_internal/google_analytics.html" . }}
-    {{ end }}
+  {{ if site.Config.Services.GoogleAnalytics.ID }}
+  {{ template "_internal/google_analytics.html" . }}
+  {{ end }}
 
-    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.esm.js" integrity="sha256-/IFmi82bIhdYWctu0UddSlJqpnzWm7Vh2C4CM32wF/k=" crossorigin="anonymous"></script>
-    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js" integrity="sha256-mr7eJMX3UdptfT7uKI8=" crossorigin="anonymous"></script>
-  </body>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"
+    integrity="sha256-/IFmi82bIhdYWctu0UddSlJqpnzWm7Vh2C4CM32wF/k=" crossorigin="anonymous"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js"
+    integrity="sha256-mr7eJMX3UdptfT7uKI8=" crossorigin="anonymous"></script>
+
+  <!-- PWA Service Worker -->
+  {{ partialCached "pwa/assets/sw" . }}
+</body>
+
 </html>

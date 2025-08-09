@@ -1,0 +1,17 @@
+# 开发环境下的PWA配置
+# 使用 network-first 策略避免缓存问题
+[params.pwa]
+debug = true
+
+[params.pwa.caches]
+[params.pwa.caches.font]
+strategy = "network-first"
+
+[params.pwa.caches.image]
+strategy = "network-first"
+
+[params.pwa.caches.script]
+strategy = "network-first"
+
+[params.pwa.caches.style]
+strategy = "network-first"
