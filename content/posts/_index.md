@@ -1,5 +1,5 @@
 ---
-title: 归档
+title: 文章
 # groupLayout: January 2006
 ---
 

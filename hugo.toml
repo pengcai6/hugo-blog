@@ -1,222 +1,128 @@
 baseURL = 'https://hugo.8888-8888.me/'
-defaultContentLanguage = "zh"
-languageCode = "zh-Hans"
+languageCode = 'zh-Hans'
 title = '你也不是我的救赎'
-theme = 'dream'
+theme = 'PaperMod'
 
-# Hugo模块配置
 [module]
-[[module.imports]]
-path = "github.com/hugomods/encrypt"
+  [[module.imports]]
+    path = "github.com/hugomods/encrypt"
+  [[module.imports]]
+    path = "github.com/hugomods/pwa"
 
-[[module.imports]]
-path = "github.com/hugomods/pwa"
-
-# 分页设置 - 新版Hugo格式
-[pagination]
-pagerSize = 10
-path = "page"
-
-# 输出格式配置 - 添加 PWA 支持
-[outputs]
-home = ["HTML", "RSS", "Offline", "WebAppManifest"]
-
-# 构建设置 - 允许显示未来日期的文章
+enableRobotsTXT = true
+enableGitInfo = true
+hasCJKLanguage = true
+buildDrafts = false
 buildFuture = true
 buildExpired = true
-buildDrafts = false
 
-enableGitInfo = true
-enableRobotsTXT = true
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
 
-hasCJKLanguage = true
-
-# 摘要设置 - 优化首页加载速度
-summaryLength = 80
-# 使用<!--more-->手动截断或自动生成纯文本摘要
-
-[markup]
-[markup.goldmark.parser]
-wrapStandAloneImageWithinParagraph = false
-
-[markup.goldmark.parser.attribute]
-block = true
-
-[markup.goldmark.renderer]
-unsafe = true
-
-# 摘要渲染设置 - 移除图片以提升首页加载速度
-[markup.goldmark.extensions]
-strikethrough = true
-linkify = true
-linkifyProtocol = "https"
-table = true
-taskList = true
-definitionList = true
-footnote = true
-typographer = false
-[markup.goldmark.extensions.passthrough]
-enable = true
-
-[markup.goldmark.extensions.passthrough.delimiters]
-block = [['\[', '\]'], ['$$', '$$']]
-inline = [['\(', '\)'], ['$', '$']]
-
-# 代码高亮
-[markup.highlight]
-noClasses = true
-codeFences = true
-style = 'dracula'
-lineNoStart = 1
-lineNos = true
-lineNumbersInTable = true
-tabWidth = 4
-
-# 启用分类和标签
-[taxonomies]
-category = "categories"
-tag = "tags"
-
-# 关闭Disqus评论系统
-# [services]
-# [services.disqus]
-# shortname = "cai6-blog"
+[pagination]
+  pagerSize = 10
 
 [params]
-# zenMode = true  # 暂时关闭zen模式以展示更多功能
-zenMode = false  # 关闭zen模式以显示完整功能
+  defaultTheme = "auto"
+  # env = "production"
+  title = "你也不是我的救赎"
+  description = "蔡的小破站 - 记录技术学习与生活感悟，分享编程智慧"
+  keywords = ["Blog", "Portfolio", "PaperMod"]
+  author = "cai6"
+  # images = ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat = "2006-01-02"
+  hideFooter = false
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  comments = true
+  hidemeta = false
+  hideSummary = false
+  showtoc = true
+  tocopen = false
 
-lightTheme = "emerald"
-darkTheme = "dracula"
+  [params.assets]
+    favicon = "img/personal/avatar.png"
+    favicon16x16 = "img/personal/avatar.png"
+    favicon32x32 = "img/personal/avatar.png"
+    apple_touch_icon = "img/personal/avatar.png"
+    safari_pinned_tab = "img/personal/avatar.png"
 
-backgroundImage = "img/global-background.jpg"
-backgroundImageDark = "img/global-background-dark.png"
+  [params.label]
+    text = "你也不是我的救赎"
+    icon = "img/personal/avatar.png"
+    iconHeight = 35
 
-images = ["img/global-background.jpg"]
+  [params.profileMode]
+    enabled = false
+    title = "你也不是我的救赎"
+    subtitle = "蔡的小破站 - 记录技术学习与生活感悟，分享编程智慧"
+    imageUrl = "img/personal/avatar.png"
+    imageWidth = 120
+    imageHeight = 120
+    imageTitle = "cai6"
+    buttons = [
+      { name = "Posts", url = "posts" },
+      { name = "Tags", url = "tags" },
+      { name = "Github", url = "https://github.com/pengcai6" }
+    ]
 
-author = "cai6"
-description = "蔡的小破站 - 记录技术学习与生活感悟，分享编程智慧"
-avatar = "img/personal/avatar.png"
-headerTitle = "cai6的技术博客"
-headerBottomText = "「探索技术的无限可能，分享成长的点点滴滴」"
-motto = "智慧源于思考，成长在于实践"
+  [params.socialIcons]
+    Github = "https://github.com/pengcai6"
 
-footerBottomText = "© 2024 cai6 | 博客分享技术与生活 | 保持好奇，永远学习 🌱"
+  [params.encrypt]
+    password = "cai6blog2025"
+    storage = "session"
 
-rss = true
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "首页"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    identifier = "posts"
+    name = "文章"
+    url = "/posts"
+    weight = 20
+  [[menu.main]]
+    identifier = "categories"
+    name = "分类"
+    url = "/categories"
+    weight = 30
+  [[menu.main]]
+    identifier = "tags"
+    name = "标签"
+    url = "/tags"
+    weight = 40
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about"
+    weight = 50
+  [[menu.main]]
+    identifier = "search"
+    name = "搜索"
+    url = "/search"
+    weight = 60
+  [[menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "/archives"
+    weight = 70
 
-# 启用GitHub Issues评论系统
-# utterancesRepo = "pengcai6/hugo-blog"  # 如果使用Disqus可以注释掉这行
+[services]
+  [services.googleAnalytics]
+    ID = 'G-N5X29L48P4'
 
-# Twikoo评论系统配置
-[params.twikoo]
-enabled = true
-envID = "https://twikoo-pen.netlify.app/.netlify/functions/twikoo"  # 请替换为你的Twikoo环境ID
-region = "ap-shanghai"  # 腾讯云区域，如ap-shanghai, ap-guangzhou等
-lang = "zh-CN"  # 语言设置
-
-# 内容加密配置
-[params.encrypt]
-password = "cai6blog2025"  # 默认密码，可以自定义
-storage = "session"  # session 或 local
-
-# PWA配置
-[params.pwa]
-debug = false
-icon_path = "img/personal/avatar.png"
-icon_sizes = [48, 64, 128, 144, 256, 512]
-offline_image = "img/personal/avatar.png"
-
-# PWA缓存策略配置
-[params.pwa.caches]
-[params.pwa.caches.font]
-max_age = 2592000
-origins = []
-strategy = "cache-first"
-
-[params.pwa.caches.image]
-max_age = 2592000
-origins = []
-strategy = "cache-first"
-
-[params.pwa.caches.script]
-max_age = 2592000
-origins = []
-strategy = "cache-first"
-
-[params.pwa.caches.style]
-max_age = 2592000
-origins = []
-strategy = "cache-first"
-
-# PWA manifest配置
-[params.pwa.manifest]
-background_color = "#1a1a1a"
-theme_color = "#4f46e5"
-name = "cai6的技术博客"
-short_name = "cai6博客"
-description = "蔡的小破站 - 记录技术学习与生活感悟，分享编程智慧"
-
-# 自定义预缓存文件
-[[params.pwa.precaches]]
-url = "/"
-
-[[params.pwa.precaches]]
-url = "/posts/"
-
-[[params.pwa.precaches]]
-url = "/about/"
-
-email = "pengcai6@gmail.com"
-
-siteStartYear = 2024
-
-favicon = 'img/personal/avatar.png'
-
-# Syntax highlighting
-customSyntaxHighlighting = true
-
-# Navigation options
-stickyNav = true
-reorderNavItems = ["about", "search", "github", "posts", "categories", "tags", "rss"]
-collapseNavItems = ["categories", "tags"]
-
-# Post display options
-noDefaultSummaryCover = false
-showTableOfContents = true
-showSummaryCoverInPost = true
-imageZoomableInPost = true
-showPrevNextPost = true
-
-# 启用阅读时间估算
-enableReadingTime = true
-
-# 启用更多功能
-enableMathJax = true
-enableGitInfo = true
-enableSitemap = true
-enableRobotsTXT = true
-
-# Share buttons (可以根据需要调整)
-reorderShares = ["x", "facebook", "whatsapp"]
-
-# https://gohugo.io/templates/embedded/#configure-x-twitter-cards
-# [params.social]
-# twitter = "dgdghub"
-
-[params.navItems]
-github = { href = "https://github.com/pengcai6", target = "_blank", icon = "logo-github", title = "GitHub" }
-
-[params.advanced]
-customCSS = ["css/custom.css"]
-customJS = ["js/custom.js"]
-
-[params.experimental]
-jsDate = true
-jsDateFormat = "yyyy年MM月dd日"
-# jsDateFormat = "yyyy年MM月dd日，cccc"
-
-# for peht theme
-# [params.Author]
-# name = "cai6"
-# avatar = "img/personal/avatar.png"
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false

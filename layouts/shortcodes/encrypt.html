@@ -1,0 +1,94 @@
+{{- $password := .Get 0 -}}
+<div class="encrypt-wrapper" id="encrypt-{{ .Ordinal }}">
+    <div class="encrypt-form">
+        <p>此内容受密码保护，请输入密码访问。</p>
+        <div class="encrypt-input-group">
+            <input type="password" class="encrypt-password" placeholder="请输入密码" onkeyup="if(event.keyCode===13){decryptContent('{{ .Ordinal }}', '{{ $password }}')}"/>
+            <button class="encrypt-submit" onclick="decryptContent('{{ .Ordinal }}', '{{ $password }}')">解锁</button>
+        </div>
+        <div class="encrypt-error" style="display:none; color: #ef4444; margin-top: 10px; font-size: 14px;">密码错误，请重试</div>
+    </div>
+    <div class="encrypt-content" style="display:none;">
+        {{ .Inner | markdownify }}
+    </div>
+</div>
+
+<script>
+    function decryptContent(id, correctPassword) {
+        const wrapper = document.getElementById('encrypt-' + id);
+        const input = wrapper.querySelector('.encrypt-password');
+        const error = wrapper.querySelector('.encrypt-error');
+        const content = wrapper.querySelector('.encrypt-content');
+        const form = wrapper.querySelector('.encrypt-form');
+
+        if (input.value === correctPassword) {
+            content.style.display = 'block';
+            form.style.display = 'none';
+            // Optional: Save state to sessionStorage
+            sessionStorage.setItem('encrypt-' + id, 'unlocked');
+        } else {
+            error.style.display = 'block';
+            input.value = '';
+            input.focus();
+        }
+    }
+
+    // Check if already unlocked
+    (function() {
+        const id = '{{ .Ordinal }}';
+        if (sessionStorage.getItem('encrypt-' + id) === 'unlocked') {
+            document.getElementById('encrypt-' + id).querySelector('.encrypt-content').style.display = 'block';
+            document.getElementById('encrypt-' + id).querySelector('.encrypt-form').style.display = 'none';
+        }
+    })();
+</script>
+
+<style>
+    .encrypt-wrapper {
+        background: var(--code-bg);
+        padding: 24px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        margin: 24px 0;
+        text-align: center;
+    }
+    .encrypt-form p {
+        margin-bottom: 16px;
+        color: var(--secondary);
+    }
+    .encrypt-input-group {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .encrypt-password {
+        padding: 10px 16px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--theme);
+        color: var(--primary);
+        flex: 1;
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+    .encrypt-password:focus {
+        border-color: var(--secondary);
+    }
+    .encrypt-submit {
+        padding: 10px 24px;
+        background: var(--primary);
+        color: var(--theme);
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        transition: opacity 0.3s;
+    }
+    .encrypt-submit:hover {
+        opacity: 0.9;
+    }
+</style>

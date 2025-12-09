@@ -1,17 +1,17 @@
 {
- "compilerOptions": {
-  "baseUrl": ".",
-  "paths": {
-   "*": [
-    "../../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/!google!chrome/workbox@v7.3.0+incompatible/packages/workbox-cacheable-response/src/*",
-    "../../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/!google!chrome/workbox@v7.3.0+incompatible/packages/workbox-core/src/*",
-    "../../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/!google!chrome/workbox@v7.3.0+incompatible/packages/workbox-expiration/src/*",
-    "../../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/!google!chrome/workbox@v7.3.0+incompatible/packages/workbox-routing/src/*",
-    "../../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/!google!chrome/workbox@v7.3.0+incompatible/packages/workbox-strategies/src/*",
-    "../../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/hugomods/encrypt@v0.4.0/assets/*",
-    "../../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/hugomods/snackbar@v0.1.2/assets/*",
-    "../../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/jakearchibald/idb@v7.1.1+incompatible/src/*"
-   ]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/!google!chrome/workbox@v7.3.0+incompatible/packages/workbox-cacheable-response/src/*",
+        "../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/!google!chrome/workbox@v7.3.0+incompatible/packages/workbox-core/src/*",
+        "../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/!google!chrome/workbox@v7.3.0+incompatible/packages/workbox-expiration/src/*",
+        "../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/!google!chrome/workbox@v7.3.0+incompatible/packages/workbox-routing/src/*",
+        "../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/!google!chrome/workbox@v7.3.0+incompatible/packages/workbox-strategies/src/*",
+        "../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/hugomods/encrypt@v0.4.0/assets/*",
+        "../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/hugomods/snackbar@v0.1.2/assets/*",
+        "../../../Library/Caches/hugo_cache/modules/filecache/modules/pkg/mod/github.com/jakearchibald/idb@v7.1.1+incompatible/src/*"
+      ]
+    }
   }
- }
 }
