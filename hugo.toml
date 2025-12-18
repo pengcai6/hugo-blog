@@ -50,7 +50,7 @@ buildExpired = true
   # Blowfish 首页布局配置
   [params.homepage]
     layout = "background"
-    homepageImage = "https://api.dujin.org/bing/1920.php" 
+    homepageImage = "img/personal/avatar.png"
     showRecent = true
     showRecentItems = 6
     showMoreLink = true
