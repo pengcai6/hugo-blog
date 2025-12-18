@@ -1,9 +1,18 @@
 baseURL = 'https://hugo.8888-8888.me/'
 languageCode = 'zh-Hans'
 title = '你也不是我的救赎'
-theme = 'PaperMod'
+defaultContentLanguage = 'zh'
 
+[languages]
+  [languages.zh]
+    languageName = '简体中文'
+    contentDir = 'content'
+    weight = 1
+
+# 模块导入：使用 Blowfish 主题
 [module]
+  [[module.imports]]
+    path = "github.com/nunocoracao/blowfish/v2"
   [[module.imports]]
     path = "github.com/hugomods/encrypt"
   [[module.imports]]
@@ -23,62 +32,81 @@ buildExpired = true
   pagerSize = 10
 
 [params]
-  defaultTheme = "auto"
-  # env = "production"
-  title = "你也不是我的救赎"
-  description = "蔡的小破站 - 记录技术学习与生活感悟，分享编程智慧"
-  keywords = ["Blog", "Portfolio", "PaperMod"]
-  author = "cai6"
-  # images = ["<link or path of image for opengraph, twitter-cards>"]
-  DateFormat = "2006-01-02"
-  hideFooter = false
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowWordCount = true
-  UseHugoToc = true
-  disableSpecial1stPost = false
-  disableScrollToTop = false
-  comments = true
-  hidemeta = false
-  hideSummary = false
-  showtoc = true
-  tocopen = false
+  colorScheme = "neon"
+  defaultAppearance = "light"
+  autoSwitchAppearance = true
+  enableSearch = true
+  enableCodeCopy = true
 
-  [params.assets]
-    favicon = "img/personal/avatar.png"
-    favicon16x16 = "img/personal/avatar.png"
-    favicon32x32 = "img/personal/avatar.png"
-    apple_touch_icon = "img/personal/avatar.png"
-    safari_pinned_tab = "img/personal/avatar.png"
+  # Firebase 配置
+  [params.firebase]
+    apiKey = "AIzaSyB8iXuLPpZhyR2el6-nu_fT5USCshK6CzY"
+    authDomain = "hugo1-7c608.firebaseapp.com"
+    projectId = "hugo1-7c608"
+    storageBucket = "hugo1-7c608.firebasestorage.app"
+    messagingSenderId = "98635676046"
+    appId = "1:98635676046:web:c1f5a82cb25f24eb5d4cdf"
 
-  [params.label]
-    text = "你也不是我的救赎"
-    icon = "img/personal/avatar.png"
-    iconHeight = 35
+  # Blowfish 首页布局配置
+  [params.homepage]
+    layout = "background"
+    homepageImage = "https://api.dujin.org/bing/1920.php" 
+    showRecent = true
+    showRecentItems = 6
+    showMoreLink = true
+    showMoreLinkDest = "/posts"
+    cardView = true
+    cardViewScreenWidth = false
+    layoutBackgroundBlur = true
 
-  [params.profileMode]
-    enabled = false
-    title = "你也不是我的救赎"
-    subtitle = "蔡的小破站 - 记录技术学习与生活感悟，分享编程智慧"
-    imageUrl = "img/personal/avatar.png"
-    imageWidth = 120
-    imageHeight = 120
-    imageTitle = "cai6"
-    buttons = [
-      { name = "Posts", url = "posts" },
-      { name = "Tags", url = "tags" },
-      { name = "Github", url = "https://github.com/pengcai6" }
+  # 作者信息
+  [params.author]
+    name = "cai6"
+    image = "img/personal/avatar.png"
+    headline = "蔡的小破站 - 记录技术学习与生活感悟，分享编程智慧"
+    description = "记录技术学习与生活感悟，分享编程智慧"
+    links = [
+      { icon = "github", href = "https://github.com/pengcai6" }
     ]
 
-  [params.socialIcons]
-    Github = "https://github.com/pengcai6"
+  [params.header]
+    layout = "fixed"
 
-  [params.encrypt]
-    password = "cai6blog2025"
-    storage = "session"
+  [params.footer]
+    showMenu = true
+    showCopyright = true
+    showThemeAttribution = true
+    showAppearanceSwitcher = true
+    showScrollToTop = true
+
+  [params.article]
+    showDate = true
+    showViews = true
+    showLikes = true
+    showAuthor = true
+    showHero = true
+    heroStyle = "background"
+    layoutBackgroundBlur = true
+    layoutBackgroundHeaderSpace = true
+    showBreadcrumbs = false
+    showDraftLabel = true
+    showHeadingAnchors = true
+    showPagination = true
+    showReadingTime = true
+    showTableOfContents = true
+    showRelatedContent = true
+    relatedContentLimit = 3
+    showWordCount = true
+
+  [params.list]
+    showHero = true
+    heroStyle = "background"
+    layoutBackgroundBlur = true
+    layoutBackgroundHeaderSpace = true
+    showBreadcrumbs = false
+    showSummary = false
+    showCards = true
+    cardView = true
 
 [menu]
   [[menu.main]]
@@ -86,43 +114,40 @@ buildExpired = true
     name = "首页"
     url = "/"
     weight = 10
+
   [[menu.main]]
     identifier = "posts"
     name = "文章"
-    url = "/posts"
+    url = "/posts/"
     weight = 20
+
   [[menu.main]]
     identifier = "categories"
     name = "分类"
-    url = "/categories"
+    url = "/categories/"
     weight = 30
+
   [[menu.main]]
     identifier = "tags"
     name = "标签"
-    url = "/tags"
+    url = "/tags/"
     weight = 40
+
   [[menu.main]]
     identifier = "about"
     name = "关于"
-    url = "/about"
+    url = "/about/"
     weight = 50
-  [[menu.main]]
-    identifier = "search"
-    name = "搜索"
-    url = "/search"
-    weight = 60
-  [[menu.main]]
-    identifier = "archives"
-    name = "归档"
-    url = "/archives"
-    weight = 70
 
-[services]
-  [services.googleAnalytics]
-    ID = 'G-N5X29L48P4'
+
+hasCJKLanguage = true
+summaryLength = 140
 
 [markup]
-  [markup.goldmark.renderer]
-    unsafe = true
   [markup.highlight]
     noClasses = false
+    style = "dracula"
+
+[minify]
+  disableXML = true
+  minifyOutput = true
