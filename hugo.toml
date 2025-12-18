@@ -36,7 +36,7 @@ buildExpired = true
   defaultAppearance = "light"
   autoSwitchAppearance = true
   enableSearch = true
-  enableCodeCopy = true
+  nableCodeCopy = true
 
   # Firebase 配置
   [params.firebase]
@@ -107,6 +107,11 @@ buildExpired = true
     showSummary = false
     showCards = true
     cardView = true
+
+  # 加密模块配置
+  [params.encrypt]
+    password = "123456"
+    storage = "session"
 
 [menu]
   [[menu.main]]
