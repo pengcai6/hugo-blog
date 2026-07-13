@@ -2,22 +2,34 @@
 
 set -euo pipefail
 
-if rg -q '\{\{% encrypt' content; then
+has_pattern() {
+  local pattern=$1
+  shift
+  grep -R -E -q -- "$pattern" "$@"
+}
+
+has_literal() {
+  local text=$1
+  shift
+  grep -R -F -q -- "$text" "$@"
+}
+
+if has_pattern '\{\{% encrypt' content; then
   echo "protected content must not be committed to the public site" >&2
   exit 1
 fi
 
-if rg -q 'hugomods/(encrypt|pwa)|GoogleChrome/workbox|encrypt/assets|params\.encrypt' \
+if has_pattern 'hugomods/(encrypt|pwa)|GoogleChrome/workbox|encrypt/assets|params\.encrypt' \
   hugo.toml .github layouts; then
   echo "unused encryption and offline modules must be removed" >&2
   exit 1
 fi
 
 site_url='https://hugo.1338888.xyz/hugo-blog/'
-if ! rg -Fq "baseURL = '$site_url'" hugo.toml ||
-  ! rg -Fq -- "--baseURL \"$site_url\"" .github/workflows/hugo.yml ||
+if ! has_literal "baseURL = '$site_url'" hugo.toml ||
+  ! has_literal "--baseURL \"$site_url\"" .github/workflows/hugo.yml ||
   [[ -e static/CNAME ]] ||
-  rg -q 'tu\.ltyuanfang\.cn' layouts; then
+  has_pattern 'tu\.ltyuanfang\.cn' layouts; then
   echo "production URLs must use the confirmed site address" >&2
   exit 1
 fi
@@ -27,35 +39,35 @@ if [[ -e themes/PaperMod || -e themes/dream || -e .gitmodules || -e _vendor ]] |
   [[ ! -f assets/css/compiled/main.css ]] ||
   [[ -e themes/blowfish/assets ]] ||
   [[ -e go.mod || -e go.sum ]] ||
-  ! rg -q '^theme = "blowfish"$' hugo.toml; then
+  ! has_pattern '^theme = "blowfish"$' hugo.toml; then
   echo "only the active Blowfish theme may remain" >&2
   exit 1
 fi
 
-if ! rg -q '^/lib/$' .gitignore ||
+if ! has_pattern '^/lib/$' .gitignore ||
   git check-ignore -q assets/lib/zoom/style.css ||
   ! git ls-files --error-unmatch assets/lib/zoom/style.css >/dev/null 2>&1; then
   echo "theme libraries must not be hidden by generic ignore rules" >&2
   exit 1
 fi
 
-if ! rg -q 'HUGO_VERSION: 0\.163\.3' .github/workflows/hugo.yml ||
-  ! rg -q 'scripts/check-site\.sh' .github/workflows/hugo.yml ||
-  ! rg -q -- '--gc' .github/workflows/hugo.yml ||
-  rg -q 'actions/setup-go|go-version-file|\[\[module\.imports\]\]' .github/workflows/hugo.yml hugo.toml ||
-  rg -q '@latest|hugo mod (init|get|tidy)' .github/workflows/hugo.yml ||
-  rg -q 'languageCode|languageName|^[[:space:]]*nableCodeCopy' hugo.toml ||
-  rg -q 'firebase|showViews = true|showLikes = true' hugo.toml ||
-  ! rg -q '^buildFuture = false$' hugo.toml ||
-  ! rg -q '^buildExpired = false$' hugo.toml; then
+if ! has_pattern 'HUGO_VERSION: 0\.163\.3' .github/workflows/hugo.yml ||
+  ! has_pattern 'scripts/check-site\.sh' .github/workflows/hugo.yml ||
+  ! has_literal '--gc' .github/workflows/hugo.yml ||
+  has_pattern 'actions/setup-go|go-version-file|\[\[module\.imports\]\]' .github/workflows/hugo.yml hugo.toml ||
+  has_pattern '@latest|hugo mod (init|get|tidy)' .github/workflows/hugo.yml ||
+  has_pattern 'languageCode|languageName|^[[:space:]]*nableCodeCopy' hugo.toml ||
+  has_pattern 'firebase|showViews = true|showLikes = true' hugo.toml ||
+  ! has_pattern '^buildFuture = false$' hugo.toml ||
+  ! has_pattern '^buildExpired = false$' hugo.toml; then
   echo "production configuration must remain reproducible" >&2
   exit 1
 fi
 
-if rg -q '^(tags|categories): \[null\]' content ||
-  ! rg -q '^slug:' archetypes/default.md ||
-  ! rg -q '^categories:' archetypes/default.md ||
-  ! rg -q '^tags:' archetypes/default.md; then
+if has_pattern '^(tags|categories): \[null\]' content ||
+  ! has_pattern '^slug:' archetypes/default.md ||
+  ! has_pattern '^categories:' archetypes/default.md ||
+  ! has_pattern '^tags:' archetypes/default.md; then
   echo "content metadata must use the current front matter contract" >&2
   exit 1
 fi
@@ -74,8 +86,8 @@ done
 
 avatar='assets/img/personal/avatar.webp'
 if [[ ! -f "$avatar" ]] ||
-  ! file "$avatar" | rg -q 'Web/P image' ||
-  rg -q 'avatar\.png' hugo.toml config; then
+  ! file "$avatar" | grep -E -q 'Web/P image' ||
+  has_pattern 'avatar\.png' hugo.toml config; then
   echo "avatar extension must match its WebP format" >&2
   exit 1
 fi
@@ -93,7 +105,7 @@ if [[ ! -f vercel.json ]] ||
 fi
 
 theme_head='themes/blowfish/layouts/partials/head.html'
-if rg -q 'resources\.Concat "(css|js)/main\.bundle' "$theme_head"; then
+if has_pattern 'resources\.Concat "(css|js)/main\.bundle' "$theme_head"; then
   echo "theme resource loading must remain compatible with Vercel" >&2
   exit 1
 fi
