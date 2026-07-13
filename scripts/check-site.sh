@@ -8,7 +8,7 @@ if rg -q '\{\{% encrypt' content; then
 fi
 
 if rg -q 'hugomods/(encrypt|pwa)|GoogleChrome/workbox|encrypt/assets|params\.encrypt' \
-  hugo.toml go.mod go.sum .github layouts; then
+  hugo.toml .github layouts; then
   echo "unused encryption and offline modules must be removed" >&2
   exit 1
 fi
@@ -23,16 +23,26 @@ if ! rg -Fq "baseURL = '$site_url'" hugo.toml ||
 fi
 
 if [[ -e themes/PaperMod || -e themes/dream || -e .gitmodules || -e _vendor ]] ||
-  ! rg -q '^_vendor/$' .gitignore; then
+  [[ ! -f themes/blowfish/theme.toml ]] ||
+  [[ ! -f assets/css/compiled/main.css ]] ||
+  [[ -e themes/blowfish/assets ]] ||
+  [[ -e go.mod || -e go.sum ]] ||
+  ! rg -q '^theme = "blowfish"$' hugo.toml; then
   echo "only the active Blowfish theme may remain" >&2
   exit 1
 fi
 
-if ! rg -q 'HUGO_VERSION: 0\.164\.0' .github/workflows/hugo.yml ||
-  ! rg -q 'github\.com/nunocoracao/blowfish/v2 v2\.104\.0' go.mod ||
-  ! rg -q 'go-version-file: go\.mod' .github/workflows/hugo.yml ||
+if ! rg -q '^/lib/$' .gitignore ||
+  git check-ignore -q assets/lib/zoom/style.css ||
+  ! git ls-files --error-unmatch assets/lib/zoom/style.css >/dev/null 2>&1; then
+  echo "theme libraries must not be hidden by generic ignore rules" >&2
+  exit 1
+fi
+
+if ! rg -q 'HUGO_VERSION: 0\.163\.3' .github/workflows/hugo.yml ||
   ! rg -q 'scripts/check-site\.sh' .github/workflows/hugo.yml ||
   ! rg -q -- '--gc' .github/workflows/hugo.yml ||
+  rg -q 'actions/setup-go|go-version-file|\[\[module\.imports\]\]' .github/workflows/hugo.yml hugo.toml ||
   rg -q '@latest|hugo mod (init|get|tidy)' .github/workflows/hugo.yml ||
   rg -q 'languageCode|languageName|^[[:space:]]*nableCodeCopy' hugo.toml ||
   rg -q 'firebase|showViews = true|showLikes = true' hugo.toml ||
@@ -67,6 +77,24 @@ if [[ ! -f "$avatar" ]] ||
   ! file "$avatar" | rg -q 'Web/P image' ||
   rg -q 'avatar\.png' hugo.toml config; then
   echo "avatar extension must match its WebP format" >&2
+  exit 1
+fi
+
+if [[ ! -f vercel.json ]] ||
+  ! jq -e '
+    .framework == "hugo" and
+    .build.env.HUGO_VERSION == "0.163.3" and
+    .outputDirectory == "public" and
+    (.buildCommand | contains("--baseURL https://$VERCEL_URL/")) and
+    (.buildCommand | contains("--gc") | not)
+  ' vercel.json >/dev/null; then
+  echo "Vercel must build Hugo into the public directory" >&2
+  exit 1
+fi
+
+theme_head='themes/blowfish/layouts/partials/head.html'
+if rg -q 'resources\.Concat "(css|js)/main\.bundle' "$theme_head"; then
+  echo "theme resource loading must remain compatible with Vercel" >&2
   exit 1
 fi
 
