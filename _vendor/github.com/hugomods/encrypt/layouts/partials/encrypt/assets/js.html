@@ -1,4 +1,0 @@
-{{- if .HasShortcode "encrypt" }}
-  {{- $js := partialCached "encrypt/assets/js-resource" . }}
-  <script src="{{ $js.RelPermalink }}" defer></script>
-{{- end }}
