@@ -76,6 +76,17 @@ if has_pattern '^(tags|categories): \[null\]' content ||
   exit 1
 fi
 
+image_hook='layouts/_default/_markup/render-image.html'
+if [[ ! -f "$image_hook" ]] ||
+  ! has_literal 'strings.TrimPrefix "/" $url.Path' "$image_hook" ||
+  ! has_literal 'strings.TrimPrefix "/" $urlStr | relURL' "$image_hook" ||
+  [[ ! -f 'static/images/posts/动画版小谢/image2.webp' ]] ||
+  [[ -e 'static/images/posts/动画版小谢/image2.png' ]] ||
+  has_literal '/images/posts/动画版小谢/image2.png' content; then
+  echo "static image URLs and extensions must match production output" >&2
+  exit 1
+fi
+
 if ! has_literal 'colorScheme = "one-light"' hugo.toml ||
   ! has_literal 'layout = "studio"' hugo.toml ||
   ! has_literal 'smartTOC = true' hugo.toml ||
