@@ -1,0 +1,61 @@
+{{ $disableImageOptimization := .Site.Params.disableImageOptimization | default false }}
+{{ $authorName := .Site.Params.Author.name | default .Site.Title }}
+
+<div class="home-studio">
+  <section class="home-intro" aria-labelledby="home-title">
+    {{ with .Site.Params.Author.image }}
+      {{ $authorImage := "" }}
+      {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+        {{ $authorImage = resources.GetRemote . }}
+      {{ else }}
+        {{ $authorImage = resources.Get . }}
+      {{ end }}
+      {{ with $authorImage }}
+        {{ $final := . }}
+        {{ if not (or $disableImageOptimization (eq .MediaType.SubType "svg")) }}
+          {{ $final = .Fill "176x176 q90" }}
+        {{ end }}
+        <figure class="home-intro__portrait">
+          <img
+            class="home-intro__avatar nozoom"
+            src="{{ $final.RelPermalink }}"
+            width="88"
+            height="88"
+            decoding="async"
+            fetchpriority="high"
+            alt="{{ $authorName }}">
+        </figure>
+      {{ end }}
+    {{ end }}
+
+    <div class="home-intro__copy">
+      <p class="home-intro__name">{{ $authorName }}</p>
+      <h1 id="home-title">{{ .Site.Title | emojify }}</h1>
+      {{ with .Site.Params.Author.headline }}
+        <p class="home-intro__lede">{{ . | markdownify }}</p>
+      {{ end }}
+    </div>
+  </section>
+
+  {{ if .Site.Params.homepage.showRecent | default false }}
+    {{ $recentArticles := .Site.Params.homepage.showRecentItems | default 8 }}
+    {{ $showMoreLinkDest := .Site.Params.homepage.showMoreLinkDest | default "posts/" }}
+    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    <section class="home-feed" aria-labelledby="recent-articles-title">
+      <header class="home-feed__header">
+        <h2 id="recent-articles-title">最近文章</h2>
+        {{ if .Site.Params.homepage.showMoreLink | default false }}
+          <a class="home-feed__all" href="{{ $showMoreLinkDest | relLangURL }}">
+            全部文章
+          </a>
+        {{ end }}
+      </header>
+
+      <div class="home-feed__list">
+        {{ range first $recentArticles $pages }}
+          {{ partial "article-link/card.html" . }}
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+</div>

@@ -1,0 +1,89 @@
+{{ $tocLabel := i18n "article.table_of_contents" | default "文章目录" }}
+{{ $mobileTOC := replace .TableOfContents "TableOfContents" "TableOfContentsMobile" }}
+
+<aside id="TOCView" class="toc-panel toc-panel--desktop" aria-label="{{ $tocLabel }}">
+  <p class="toc-panel__label">{{ $tocLabel }}</p>
+  <div class="toc-panel__body">
+    {{ .TableOfContents | emojify }}
+  </div>
+</aside>
+
+<details class="toc-panel toc-panel--mobile">
+  <summary class="toc-panel__summary">
+    <span>{{ $tocLabel }}</span>
+    <span class="toc-panel__chevron" aria-hidden="true">{{ partial "icon.html" "chevron-down" }}</span>
+  </summary>
+  <div class="toc-panel__body">
+    {{ $mobileTOC | safeHTML | emojify }}
+  </div>
+</details>
+
+{{ if .Site.Params.smartTOC }}
+  <script>
+    (function () {
+      'use strict'
+
+      const toc = document.querySelector('#TableOfContents')
+      if (!toc) return
+
+      const links = [...toc.querySelectorAll('a[href^="#"]')]
+      const tocIds = new Set(links.map(link => link.hash.slice(1)))
+      const anchors = [...document.querySelectorAll('.anchor[id]')].filter(anchor => tocIds.has(anchor.id))
+      const mobileDetails = document.querySelector('.toc-panel--mobile')
+      let frameId = 0
+      let jumpingToAnchor = false
+
+      function getActiveId() {
+        const threshold = window.scrollY + window.innerHeight * 0.33
+
+        if (jumpingToAnchor) {
+          const target = anchors.find(anchor => Math.abs(anchor.getBoundingClientRect().top) < 100)
+          if (target) return target.id
+        }
+
+        for (let index = anchors.length - 1; index >= 0; index -= 1) {
+          const anchor = anchors[index]
+          const top = anchor.getBoundingClientRect().top + window.scrollY
+          if (top <= threshold) return anchor.id
+        }
+
+        return anchors[0]?.id || ''
+      }
+
+      function updateActiveLink() {
+        frameId = 0
+        const activeId = getActiveId()
+        if (!activeId) return
+
+        links.forEach(link => {
+          const isActive = link.hash === `#${activeId}`
+          link.classList.toggle('active', isActive)
+          if (isActive) link.setAttribute('aria-current', 'location')
+          else link.removeAttribute('aria-current')
+        })
+      }
+
+      function scheduleUpdate() {
+        if (frameId) return
+        frameId = window.requestAnimationFrame(updateActiveLink)
+      }
+
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          jumpingToAnchor = true
+          window.setTimeout(() => {
+            jumpingToAnchor = false
+          }, 500)
+        })
+      })
+
+      mobileDetails?.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => mobileDetails.removeAttribute('open'))
+      })
+
+      window.addEventListener('scroll', scheduleUpdate, { passive: true })
+      window.addEventListener('hashchange', scheduleUpdate)
+      updateActiveLink()
+    })()
+  </script>
+{{ end }}

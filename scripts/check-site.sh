@@ -76,6 +76,20 @@ if has_pattern '^(tags|categories): \[null\]' content ||
   exit 1
 fi
 
+if ! has_literal 'colorScheme = "one-light"' hugo.toml ||
+  ! has_literal 'layout = "studio"' hugo.toml ||
+  ! has_literal 'smartTOC = true' hugo.toml ||
+  [[ -e config/development/params.toml ]] ||
+  [[ ! -f assets/css/custom.css ]] ||
+  [[ ! -f layouts/partials/home/studio.html ]] ||
+  [[ ! -f layouts/partials/toc.html ]] ||
+  ! has_literal 'class="article-row' layouts/partials/article-link/card.html ||
+  ! has_literal 'class="toc-panel__label"' layouts/partials/toc.html ||
+  has_pattern 'home-intro__actions|home-intro__primary|home-feed__grid' layouts/partials/home/studio.html; then
+  echo "the local blog design layer must remain enabled" >&2
+  exit 1
+fi
+
 redundant_assets=(
   'static/images/posts/idea踩坑/image1.png'
   'static/images/posts/openGl配置/image1.png'
