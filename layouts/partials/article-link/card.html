@@ -41,11 +41,6 @@
       {{ end }}
     {{ end }}
 
-    {{/* Auto-generate random wallpaper if no image found */}}
-    {{ if not (or $featured $featuredURL) }}
-       {{ $featuredURL = printf "https://tu.ltyuanfang.cn/api/fengjing.php?hash=%s" (md5 .Title) }}
-    {{ end }}
-
     {{/* generate image URL if not hotlink */}}
     {{ if not $featuredURL }}
       {{ with $featured }}

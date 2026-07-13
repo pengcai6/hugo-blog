@@ -146,6 +146,8 @@ cython_debug/
 public/
 # Hugo resources
 resources/_gen/
+# Vendored Hugo modules
+_vendor/
 
 # =====================================
 # Project Specific Ignores
