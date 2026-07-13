@@ -24,6 +24,8 @@ fi
 
 if [[ -e themes/PaperMod || -e themes/dream || -e .gitmodules || -e _vendor ]] ||
   [[ ! -f themes/blowfish/theme.toml ]] ||
+  [[ ! -f assets/css/compiled/main.css ]] ||
+  [[ -e themes/blowfish/assets ]] ||
   [[ -e go.mod || -e go.sum ]] ||
   ! rg -q '^theme = "blowfish"$' hugo.toml; then
   echo "only the active Blowfish theme may remain" >&2
