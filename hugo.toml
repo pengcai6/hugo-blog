@@ -2,35 +2,13 @@ baseURL = 'https://hugo.1338888.xyz/hugo-blog/'
 locale = 'zh-Hans'
 title = '你也不是我的救赎'
 defaultContentLanguage = 'zh'
+theme = "blowfish"
 
 [languages]
   [languages.zh]
     label = '简体中文'
     contentDir = 'content'
     weight = 1
-
-# 模块导入：使用 Blowfish 主题
-[module]
-  [[module.imports]]
-    path = "github.com/nunocoracao/blowfish/v2"
-    [[module.imports.mounts]]
-      source = "assets"
-      target = "assets"
-    [[module.imports.mounts]]
-      source = "archetypes"
-      target = "archetypes"
-    [[module.imports.mounts]]
-      source = "data"
-      target = "data"
-    [[module.imports.mounts]]
-      source = "i18n"
-      target = "i18n"
-    [[module.imports.mounts]]
-      source = "layouts"
-      target = "layouts"
-    [[module.imports.mounts]]
-      source = "static"
-      target = "static"
 
 enableRobotsTXT = true
 enableGitInfo = true

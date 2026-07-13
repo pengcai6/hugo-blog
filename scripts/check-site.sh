@@ -8,7 +8,7 @@ if rg -q '\{\{% encrypt' content; then
 fi
 
 if rg -q 'hugomods/(encrypt|pwa)|GoogleChrome/workbox|encrypt/assets|params\.encrypt' \
-  hugo.toml go.mod go.sum .github layouts; then
+  hugo.toml .github layouts; then
   echo "unused encryption and offline modules must be removed" >&2
   exit 1
 fi
@@ -22,19 +22,18 @@ if ! rg -Fq "baseURL = '$site_url'" hugo.toml ||
   exit 1
 fi
 
-if [[ -e themes/PaperMod || -e themes/dream || -e .gitmodules ]] ||
-  [[ ! -f _vendor/modules.txt ]] ||
-  ! rg -q '^# github\.com/nunocoracao/blowfish/v2 v2\.104\.0$' _vendor/modules.txt ||
-  rg -q '^_vendor/$' .gitignore; then
+if [[ -e themes/PaperMod || -e themes/dream || -e .gitmodules || -e _vendor ]] ||
+  [[ ! -f themes/blowfish/theme.toml ]] ||
+  [[ -e go.mod || -e go.sum ]] ||
+  ! rg -q '^theme = "blowfish"$' hugo.toml; then
   echo "only the active Blowfish theme may remain" >&2
   exit 1
 fi
 
 if ! rg -q 'HUGO_VERSION: 0\.163\.3' .github/workflows/hugo.yml ||
-  ! rg -q 'github\.com/nunocoracao/blowfish/v2 v2\.104\.0' go.mod ||
-  ! rg -q 'go-version-file: go\.mod' .github/workflows/hugo.yml ||
   ! rg -q 'scripts/check-site\.sh' .github/workflows/hugo.yml ||
   ! rg -q -- '--gc' .github/workflows/hugo.yml ||
+  rg -q 'actions/setup-go|go-version-file|\[\[module\.imports\]\]' .github/workflows/hugo.yml hugo.toml ||
   rg -q '@latest|hugo mod (init|get|tidy)' .github/workflows/hugo.yml ||
   rg -q 'languageCode|languageName|^[[:space:]]*nableCodeCopy' hugo.toml ||
   rg -q 'firebase|showViews = true|showLikes = true' hugo.toml ||
@@ -83,13 +82,7 @@ if [[ ! -f vercel.json ]] ||
   exit 1
 fi
 
-if ! rg -Uq '\[\[module\.imports\.mounts\]\]\n[[:space:]]+source = "assets"\n[[:space:]]+target = "assets"' hugo.toml ||
-  ! rg -Uq '\[\[module\.imports\.mounts\]\]\n[[:space:]]+source = "layouts"\n[[:space:]]+target = "layouts"' hugo.toml; then
-  echo "theme assets must be mounted explicitly for Vercel" >&2
-  exit 1
-fi
-
-theme_head='_vendor/github.com/nunocoracao/blowfish/v2/layouts/partials/head.html'
+theme_head='themes/blowfish/layouts/partials/head.html'
 if rg -q 'resources\.Concat "(css|js)/main\.bundle' "$theme_head"; then
   echo "theme resource loading must remain compatible with Vercel" >&2
   exit 1

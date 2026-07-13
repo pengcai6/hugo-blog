@@ -39,11 +39,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Run site checks
         run: ./scripts/check-site.sh
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version-file: go.mod
-          cache: true
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
