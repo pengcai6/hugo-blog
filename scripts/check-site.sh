@@ -32,6 +32,13 @@ if [[ -e themes/PaperMod || -e themes/dream || -e .gitmodules || -e _vendor ]] |
   exit 1
 fi
 
+if ! rg -q '^/lib/$' .gitignore ||
+  git check-ignore -q assets/lib/zoom/style.css ||
+  ! git ls-files --error-unmatch assets/lib/zoom/style.css >/dev/null 2>&1; then
+  echo "theme libraries must not be hidden by generic ignore rules" >&2
+  exit 1
+fi
+
 if ! rg -q 'HUGO_VERSION: 0\.163\.3' .github/workflows/hugo.yml ||
   ! rg -q 'scripts/check-site\.sh' .github/workflows/hugo.yml ||
   ! rg -q -- '--gc' .github/workflows/hugo.yml ||
