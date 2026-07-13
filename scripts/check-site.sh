@@ -22,8 +22,10 @@ if ! rg -Fq "baseURL = '$site_url'" hugo.toml ||
   exit 1
 fi
 
-if [[ -e themes/PaperMod || -e themes/dream || -e .gitmodules || -e _vendor ]] ||
-  ! rg -q '^_vendor/$' .gitignore; then
+if [[ -e themes/PaperMod || -e themes/dream || -e .gitmodules ]] ||
+  [[ ! -f _vendor/modules.txt ]] ||
+  ! rg -q '^# github\.com/nunocoracao/blowfish/v2 v2\.104\.0$' _vendor/modules.txt ||
+  rg -q '^_vendor/$' .gitignore; then
   echo "only the active Blowfish theme may remain" >&2
   exit 1
 fi
