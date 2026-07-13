@@ -70,4 +70,14 @@ if [[ ! -f "$avatar" ]] ||
   exit 1
 fi
 
+if [[ ! -f vercel.json ]] ||
+  ! jq -e '
+    .framework == "hugo" and
+    .outputDirectory == "public" and
+    (.buildCommand | contains("--baseURL https://$VERCEL_URL/"))
+  ' vercel.json >/dev/null; then
+  echo "Vercel must build Hugo into the public directory" >&2
+  exit 1
+fi
+
 echo "site checks passed"
