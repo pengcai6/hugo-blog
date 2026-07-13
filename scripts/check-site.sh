@@ -89,4 +89,10 @@ if ! rg -Uq '\[\[module\.imports\.mounts\]\]\n[[:space:]]+source = "assets"\n[[:
   exit 1
 fi
 
+theme_head='_vendor/github.com/nunocoracao/blowfish/v2/layouts/partials/head.html'
+if rg -q 'resources\.Concat "(css|js)/main\.bundle' "$theme_head"; then
+  echo "theme resource loading must remain compatible with Vercel" >&2
+  exit 1
+fi
+
 echo "site checks passed"
