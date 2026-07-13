@@ -3,7 +3,7 @@
   "framework": "hugo",
   "build": {
     "env": {
-      "HUGO_VERSION": "0.164.0"
+      "HUGO_VERSION": "0.163.3"
     }
   },
   "buildCommand": "hugo --gc --minify --baseURL https://$VERCEL_URL/",

@@ -30,7 +30,7 @@ if [[ -e themes/PaperMod || -e themes/dream || -e .gitmodules ]] ||
   exit 1
 fi
 
-if ! rg -q 'HUGO_VERSION: 0\.164\.0' .github/workflows/hugo.yml ||
+if ! rg -q 'HUGO_VERSION: 0\.163\.3' .github/workflows/hugo.yml ||
   ! rg -q 'github\.com/nunocoracao/blowfish/v2 v2\.104\.0' go.mod ||
   ! rg -q 'go-version-file: go\.mod' .github/workflows/hugo.yml ||
   ! rg -q 'scripts/check-site\.sh' .github/workflows/hugo.yml ||
@@ -75,7 +75,7 @@ fi
 if [[ ! -f vercel.json ]] ||
   ! jq -e '
     .framework == "hugo" and
-    .build.env.HUGO_VERSION == "0.164.0" and
+    .build.env.HUGO_VERSION == "0.163.3" and
     .outputDirectory == "public" and
     (.buildCommand | contains("--baseURL https://$VERCEL_URL/"))
   ' vercel.json >/dev/null; then
