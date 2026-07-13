@@ -6,6 +6,6 @@
       "HUGO_VERSION": "0.163.3"
     }
   },
-  "buildCommand": "hugo --gc --minify --baseURL https://$VERCEL_URL/",
+  "buildCommand": "hugo --minify --baseURL https://$VERCEL_URL/",
   "outputDirectory": "public"
 }
