@@ -54,6 +54,10 @@ fi
 if ! has_pattern 'HUGO_VERSION: 0\.163\.3' .github/workflows/hugo.yml ||
   ! has_pattern 'scripts/check-site\.sh' .github/workflows/hugo.yml ||
   ! has_literal '--gc' .github/workflows/hugo.yml ||
+  ! has_literal 'actions/checkout@v7' .github/workflows/hugo.yml ||
+  ! has_literal 'actions/configure-pages@v6' .github/workflows/hugo.yml ||
+  ! has_literal 'actions/upload-pages-artifact@v5' .github/workflows/hugo.yml ||
+  ! has_literal 'actions/deploy-pages@v5' .github/workflows/hugo.yml ||
   has_pattern 'actions/setup-go|go-version-file|\[\[module\.imports\]\]' .github/workflows/hugo.yml hugo.toml ||
   has_pattern '@latest|hugo mod (init|get|tidy)' .github/workflows/hugo.yml ||
   has_pattern 'languageCode|languageName|^[[:space:]]*nableCodeCopy' hugo.toml ||
