@@ -73,6 +73,7 @@ fi
 if [[ ! -f vercel.json ]] ||
   ! jq -e '
     .framework == "hugo" and
+    .build.env.HUGO_VERSION == "0.164.0" and
     .outputDirectory == "public" and
     (.buildCommand | contains("--baseURL https://$VERCEL_URL/"))
   ' vercel.json >/dev/null; then
