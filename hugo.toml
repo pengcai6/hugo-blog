@@ -13,6 +13,24 @@ defaultContentLanguage = 'zh'
 [module]
   [[module.imports]]
     path = "github.com/nunocoracao/blowfish/v2"
+    [[module.imports.mounts]]
+      source = "assets"
+      target = "assets"
+    [[module.imports.mounts]]
+      source = "archetypes"
+      target = "archetypes"
+    [[module.imports.mounts]]
+      source = "data"
+      target = "data"
+    [[module.imports.mounts]]
+      source = "i18n"
+      target = "i18n"
+    [[module.imports.mounts]]
+      source = "layouts"
+      target = "layouts"
+    [[module.imports.mounts]]
+      source = "static"
+      target = "static"
 
 enableRobotsTXT = true
 enableGitInfo = true

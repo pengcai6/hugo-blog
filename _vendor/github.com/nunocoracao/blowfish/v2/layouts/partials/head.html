@@ -126,14 +126,12 @@
   {{ if not .Site.Params.disableImageZoom | default true }}
     {{ $cssResources = $cssResources | append (resources.Get "lib/zoom/style.css") }}
   {{ end }}
-  {{ range $cssResources }}
-    {{ $stylesheet := . | resources.Minify | resources.Fingerprint $alg }}
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="{{ $stylesheet.RelPermalink }}"
-      integrity="{{ $stylesheet.Data.Integrity }}">
-  {{ end }}
+  {{ $bundleCSS := $cssResources | resources.Concat "css/main.bundle.css" | resources.Minify | resources.Fingerprint $alg }}
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="{{ $bundleCSS.RelPermalink }}"
+    integrity="{{ $bundleCSS.Data.Integrity }}">
 
   {{/* JS loaded immediately */}}
   {{ $jsAppearance := resources.Get "js/appearance.js" | resources.ExecuteAsTemplate "js/appearance.js" . | resources.Minify | resources.Fingerprint $alg }}
@@ -181,19 +179,15 @@
   {{ $jsResources = $jsResources | append (resources.Get "js/print-support.js") }}
   {{ $jsResources = $jsResources | append (resources.Get "js/email.js") }}
   {{ if $jsResources }}
+    {{ $bundleJS := $jsResources | resources.Concat "js/main.bundle.js" | resources.Minify | resources.Fingerprint $alg }}
     <script
+      defer
+      type="text/javascript"
       id="script-bundle"
-      type="application/json"
+      src="{{ $bundleJS.RelPermalink }}"
+      integrity="{{ $bundleJS.Data.Integrity }}"
       data-copy="{{ i18n "code.copy" }}"
       data-copied="{{ i18n "code.copied" }}"></script>
-    {{ range $jsResources }}
-      {{ $script := . | resources.Minify | resources.Fingerprint $alg }}
-      <script
-        defer
-        type="text/javascript"
-        src="{{ $script.RelPermalink }}"
-        integrity="{{ $script.Data.Integrity }}"></script>
-    {{ end }}
   {{ end }}
 
   {{/* Conditional loaded resources */}}

@@ -83,9 +83,9 @@ if [[ ! -f vercel.json ]] ||
   exit 1
 fi
 
-theme_head='_vendor/github.com/nunocoracao/blowfish/v2/layouts/partials/head.html'
-if rg -q 'resources\.Concat "(css|js)/main\.bundle' "$theme_head"; then
-  echo "theme resource loading must remain compatible with Vercel" >&2
+if ! rg -Uq '\[\[module\.imports\.mounts\]\]\n[[:space:]]+source = "assets"\n[[:space:]]+target = "assets"' hugo.toml ||
+  ! rg -Uq '\[\[module\.imports\.mounts\]\]\n[[:space:]]+source = "layouts"\n[[:space:]]+target = "layouts"' hugo.toml; then
+  echo "theme assets must be mounted explicitly for Vercel" >&2
   exit 1
 fi
 
