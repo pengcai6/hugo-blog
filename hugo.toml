@@ -4,18 +4,18 @@ title = '你也不是我的救赎'
 defaultContentLanguage = 'zh'
 theme = "blowfish"
 
-[languages]
-  [languages.zh]
-    label = '简体中文'
-    contentDir = 'content'
-    weight = 1
-
 enableRobotsTXT = true
 enableGitInfo = true
 hasCJKLanguage = true
 buildDrafts = false
 buildFuture = false
 buildExpired = false
+
+[languages]
+  [languages.zh]
+    label = '简体中文'
+    contentDir = 'content'
+    weight = 1
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

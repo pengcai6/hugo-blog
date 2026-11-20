@@ -4,6 +4,11 @@ important: "重要"
 warning: "警告"
 caution: "小心"
 
+error:
+  404_title: "找不到页面"
+  404_error: "404 错误"
+  404_description: "您请求的页面不存在，或已被移动。"
+
 home: "首页"
 backToHome: "返回首页"
 flip: "翻转一下！"
