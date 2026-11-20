@@ -9,7 +9,7 @@ title: 完成-Hexo-Butterfly主题在主页添加GitHub贡献日历
 
 重要配置  
  user: pengcai6 #git用户名  
- apiurl: '<https://github-contribute-plum.vercel.app>' #该网站使用vercel搭建
+ apiurl: `https://github.1338888.xyz`（[测试 API](https://github.1338888.xyz/api?username=pengcai6)）
 minheight:  
 
 ## 目前只在我的关于中展示

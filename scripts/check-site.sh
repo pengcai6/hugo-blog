@@ -126,9 +126,10 @@ if [[ ! -f vercel.json ]] ||
     .framework == "hugo" and
     .build.env.HUGO_VERSION == "0.163.3" and
     .outputDirectory == "public" and
-    (.buildCommand | contains("--baseURL https://$VERCEL_URL/")) and
-    (.buildCommand | contains("--gc") | not)
-  ' vercel.json >/dev/null; then
+    .buildCommand == "bash scripts/build-vercel.sh"
+  ' vercel.json >/dev/null ||
+  ! has_literal "https://hugo-blog-cyan.vercel.app/" scripts/build-vercel.sh ||
+  has_literal '--gc' scripts/build-vercel.sh; then
   echo "Vercel must build Hugo into the public directory" >&2
   exit 1
 fi
